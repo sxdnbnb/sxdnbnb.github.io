@@ -5,6 +5,7 @@ import { blogTheme } from './blog-theme'
 
 // 如果使用 GitHub/Gitee Pages 等公共平台部署
 // 通常需要修改 base 路径，通常为“/仓库名/”
+const base = '/sxdnbnb.github.io/'
 // const base = process.env.GITHUB_ACTIONS === 'true'
 //   ? '/vitepress-blog-sugar-template/'
 //   : '/'
