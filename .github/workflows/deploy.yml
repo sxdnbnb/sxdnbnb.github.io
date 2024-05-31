@@ -64,8 +64,8 @@ jobs:
           run_install: false
 
         # 安装依赖
-      # - name: Install dependencies
-      #   run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
         # 构建项目
       - name: Build blog project
