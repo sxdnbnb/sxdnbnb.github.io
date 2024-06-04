@@ -8,16 +8,17 @@ import { blogTheme } from './blog-theme'
 // const base = process.env.GITHUB_ACTIONS === 'true'
 //   ? '/vitepress-blog-sugar-template/'
 //   : '/'
-
+const base = '/sxdnbnb.github.io/'
 // Vitepress 默认配置
 // 详见文档：https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base,
   // 继承博客主题(@sugarat/theme)
   extends: blogTheme,
   // base,
   lang: 'zh-cn',
-  title: '@sugarat/theme',
-  description: '粥里有勺糖的博客主题，基于 vitepress 实现',
+  title: '@暮冬浅夏',
+  description: '暮冬浅夏的博客',
   lastUpdated: true,
   // 详见：https://vitepress.dev/zh/reference/site-config#head
   head: [
@@ -45,12 +46,13 @@ export default defineConfig({
     // },
     nav: [
       { text: '首页', link: '/' },
-      { text: '关于作者', link: 'https://sugarat.top/aboutme.html' }
+      { text: '文章目录', link: '/about' },
+      { text: '关于作者', link: 'https://github.com/sxdnbnb' }
     ],
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/ATQQ/sugar-blog/tree/master/packages/theme'
+        link: 'https://github.com/sxdnbnb'
       }
     ]
   }
