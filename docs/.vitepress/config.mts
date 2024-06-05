@@ -33,6 +33,15 @@ export default defineConfig({
       'script',
       {},
       `LA.init({id:"3IdmiCNCA52rjASE",ck:"3IdmiCNCA52rjASE",hashMode:true})`
+    ],
+    [
+      'script',
+      {
+        id: 'LA-DATA-WIDGET',
+        crossorigin: 'anonymous',
+        charset: 'UTF-8',
+        src: 'https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=0&f=12&display=0,0,1,1,0,0,0,1'
+      }
     ]
   ],
   themeConfig: {
