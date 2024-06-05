@@ -101,9 +101,9 @@ echo `expr index "$string" io`  # 输出 4
 ### **定义数组**
 
 在 Shell 中，用括号来表示数组，数组元素用"空格"符号分割开。定义数组的一般形式为：
-
+```bash
 数组名=(值 1 值 2 ... 值 n)
-
+```
 ```bash
 array_name=(value0 value1 value2 value3)
 ```
@@ -111,9 +111,9 @@ array_name=(value0 value1 value2 value3)
 ### 读取数组
 
 读取数组元素值的一般格式是：
-
+```bash
 ${数组名[下标]}
-
+```
 ```bash
 valuen=${array_name[n]}
 ```
