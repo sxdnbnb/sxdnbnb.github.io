@@ -5,9 +5,9 @@ title: Linux
 tag:
  - 开发工具
 top: 8     # 排序
-sticky: 98  # 精选文章排序
-recommend: 1 # 推荐文章排序
-sidebar: false # 侧边栏
+sticky: 98  # 精选文章热度
+recommend: 2 # 推荐文章排序
+# sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---
 # Linux 笔记
@@ -123,7 +123,7 @@ Linux 中的打包文件一般是以 `.tar` 结尾的，压缩的命令一般是
 
 第一列的内容的信息解释如下：
 
-![](static/MgxfbMcoLo5ukdxr2YXcwCiTnaf.png)
+![](linux/MgxfbMcoLo5ukdxr2YXcwCiTnaf.png)
 
 **Linux 中权限分为以下几种：**
 

@@ -5,25 +5,25 @@ title: Redis
 tag:
  - 开发工具
 top: 4     # 排序
-sticky: 90  # 精选文章排序
-recommend: 2 # 推荐文章排序
-sidebar: false # 侧边栏
+sticky: 90  # 精选文章热度
+recommend: 3 # 推荐文章排序
+# sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---
 # Redis 笔记
 
 ## Redis 可以用来干什么？
 
-![](static/JavlbRjsBomPxsxkRa8c9rILnby.png)
+![](redis/JavlbRjsBomPxsxkRa8c9rILnby.png)
 
 ## Redis 有哪些数据结构？
 
-![](static/HV4Wbgio9onuRQxCMvqcHmjJnXb.png)
+![](redis/HV4Wbgio9onuRQxCMvqcHmjJnXb.png)
 
 1. 字符串：这是 Redis 最简单的数据类型，可以包含任何形式的字符串，含有二进制数据。字符串类型是二进制安全的，意味着可以存储任何形式的数据，例如：图片、序列化对象等。用途广泛，例如：常用作计数器，令牌，分布式锁等。
 2. 哈希：HashMap 类型，可以储存对象，比如我们可以存储一个用户的对象，键可以是用户的 ID，值就是用户的各种属性。
 
-![](static/APYMbvxrzoqBZbxAZljcdwLynsc.png)
+![](redis/APYMbvxrzoqBZbxAZljcdwLynsc.png)
 
 1. 列表（List）：List 是字符串链表，按插入顺序排序，你可以添加一个元素到头部（左边）或尾部（右边）。列表适合用于消息队列，用户关系链，最新项目列表等。
 2. 集合（Set）：Set 是一个无序且唯一的字符串集合。集合的主要应用场景包括交集、并集、差集、以及元素的查询，适用于标签系统，好友关系链等场景。
@@ -78,11 +78,11 @@ sidebar: false # 侧边栏
 
 NIO 是同步非阻塞的（ I/O 多路复用模型），服务器可以用一个线程处理多个客户端连接，通过 Selector 监听多个 Channel 来实现多路复用，客户端发送的连接请求会注册到**多路复用器**上，**多路复用器**轮询到连接有 IO 请求就进行处理：
 
-![](static/B9bgbVZLHobdOGxyirlczwAfnmb.png)
+![](redis/B9bgbVZLHobdOGxyirlczwAfnmb.png)
 
 ## Redis 持久**化⽅式**有哪些？有什么区别？
 
-![](static/LgS1bNniToUYaNx47wxcbyhJnIf.png)
+![](redis/LgS1bNniToUYaNx47wxcbyhJnIf.png)
 
 RDB
 
@@ -94,11 +94,11 @@ AOF 持久化通过记录每个写操作命令到 AOF 缓冲中，并将其追�
 
 AOF 的主要作用是解决了数据持久化的实时性，目前已经是 Redis 持久化的主流方式。
 
-![](static/Am2SbW7mYon60FxmF8ackaLYnOb.png)
+![](redis/Am2SbW7mYon60FxmF8ackaLYnOb.png)
 
 ## Redis 的数据恢复？
 
-![](static/VVncb0Ceioqob3xwxHLcZshAnob.png)
+![](redis/VVncb0Ceioqob3xwxHLcZshAnob.png)
 
 Redis 启动时加载数据的流程：
 
@@ -113,7 +113,7 @@ Redis 保证高可用主要有三种方式：主从、哨兵、集群
 
 ### 主从复制
 
-![](static/JCnbbHHnVoMaLGxUXuVcXdSln6d.png)
+![](redis/JCnbbHHnVoMaLGxUXuVcXdSln6d.png)
 
 主从复制，是指将一台 Redis 服务器的数据，复制到其他的 Redis 服务器。前者称为 主节点(master)，后者称为 从节点(slave)。且数据的复制是 单向 的，只能由主节点到从节点。Redis 主从复制支持 主从同步 和 从从同步 两种，后者是 Redis 后续版本新增的功能，以减轻主节点的同步负担。
 
@@ -134,7 +134,7 @@ Redis 保证高可用主要有三种方式：主从、哨兵、集群
 
 主从复制存在一个问题，没法完成自动故障转移。所以我们需要一个方案来完成自动故障转移，它就是 Redis Sentinel（哨兵）。
 
-![](static/KLYvbkfvjonplpxKNCRca9Ennzg.png)
+![](redis/KLYvbkfvjonplpxKNCRca9Ennzg.png)
 
 Redis Sentinel
 
@@ -158,13 +158,13 @@ Redis Sentinel ，它由两部分组成，哨兵节点和数据节点：
 
 一个并发访问量比较大的 key 在某个时间过期，导致所有的请求直接打在 DB 上。
 
-![](static/LDV2bPjdaokgH3xrx5HcdcRznwf.png)
+![](redis/LDV2bPjdaokgH3xrx5HcdcRznwf.png)
 
 解决⽅案：
 
 1. 加锁更新，⽐如请求查询 A，发现缓存中没有，对 A 这个 key 加锁，同时去数据库查询数据，写⼊缓存，再返回给⽤户，这样后⾯的请求就可以从缓存中拿到数据了。
 
-![](static/RKcMbDNf5oOKYkx1SaDcI9sonFf.png)
+![](redis/RKcMbDNf5oOKYkx1SaDcI9sonFf.png)
 
 1. 将过期时间组合写在 value 中，通过异步的⽅式不断的刷新过期时间，防⽌此类现象。
 
@@ -172,7 +172,7 @@ Redis Sentinel ，它由两部分组成，哨兵节点和数据节点：
 
 缓存穿透指的查询缓存和数据库中都不存在的数据，这样每次请求直接打到数据库，就好像缓存不存在一样。
 
-![](static/W6gAbOkfzoeTjcxxkLFc9eM3nzc.png)
+![](redis/W6gAbOkfzoeTjcxxkLFc9eM3nzc.png)
 
 缓存穿透将导致不存在的数据每次请求都要到存储层去查询，失去了缓存保护后端存储的意义。
 
@@ -189,7 +189,7 @@ Redis Sentinel ，它由两部分组成，哨兵节点和数据节点：
 
 一种方式是在数据库不命中之后，把一个空对象或者默认值保存到缓存，之后再访问这个数据，就会从缓存中获取，这样就保护了数据库。
 
-![](static/NT9zbC7HZodpDvxUktdcrnS4nje.png)
+![](redis/NT9zbC7HZodpDvxUktdcrnS4nje.png)
 
 缓存空值/默认值
 
@@ -205,17 +205,17 @@ Redis Sentinel ，它由两部分组成，哨兵节点和数据节点：
 
 布隆过滤器里会保存数据是否存在，如果判断数据不不能再，就不会访问存储。
 
-![](static/XNLAbLDC2oEpKxx12Y7cdErDnhg.png)
+![](redis/XNLAbLDC2oEpKxx12Y7cdErDnhg.png)
 
 两种解决方案的对比：
 
-![](static/SLDib63MRoNo4RxvTCucKyWWngC.png)
+![](redis/SLDib63MRoNo4RxvTCucKyWWngC.png)
 
 #### 缓存雪崩
 
 某⼀时刻发⽣⼤规模的缓存失效的情况，例如缓存服务宕机、大量 key 在同一时间过期，这样的后果就是⼤量的请求进来直接打到 DB 上，可能导致整个系统的崩溃，称为雪崩。
 
-![](static/PTfpb277RoqQWmxwFxscYheSn7c.png)
+![](redis/PTfpb277RoqQWmxwFxscYheSn7c.png)
 
 缓存雪崩是三大缓存问题里最严重的一种，我们来看看怎么预防和处理。
 
@@ -240,7 +240,7 @@ Redis Sentinel ，它由两部分组成，哨兵节点和数据节点：
 
 存储数据的时时候，使用 K 个不同的哈希函数将这个变量映射为 bit 列表的的 K 个点，把它们置为 1。
 
-![](static/XFHzb5I2SoK5yixfVdqcryoPnIX.png)
+![](redis/XFHzb5I2SoK5yixfVdqcryoPnIX.png)
 
 我们判断缓存 key 是否存在，同样，K 个哈希函数，映射到 bit 列表上的 K 个点，判断是不是 1：
 
@@ -297,7 +297,7 @@ Redis Sentinel ，它由两部分组成，哨兵节点和数据节点：
 
 更新数据库，耗时可能在删除缓存的百倍以上。所以如果先删缓存，再更数据库，缓存中 key 不存在的时间更长，有更大的概率会产生脏数据。
 
-![](static/OLNlbB2TXo7gE3xiZ9TcHt0Sngh.png)
+![](redis/OLNlbB2TXo7gE3xiZ9TcHt0Sngh.png)
 
 目前最流行的缓存读写策略 cache-aside-pattern 就是采用先更数据库，再删缓存的方式。
 
@@ -306,14 +306,14 @@ Redis Sentinel ，它由两部分组成，哨兵节点和数据节点：
 - 缓存 key 删除失败
 - 并发导致写入了脏数据
 
-![](static/WWzVbDl8JohLsmxtTUlcEglKnWb.png)
+![](redis/WWzVbDl8JohLsmxtTUlcEglKnWb.png)
 
 缓存一致性
 
 消息队列保证 key 被删除
 可以引入消息队列，把要删除的 key 或者删除失败的 key 丢尽消息队列，利用消息队列的重试机制，重试删除对应的 key。
 
-![](static/RASgb3JThoSMuLxI2wpcobsRnpd.png)
+![](redis/RASgb3JThoSMuLxI2wpcobsRnpd.png)
 
 这种方案看起来不错，缺点是对业务代码有一定的侵入性。
 
@@ -322,7 +322,7 @@ Redis Sentinel ，它由两部分组成，哨兵节点和数据节点：
 
 简单说，就是在第一次删除缓存之后，过了一段时间之后，再次删除缓存。
 
-![](static/TLCfbERrUonJl2xRb92cWuwNnbb.png)
+![](redis/TLCfbERrUonJl2xRb92cWuwNnbb.png)
 
 延时双删
 
@@ -332,7 +332,7 @@ Redis Sentinel ，它由两部分组成，哨兵节点和数据节点：
 
 ## 怎么处理热 key？
 
-![](static/XXxtbYvkyofreQxUvZvc0eZBnQG.png)
+![](redis/XXxtbYvkyofreQxUvZvc0eZBnQG.png)
 
 ①、把热 key 打散到不同的服务器，降低压⼒。
 
@@ -375,7 +375,7 @@ Redis 内存不足有这么几种处理方式：
 
 Redis 主要有 2 种过期数据回收策略：
 
-![](static/FqdRb3riroiDKxxULmncT4Ndnpb.png)
+![](redis/FqdRb3riroiDKxxULmncT4Ndnpb.png)
 
 1. 惰性删除
 
@@ -391,7 +391,7 @@ Redis 主要有 2 种过期数据回收策略：
 
 当 Redis 所用内存达到 maxmemory 上限时，会触发相应的溢出控制策略。
 
-![](static/RtWNbup0JoUiTbxsAckcItw6nQf.png)
+![](redis/RtWNbup0JoUiTbxsAckcItw6nQf.png)
 
 Redis 六种内存溢出控制策略
 
@@ -406,7 +406,7 @@ Redis 六种内存溢出控制策略
 
 Redis 发生阻塞，可以从以下几个方面排查：
 
-![](static/NEyObw1K6oKVctxgzhrcQkcpnQb.png)
+![](redis/NEyObw1K6oKVctxgzhrcQkcpnQb.png)
 
 对慢查询的处理分为两步：
 
@@ -432,7 +432,7 @@ Redis 发生阻塞，可以从以下几个方面排查：
 
 ### 如何处理大 key?
 
-![](static/O7X3bjOvSoVtMzxvIe5cxg59nhg.png)
+![](redis/O7X3bjOvSoVtMzxvIe5cxg59nhg.png)
 
 ①、删除大 key
 
@@ -453,7 +453,7 @@ Redis 发生阻塞，可以从以下几个方面排查：
 
 发布/订阅模式可以 1：N 的消息发布/订阅。发布者将消息发布到指定的频道频道（channel），订阅相应频道的客户端都能收到消息。
 
-![](static/Fb4Kb4kbeow7dQxB8rBcWg8xnwh.png)
+![](redis/Fb4Kb4kbeow7dQxB8rBcWg8xnwh.png)
 
 但是这种方式不是可靠的，它不保证订阅者一定能收到消息，也不进行消息的存储。
 
@@ -465,7 +465,7 @@ Redis 发生阻塞，可以从以下几个方面排查：
 
 可以使用 zset 这个结构，用设置好的时间戳作为 score 进行排序，使用 zadd score1 value1 ....命令就可以一直往内存中生产消息。再利用 zrangebysocre 查询符合条件的所有待处理的任务，通过循环执行队列任务即可。
 
-![](static/BSEjbAeCsohs3kxOeLWcat68nSe.png)
+![](redis/BSEjbAeCsohs3kxOeLWcat68nSe.png)
 
 ### Redis 支持事务吗？
 

@@ -5,14 +5,14 @@ title: 计算机网络
 tag:
  - 408
 top: 13     # 排序
-# sticky: 1  # 精选文章排序
-# recommend: 1 # 推荐文章排序
-sidebar: false # 侧边栏
+# sticky: 1  # 精选文章热度
+recommend: 1 # 推荐文章排序
+# sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---
 # 计算机网络
 
-![](static/TzDvbUeNNoaWDHxkaIocmDBSnXe.png)
+![](computerNet/TzDvbUeNNoaWDHxkaIocmDBSnXe.png)
 
 OSI 是理论上的网络通信模型，TCP/IP 是实际应用层面上的网络通信模型，五层结构是为了方便理解和记忆。
 
@@ -37,7 +37,7 @@ TCP/IP 合并了 OSI 的部分层次，专注于高效的网络通信实践，�
 - 网际层：对应于 OSI 模型的网络层。主要协议是 IP，负责数据包的寻址和路由。这一层还包括 ICMP 协议。
 - 网络接口层：对应于 OSI 模型的物理层和数据链路层。负责数据帧的物理传输，包括硬件地址寻址（MAC 地址），数据封装和解封装，错误检测和纠正等。
 
-![](static/YbcAbaq9dosbEExveYJc3k4Wnwd.png)
+![](computerNet/YbcAbaq9dosbEExveYJc3k4Wnwd.png)
 
 ## 从浏览器地址栏输入 url 到显示主页的过程？
 
@@ -50,13 +50,13 @@ TCP/IP 合并了 OSI 的部分层次，专注于高效的网络通信实践，�
 
 我们以输入 [www.baidu.comopen in new window](http://www.baidu.com/) 为例：
 
-![](static/BpmBblFweoZmwQx5ORuciK8Cnwf.png)
+![](computerNet/BpmBblFweoZmwQx5ORuciK8Cnwf.png)
 
 URL 到显示主页
 
 各个过程都使用了哪些协议？
 
-![](static/Pb3Gb95UZoYeTsxui9zcFlYenuc.png)
+![](computerNet/Pb3Gb95UZoYeTsxui9zcFlYenuc.png)
 
 ## 说说 DNS 的解析过程？
 
@@ -64,19 +64,19 @@ DNS，英文全称是 domain name system，域名解析系统，它的作用也�
 
 DNS 的解析过程如下图：
 
-![](static/EvH2btIeZorGjHx67JTc9SUunLf.png)
+![](computerNet/EvH2btIeZorGjHx67JTc9SUunLf.png)
 
 ## 说一下你了解的端口及对应的服务？
 
-![](static/TNMcb46xOoVdcoxgplNcvzA7nMj.png)
+![](computerNet/TNMcb46xOoVdcoxgplNcvzA7nMj.png)
 
 ## 说说 HTTP 常用的状态码及其含义？
 
-![](static/LdQxbUdkzoRa2ExPRCUctG1NnPf.png)
+![](computerNet/LdQxbUdkzoRa2ExPRCUctG1NnPf.png)
 
 ## HTTP 有哪些请求方式？
 
-![](static/B2qmbAavposgwVxLPR1chhh9nac.png)
+![](computerNet/B2qmbAavposgwVxLPR1chhh9nac.png)
 
 其中，POST、DELETE、PUT、GET 的含义分别对应我们最熟悉的增、删、改、查。
 
@@ -132,7 +132,7 @@ HTTPS 的工作流程主要涉及到 SSL/TLS 协议，它确保了客户端和�
 - Cookie 是保存在客户端的一小块文本串的数据。客户端向服务器发起请求时，服务端会向客户端发送一个 Cookie，客户端就把 Cookie 保存起来。在客户端下次向同一服务器再发起请求时，Cookie 被携带发送到服务器。服务端可以根据这个 Cookie 判断用户的身份和状态。
 - Session 指的就是服务器和客户端一次会话的过程。它是另一种记录客户状态的机制。客户端浏览器访问服务器的时候，服务器把客户端信息记录在服务器上，这就是 session。客户端浏览器再次访问时只需要从该 session 中查找用户的状态。
 
-![](static/Oh7ZbnoocooIB0xdNvNcBDiIn6d.png)
+![](computerNet/Oh7ZbnoocooIB0xdNvNcBDiIn6d.png)
 
 Cookie 和 Session
 
@@ -147,7 +147,7 @@ Cookie 和 Session
 
 TCP 提供面向连接的服务，在传送数据前必须建立连接，TCP 连接是通过三次握手建立的。
 
-![](static/ZE7XbANLMocnRxx7E8EcVwsYnQc.png)
+![](computerNet/ZE7XbANLMocnRxx7E8EcVwsYnQc.png)
 
 TCP 三次握手示意图
 
@@ -165,11 +165,11 @@ TCP 三次握手示意图
 - 为了防止服务器端开启一些无用的连接增加服务器开销
 - 服务器会一直地开着端口在等着客户端发消息
 
-![](static/BhltbLR94orntNxlS5HcPn7hn3b.png)
+![](computerNet/BhltbLR94orntNxlS5HcPn7hn3b.png)
 
 - 防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误。
 
-![](static/YLlIboRIWoSUcqxuZaBc0d1undl.png)
+![](computerNet/YLlIboRIWoSUcqxuZaBc0d1undl.png)
 
 > 为什么不是四次？
 
@@ -177,7 +177,7 @@ TCP 三次握手示意图
 
 ## 说说 TCP 四次挥手的过程？
 
-![](static/P8NwbCZLjoEMmCxnqLXcZQuFntd.png)
+![](computerNet/P8NwbCZLjoEMmCxnqLXcZQuFntd.png)
 
 TCP 四次挥手
 
@@ -221,7 +221,7 @@ TCP 四次挥手过程：
 
 TCP 和 UDP 最根本的区别：TCP 是面向连接的，而 UDP 是无连接的。
 
-![](static/TtDSb8LUPoAvhNx6feBcuU2hnUd.png)
+![](computerNet/TtDSb8LUPoAvhNx6feBcuU2hnUd.png)
 
 可以这么形容：TCP 是打电话，UDP 是大喇叭（😂）。
 
@@ -250,4 +250,4 @@ TCP 是可靠的，它通过确认机制、重发机制等来保证数据的可�
 > ② 依次将根节点与待排序序列的最后一个元素交换
 > ③ 再维护从根节点到该元素的前一个节点为最大堆，如此往复，最终得到一个递增序列
 
-![](static/E84ab1zlSokalLxxbdQcrppnnIc.png)
+![](computerNet/E84ab1zlSokalLxxbdQcrppnnIc.png)

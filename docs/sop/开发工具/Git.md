@@ -5,9 +5,9 @@ title: Git
 tag:
  - 开发工具
 top: 7     # 排序
-sticky: 99  # 精选文章排序
+sticky: 99  # 精选文章热度
 recommend: 1 # 推荐文章排序
-sidebar: false # 侧边栏
+# sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---
 # Git 笔记
@@ -16,31 +16,31 @@ sidebar: false # 侧边栏
 
 ### 初始化
 
-![](static/T40Bb2E9Eo2cukxhpmDc2U2rnMf.png)
+![](git/T40Bb2E9Eo2cukxhpmDc2U2rnMf.png)
 
-![](static/X4YabtkK5oUuPbxvZkfc2o5pn8c.png)
+![](git/X4YabtkK5oUuPbxvZkfc2o5pn8c.png)
 
 ### 添加和提交
 
-![](static/Z19DbLPPmoe0BFxG9wgc2cTEnOh.png)
+![](git/Z19DbLPPmoe0BFxG9wgc2cTEnOh.png)
 
 ### 查看状态和差异
 
-![](static/EHaZb55cHofQpbxu1L4cqyVInRb.png)
+![](git/EHaZb55cHofQpbxu1L4cqyVInRb.png)
 
 ### 远程仓库
 
-![](static/WruKba4mro20nPxG8gcc8PaPngc.png)
+![](git/WruKba4mro20nPxG8gcc8PaPngc.png)
 
 ### 合并分支
 
-![](static/ARgbbIn1yoKSxrxvjy3cshdMnbT.png)
+![](git/ARgbbIn1yoKSxrxvjy3cshdMnbT.png)
 
-![](static/EEW1btyY6ojcL7xVM7Ccnc5KnXc.png)
+![](git/EEW1btyY6ojcL7xVM7Ccnc5KnXc.png)
 
 ### 撤销和恢复
 
-![](static/KLWzb72uQoep7bxXbI4cFtEEn9F.png)
+![](git/KLWzb72uQoep7bxXbI4cFtEEn9F.png)
 
 ## 注意
 

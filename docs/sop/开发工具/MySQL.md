@@ -5,9 +5,9 @@ title: MySQL
 tag:
  - 数据库
 top: 5     # 排序
-sticky: 95 # 精选文章排序
-# recommend: 1 # 推荐文章排序
-sidebar: false # 侧边栏
+sticky: 95 # 精选文章热度
+recommend: 5 # 推荐文章排序
+# sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---
 # MySQL 笔记
@@ -16,19 +16,19 @@ sidebar: false # 侧边栏
 
 数据类型
 
-![](static/AyFybhCRwou8DgxWP7ycg9qVnHh.png)
+![](mysql/AyFybhCRwou8DgxWP7ycg9qVnHh.png)
 
 - 对于长度相对固定的字符串，可以使用 char，对于长度不确定的，使用 varchar 更合适一些。
 - MySQL 里记录货币用 Decimal 和 Numric 类型
 - MySQL 中的 in 语句是把外表和内表作 hash 连接，而 exists 语句是对外表作 loop 循环
 
-![](static/JVAgbIiEeon29jxMf5vcMoFenwh.png)
+![](mysql/JVAgbIiEeon29jxMf5vcMoFenwh.png)
 
 查询语句执行顺序
 
-![](static/D5AFbYNwFooOa8xfRJ8cK6QInOd.jpg)
+![](mysql/D5AFbYNwFooOa8xfRJ8cK6QInOd.jpg)
 
-![](static/YhwxbcBYgoYAhzxesCZcSB4Onjc.png)
+![](mysql/YhwxbcBYgoYAhzxesCZcSB4Onjc.png)
 
 ## 数据库操作命令
 
@@ -182,7 +182,7 @@ ROLLBACK;
 
 ①、第一范式（1NF）：确保表的每一列都是不可分割的基本数据单元，比如说用户地址，应该拆分成省、市、区、详细信息等 4 个字段。
 
-![](static/FZfDbrMWvohCQZxdVljcoJUunlf.png)
+![](mysql/FZfDbrMWvohCQZxdVljcoJUunlf.png)
 
 Ruthless：第一范式
 
@@ -190,13 +190,13 @@ Ruthless：第一范式
 
 比如说在一个订单表中，可能会存在订单编号和商品编号，设计出来的表可能是这样的。
 
-![](static/VD1gbVCi3owgGExK3wAcABl4n9f.png)
+![](mysql/VD1gbVCi3owgGExK3wAcABl4n9f.png)
 
 Ruthless：不符合第二范式
 
 这个订单表中就存在冗余数据，比如说商品名称、单位、商品价格等，应该将其拆分为订单表、订单商品关联表、商品表。
 
-![](static/FHbZb0tAeowGQKxhGGncgcuBnxb.png)
+![](mysql/FHbZb0tAeowGQKxhGGncgcuBnxb.png)
 
 Ruthless：订单商品关联表
 
@@ -247,7 +247,7 @@ Ruthless：订单商品关联表
 
 ## MySQL 日志文件有哪些？分别介绍下作用？
 
-![](static/ZFnEbcTc6oC0YQxsjNccr8i3nSb.png)
+![](mysql/ZFnEbcTc6oC0YQxsjNccr8i3nSb.png)
 
 MySQL 主要日志
 
@@ -272,13 +272,13 @@ MySQL 日志文件有很多，包括 ：
 
 ## 存储引擎
 
-![](static/X3qhb5uxuo3nFHxTTYicX7O4nAb.png)
+![](mysql/X3qhb5uxuo3nFHxTTYicX7O4nAb.png)
 
 ## 索引
 
 ### 索引的分类
 
-![](static/FCxibuB06o7tW3xsWlIc58grnRh.png)
+![](mysql/FCxibuB06o7tW3xsWlIc58grnRh.png)
 
 **从功能上分类：**
 
@@ -320,7 +320,7 @@ MySQL 的 InnoDB 存储引擎默认使用 B+ 树来作为索引的数据结构�
 
 ### 什么时候需要创建索引
 
-![](static/Rsbpbied3oUiuHxXjMoc1U8vn5g.png)
+![](mysql/Rsbpbied3oUiuHxXjMoc1U8vn5g.png)
 
 ### 创建索引有哪些注意点？
 
@@ -340,7 +340,7 @@ MySQL 的 InnoDB 存储引擎默认使用 B+ 树来作为索引的数据结构�
 
 ### 什么时候不需要创建索引
 
-![](static/OuIQbgClQoP1JgxJMAecyWp3nBd.png)
+![](mysql/OuIQbgClQoP1JgxJMAecyWp3nBd.png)
 
 ### 索引哪些情况下会失效呢？
 
@@ -391,13 +391,13 @@ B+ 树的非叶子节点只存储键值，不存储数据，而叶子节点存�
 
 ### 为什么用 B+ 树而不用 B 树呢？
 
-![](static/NnLcbLwJbooxnDxAUwLcQIAsn7d.png)
+![](mysql/NnLcbLwJbooxnDxAUwLcQIAsn7d.png)
 
 ### 聚簇索引与非聚簇索引的区别？
 
 聚簇索引不是一种新的索引，而是一种**数据存储方式**。
 
-![](static/WPzDbqLM9oKfqoxoz8kcalwSnYj.png)
+![](mysql/WPzDbqLM9oKfqoxoz8kcalwSnYj.png)
 
 聚簇索引直接将数据存储在 B+ 树的叶子节点中
 
@@ -405,7 +405,7 @@ B+ 树的非叶子节点只存储键值，不存储数据，而叶子节点存�
 
 所以当我们使用非聚簇索引进行查询时，首先会得到一个主键 ID，然后再使用主键 ID 去聚簇索引上找到真正的行数据，我们把这个过程称之为回表查询。
 
-![](static/LYdUbjolqoFAFzxhHlTc4y2Znfc.png)
+![](mysql/LYdUbjolqoFAFzxhHlTc4y2Znfc.png)
 
 InnoDB 回表
 
@@ -450,7 +450,7 @@ InnoDB 还需要更新表的所有次级索引。这些索引中的每一个都�
 
 ### MySQL 中有哪几种锁，列举一下？
 
-![](static/RhlGbMJ94o0kMWxGIjccivMknmf.png)
+![](mysql/RhlGbMJ94o0kMWxGIjccivMknmf.png)
 
 MySQL 中的锁
 
@@ -471,13 +471,13 @@ MySQL 中的锁
 
 记录锁就是直接锁定某行记录。当我们使用唯一性的索引(包括唯一索引和聚簇索引)进行等值查询且精准匹配到一条记录时，此时就会直接将这条记录锁定。例如 `select * from t where id =6 for update;` 就会将 `id=6` 的记录锁定。
 
-![](static/XlOsbcMAloMpFHxEG7AcX5eHn1b.png)
+![](mysql/XlOsbcMAloMpFHxEG7AcX5eHn1b.png)
 
 - Gap Lock 间隙锁
 
 间隙锁(Gap Locks) 的间隙指的是两个记录之间逻辑上尚未填入数据的部分,是一个左开右开空间。
 
-![](static/G8fqb1nLWo2Y5CxTHs8cii6TnXe.png)
+![](mysql/G8fqb1nLWo2Y5CxTHs8cii6TnXe.png)
 
 间隙锁
 
@@ -487,7 +487,7 @@ MySQL 中的锁
 
 临键指的是间隙加上它右边的记录组成的左开右闭区间。比如上述的(1,6]、(6,8]等。
 
-![](static/ElFub4D2SotshRxusfbcyMbLnqf.png)
+![](mysql/ElFub4D2SotshRxusfbcyMbLnqf.png)
 
 临键锁
 
@@ -547,13 +547,13 @@ mysql 默认行锁类型就是 `临键锁(Next-Key Locks)`。当使用唯一性�
 
 ## 事务
 
-![](static/ReFib2V74o1dsbx3jOcc0hBZnO4.png)
+![](mysql/ReFib2V74o1dsbx3jOcc0hBZnO4.png)
 
 ### MySQL 事务的四大特性说一下？（ACID）
 
 **原子性**（Atomicity） **一致性**（Consistency） **隔离性** （Isolation）**持久性**（Durability）
 
-![](static/NaWMbu04TorXj0xeWl0cVzX5nAc.png)
+![](mysql/NaWMbu04TorXj0xeWl0cVzX5nAc.png)
 
 ### 那 ACID 靠什么保证的呢？
 
@@ -587,11 +587,11 @@ InnoDB 使用“redo log”来记录数据的更改，在系统崩溃后，redo 
 
 ### 事务的隔离级别有哪些？MySQL 的默认隔离级别是什么？
 
-![](static/YeEGb2CK4oftMmxhq4BcYlqunQ4.png)
+![](mysql/YeEGb2CK4oftMmxhq4BcYlqunQ4.png)
 
 MySQL 默认的事务隔离级别是可重复读 (Repeatable Read)。
 
-![](static/F83GbhSlwopCrGxIfticEzQ2nud.png)
+![](mysql/F83GbhSlwopCrGxIfticEzQ2nud.png)
 
 ### 脏读，幻读，不可重复读
 
@@ -609,7 +609,7 @@ MySQL 默认的事务隔离级别是可重复读 (Repeatable Read)。
 
 ### MVCC 了解吗？怎么实现的？
 
-![](static/BKInbrTJzowdYHxhcUScBzCinvh.png)
+![](mysql/BKInbrTJzowdYHxhcUScBzCinvh.png)
 
 ## SQL 优化
 
@@ -620,7 +620,7 @@ MySQL 默认的事务隔离级别是可重复读 (Repeatable Read)。
 
 ### 优化慢 SQL？
 
-![](static/TfUzbqZXcofiHExn0AbcluATnDQ.png)
+![](mysql/TfUzbqZXcofiHExn0AbcluATnDQ.png)
 
 延迟关联（Late Row Lookups）和书签（Seek Method）是两种优化分页查询的有效方法。
 
@@ -634,7 +634,7 @@ MySQL 默认的事务隔离级别是可重复读 (Repeatable Read)。
 
 读写分离的基本原理是将数据库读写操作分散到不同的节点上，下面是基本架构图：
 
-![](static/LRsXbEvxGom205xx9CZcIAG8nCb.png)
+![](mysql/LRsXbEvxGom205xx9CZcIAG8nCb.png)
 
 ### 主从复制是怎么实现？
 
@@ -642,7 +642,7 @@ MySQL 的主从复制依赖于 binlog ，复制的过程就是将 binlog 中的�
 
 这个过程一般是异步的，也就是主库上执行事务操作的线程不会等待复制 binlog 的线程同步完成。
 
-![](static/IEfybfC0cohL6PxL70JcPIHcnip.png)
+![](mysql/IEfybfC0cohL6PxL70JcPIHcnip.png)
 
 具体详细过程如下：
 

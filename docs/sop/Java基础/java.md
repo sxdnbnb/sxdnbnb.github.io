@@ -5,9 +5,9 @@ title: Java基础
 tag:
  - Java
 top: 1     # 排序
-# sticky: 1  # 精选文章排序
-# recommend: 1 # 推荐文章排序
-sidebar: false # 侧边栏
+# sticky: 1  # 精选文章热度
+recommend: 1 # 推荐文章排序
+# sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---
 # java 基础
@@ -24,14 +24,14 @@ Java 中有 8 种基本数据类型，分别为：
 - 1 种布尔型：`boolean`。
 
 这 8 种基本数据类型的默认值以及所占空间的大小如下：
-![](static/1.jpg)
+![](java/1.jpg)
 ## 基本类型和包装类型的区别？
 
 **用途**：定义一些常量和局部变量，方法参数、对象属性中使用基本类型来定义变量。
 
 包装类型可用于泛型，而基本类型不可以。
 
-**存储方式**：基本数据类型的局部变量存放在 Java 虚拟机栈中的局部变量表中，基本数据类型的成员变量（未被 `static` 修饰 ）存放在 Java 虚拟机的堆中。
+**存储方式**：基本数据类型的局部变量存放在 Java 虚拟机栈中的局部变量表中，基本数据类型的成员变量（未被 `java` 修饰 ）存放在 Java 虚拟机的堆中。
 
 包装类型属于对象类型，存在于堆中。
 
@@ -45,9 +45,9 @@ Java 中有 8 种基本数据类型，分别为：
 
 **语法形式**：成员变量是属于类的，而局部变量是在代码块或方法中定义的变量或是方法的参数；
 
-成员变量可以被 `public`,`private`,`static` 等修饰符所修饰，而局部变量不能被访问控制修饰符及 `static` 所修饰；但是，成员变量和局部变量都能被 `final` 所修饰。
+成员变量可以被 `public`,`private`,`java` 等修饰符所修饰，而局部变量不能被访问控制修饰符及 `java` 所修饰；但是，成员变量和局部变量都能被 `final` 所修饰。
 
-**存储方式**：如果成员变量是使用 `static` 修饰的，那么这个成员变量是属于类的，如果没有使用 `static` 修饰，这个成员变量是属于实例的。而对象存在于堆内存，局部变量则存在于栈内存。
+**存储方式**：如果成员变量是使用 `java` 修饰的，那么这个成员变量是属于类的，如果没有使用 `java` 修饰，这个成员变量是属于实例的。而对象存在于堆内存，局部变量则存在于栈内存。
 
 **生存时间**：从变量在内存中的生存时间上看，成员变量是对象的一部分，它随着对象的创建而存在，而局部变量随着方法的调用而自动生成，随着方法的调用结束而消亡。
 
@@ -64,14 +64,14 @@ Java 中有 8 种基本数据类型，分别为：
 是子类对父类的允许访问的方法的实现过程进行重新编写。
 
 1. 方法名、参数列表必须相同，子类方法返回值类型应比父类方法返回值类型更小或相等，抛出的异常范围小于等于父类，访问修饰符范围大于等于父类。
-2. 如果父类方法访问修饰符为 `private/final/static` 则子类就不能重写该方法，但是被 `static` 修饰的方法能够被再次声明。
+2. 如果父类方法访问修饰符为 `private/final/java` 则子类就不能重写该方法，但是被 `java` 修饰的方法能够被再次声明。
 3. 构造方法无法被重写
 
 ## 抽象类(abstract class)和接口(interface)有什么区别？
 
 1. 接口中的所有方法必须都是抽象方法，⽽抽象类可以有⾮抽象⽅法。
 2. 抽象类可以有构造方法，接口中不能有构造方法。
-3. 接⼝中只能有 public static final 类型的变量，⽽抽象类中则不⼀定。
+3. 接⼝中只能有 public java final 类型的变量，⽽抽象类中则不⼀定。
 4. ⼀个类可以实现多个接⼝，但只能继承⼀个抽象类。接⼝⾃⼰本身可以通过 extends 关键字扩展多个接⼝。
 5. 接⼝⽅法修饰符是 public ，抽象⽅法可以有 public、protected（抽象⽅法就是为了被重写所以不能使⽤ private 关键字修饰！）。
 
@@ -124,26 +124,26 @@ equals() 方法存在两种使用情况：
 
 ## BIO、NIO、AIO？
 
-![](static/OHpRbAQpJoblMlxiliXcrVJ0n0e.png)
+![](java/OHpRbAQpJoblMlxiliXcrVJ0n0e.png)
 
 BIO、NIO、AIO
 
 1. BIO(blocking I/O) ： 就是传统的 IO，同步阻塞，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理。
 
-![](static/UK7cbwTs8o80W4xnZzJcK2rYn6f.png)
+![](java/UK7cbwTs8o80W4xnZzJcK2rYn6f.png)
 
 BIO、NIO、AIO
 
 1. NIO ：全称 java non-blocking IO，被统称为 NIO(即 New IO)。
    NIO 是同步非阻塞的（ I/O 多路复用模型），服务器可以用一个线程处理多个客户端连接，通过 Selector 监听多个 Channel 来实现多路复用，客户端发送的连接请求会注册到**多路复用器**上，**多路复用器**轮询到连接有 IO 请求就进行处理：
 
-![](static/BcyVbOUwCoYSTbxrMaKcIQM4nGZ.png)
+![](java/BcyVbOUwCoYSTbxrMaKcIQM4nGZ.png)
 
 NIO 线程
 
 1. AIO：是异步非阻塞的 IO。当有事件触发时，服务器端得到通知，进行相应的处理，完成后才通知服务端程序启动线程去处理，一般适用于连接数较多且连接时间较长的应用。
 
-![](static/TikNbDepYoWYPvx35GdcLT2XnEg.png)
+![](java/TikNbDepYoWYPvx35GdcLT2XnEg.png)
 
 ## 异常
 
@@ -171,11 +171,11 @@ JVM 的内存区域可以细分为 `程序计数器`、`虚拟机栈`、`本地�
 
 - JDK1.7 时将字符串常量池、静态变量，存放在堆上
 
-![](static/XY6lbktwIoEzGHxNbIUcNDovnDh.png)
+![](java/XY6lbktwIoEzGHxNbIUcNDovnDh.png)
 
 - 在 JDK1.8 直接内存中划出一块区域作为元空间，运行时常量池移动到元空间。
 
-![](static/VNdYbZlqEodSOCx1c44c9nXjnMg.png)
+![](java/VNdYbZlqEodSOCx1c44c9nXjnMg.png)
 
 ## 类加载机制
 
@@ -207,7 +207,7 @@ Java 的类加载过程主要包括以下步骤：
 
 这个过程大概图示如下：
 
-![](static/ZFZAbciYaoYoIkxuYdlcDBcpned.png)
+![](java/ZFZAbciYaoYoIkxuYdlcDBcpned.png)
 
 对象创建过程
 
@@ -221,7 +221,7 @@ Java 的类加载过程主要包括以下步骤：
 
 下图所示的 Eden 区、两个 Survivor 区 S0 和 S1 都属于新生代，中间一层属于老年代，最下面一层属于永久代。
 
-![](static/TZUJbTlE1oIN8IxkR6xcA0D4nvf.png)
+![](java/TZUJbTlE1oIN8IxkR6xcA0D4nvf.png)
 
 ### 垃圾回收机制
 
@@ -285,11 +285,11 @@ Java 的类加载过程主要包括以下步骤：
 
 ### 什么时候会触发 Full GC？
 
-![](static/CzeXbqDLwoyHRUxtUZic34zwndg.png)
+![](java/CzeXbqDLwoyHRUxtUZic34zwndg.png)
 
 ### 对象什么时候会进入老年代？
 
-![](static/IpzMbArQLoGiH7x1eADcurSLnQd.png)
+![](java/IpzMbArQLoGiH7x1eADcurSLnQd.png)
 
 对象进入老年代
 
@@ -313,11 +313,11 @@ Java 的类加载过程主要包括以下步骤：
 
 ```java
 public class Singleton {
-    private static final Singleton instance = new Singleton();
+    private java final Singleton instance = new Singleton();
 
     private Singleton() {}
 
-    public static Singleton getInstance() {
+    public java Singleton getInstance() {
         return instance;
     }
 }
@@ -329,11 +329,11 @@ public class Singleton {
 
 ```java
 public class Singleton {
-    private static Singleton instance;
+    private java Singleton instance;
 
     private Singleton() {}
 
-    public static synchronized Singleton getInstance() {
+    public java synchronized Singleton getInstance() {
         if (instance == null) {
             instance = new Singleton();
         }
@@ -352,29 +352,29 @@ public class Singleton {
 
 ①、简单工厂模式（Simple Factory）：简单工厂模式包括一个工厂类，它提供一个方法用于创建对象。
 
-![](static/H7BobGMIfoHIBgxTSoZc0m8qnMg.png)
+![](java/H7BobGMIfoHIBgxTSoZc0m8qnMg.png)
 
-![](static/Y0ZjbVsu4oR15bxgf51cnQw0nPc.png)
+![](java/Y0ZjbVsu4oR15bxgf51cnQw0nPc.png)
 
 ②、工厂方法模式（Factory Method）：定义一个创建对象的接口，但由子类决定要实例化的类是哪一个。工厂方法让类的实例化推迟到子类进行。
 
 动物实体类：
 
-![](static/PgpxbyEoUo3yc0xm6rNcn6zDnec.png)
+![](java/PgpxbyEoUo3yc0xm6rNcn6zDnec.png)
 
 猫实体类：
 
-![](static/O2zCb2KoCorSYsx05eFcVjlmnmU.png)
+![](java/O2zCb2KoCorSYsx05eFcVjlmnmU.png)
 
 构建宠物的工厂：
 
-![](static/M93ObmzHMoLtMBx5PPccx1HcnFf.png)
+![](java/M93ObmzHMoLtMBx5PPccx1HcnFf.png)
 
 猫工厂：
 
-![](static/NLhdb0QoToDcn9xkIeDc1uBYnXc.png)
+![](java/NLhdb0QoToDcn9xkIeDc1uBYnXc.png)
 
-![](static/YNMObaBmAo0rM4xrg7ZcZcZYnBf.png)
+![](java/YNMObaBmAo0rM4xrg7ZcZcZYnBf.png)
 
 应用场景
 
@@ -385,17 +385,17 @@ public class Singleton {
 
 1. 静态代理
 
-![](static/Mp70bMAi6ofMCSxakALcSg3tnWb.png)
+![](java/Mp70bMAi6ofMCSxakALcSg3tnWb.png)
 
-![](static/VojWbWhNWo8C0FxX2p5cjn0HnKd.png)
+![](java/VojWbWhNWo8C0FxX2p5cjn0HnKd.png)
 
-![](static/W8wObap5hodRG9x0mizcEBEnnXP.png)
+![](java/W8wObap5hodRG9x0mizcEBEnnXP.png)
 
 ### 装饰模式
 
-![](static/Xp9bbgV0voS5DLxNXCbcX8T9nYb.png)
+![](java/Xp9bbgV0voS5DLxNXCbcX8T9nYb.png)
 
-![](static/DbIDbIPJnoVDq5xjkeHchq8lnyg.png)
+![](java/DbIDbIPJnoVDq5xjkeHchq8lnyg.png)
 
 ### 策略和工厂模式来优化 if else 代码
 
@@ -435,13 +435,13 @@ public class VipMedalServiceImpl implements IMedalService {
 
 ```java
 public class MedalServicesFactory {
-    private static final Map<String,IMedalService> map=new HashMap<>();
-    static {
+    private java final Map<String,IMedalService> map=new HashMap<>();
+    java {
         map.put("guard", new GuardMedalServiceImpl());
         map.put("vip", new VipMedalServiceImpl());
         map.put("guest", new GuestMedalServiceImpl());
     }
-    public static IMedalService getMedalService(String medalType){
+    public java IMedalService getMedalService(String medalType){
         return map.get(medalType);
     }
 }
@@ -451,7 +451,7 @@ public class MedalServicesFactory {
 
 ```java
 public class Test {
-    public static void main(String[] args) {
+    public java void main(String[] args) {
         String medalType="guest";
         IMedalService medalService = MedalServicesFactory.getMedalService(medalType);
         medalService.showMedal();

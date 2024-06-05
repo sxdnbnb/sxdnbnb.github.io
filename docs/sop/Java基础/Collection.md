@@ -5,9 +5,9 @@ title: Java集合
 tag:
  - Java
 top: 2     # 排序
-# sticky: 3  # 精选文章排序
-# recommend: 3 # 推荐文章排序
-sidebar: false # 侧边栏
+# sticky: 3  # 精选文章热度
+recommend: 2 # 推荐文章排序
+# sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---
 # 集合
@@ -22,7 +22,7 @@ List 接口的实现类主要有：ArrayList、LinkedList、Stack 以及 Vector 
 
 ## List，Set，Map 三者的区别？
 
-![](static/G78sbsEucowjqZxdUSrczstRnLg.png)
+![](collection/G78sbsEucowjqZxdUSrczstRnLg.png)
 
 ## 哪些集合类是线程安全的？
 
@@ -50,7 +50,7 @@ HashSet 主要用于去重，比如，我们需要统计一篇文章中有多少
 
 JDK 8 中 HashMap 的数据结构是 `数组`+`链表`+`红黑树`。
 
-![](static/BN2DbtqWooeZxBx6XrBcSaIcnFc.png)
+![](collection/BN2DbtqWooeZxBx6XrBcSaIcnFc.png)
 
 JDK 8 HashMap 数据结构示意图
 
@@ -106,13 +106,13 @@ HashMap 之所以不是线程安全的，主要有以下几个问题：
 
 1. 多线程的 put 可能会导致元素的丢失。因为计算出来的位置可能会被其他线程的 put 覆盖。
 
-![](static/JEgpbbxuiovscmxWqhFcwliCnXe.png)
+![](collection/JEgpbbxuiovscmxWqhFcwliCnXe.png)
 
 1. put 和 get 并发时，可能导致 get 为 null。线程 1 执行 put 时，因为元素个数超出阈值而导致出现扩容，线程 2 此时执行 get，就有可能出现这个问题，因为元素还没有转移。
 
 ## HashMap 和 Hashtable 的区别
 
-![](static/Vkgcb2B3joWeMQxVDuJc2sIVnNd.png)
+![](collection/Vkgcb2B3joWeMQxVDuJc2sIVnNd.png)
 
 ## ConcurrentHashMap 与 Hashtable 的异同？
 

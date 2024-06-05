@@ -5,9 +5,9 @@ title: Java多线程
 tag:
  - Java
 top: 3     # 排序
-# sticky: 2  # 精选文章排序
-# recommend: 2 # 推荐文章排序
-sidebar: false # 侧边栏
+# sticky: 2  # 精选文章热度
+recommend: 3 # 推荐文章排序
+# sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---
 # 线程并发
@@ -24,7 +24,7 @@ sidebar: false # 侧边栏
 - 就绪状态（_Ready_）：可运⾏，由于其他进程处于运⾏状态⽽暂时停⽌运⾏；
 - 阻塞状态（_Blocked_）：该进程正在等待某⼀事件发⽣（如等待输⼊/输出操作的完成）⽽暂时停⽌运⾏，这时，即使给它 CPU 控制权，它也⽆法运⾏；
 
-![](static/Ec8Bb7kXkoMGrxxVbRbcQL8LnTe.png)
+![](thread/Ec8Bb7kXkoMGrxxVbRbcQL8LnTe.png)
 
 进程 3 种状态
 
@@ -33,7 +33,7 @@ sidebar: false # 侧边栏
 - 创建状态（_new_）：进程正在被创建时的状态；
 - 结束状态（_Exit_）：进程正在从系统中消失时的状态；
 
-![](static/MnlHbT66qo9NFBxe4HjcQGgEnad.png)
+![](thread/MnlHbT66qo9NFBxe4HjcQGgEnad.png)
 
 进程 5 种状态
 
@@ -70,7 +70,7 @@ sidebar: false # 侧边栏
 - 实现 Runnable 接口，重写 run()方法，再 new Thread(task).start();
 - 实现 Callable 接口，重写 call()方法，这种方式可以通过 FutureTask 获取任务执行的返回值，再 new Thread(task).start();
 
-![](static/TfaZb3OikoqsJUxFQdTcC9fWn4e.png)
+![](thread/TfaZb3OikoqsJUxFQdTcC9fWn4e.png)
 
 开发中优先选择实现 Runnable 接口的方式
 
@@ -88,7 +88,7 @@ JVM 执行 start 方法，会先创建一条线程，由创建出来的新线程
 
 ### 线程有哪些常用的调度方法？
 
-![](static/M5ozb81wkowNdMxG66cc4NGunsd.png)
+![](thread/M5ozb81wkowNdMxG66cc4NGunsd.png)
 
 ### 请说说 sleep 和 wait 的区别
 
@@ -118,7 +118,7 @@ wait() 方法需要依靠 notify()、notifyAll() 方法或者 wait() 方法中�
 
 ### Java 线程状态
 
-![](static/QrTybs5KgoXMPPxgQHcciZmHneh.png)
+![](thread/QrTybs5KgoXMPPxgQHcciZmHneh.png)
 
 ### 线程上下文切换
 
@@ -128,7 +128,7 @@ CPU 给每个线程分配一个时间片，线程在时间片内占用 CPU 执�
 
 Java 中线程之间的通信主要是为了解决线程之间如何协作运行的问题。
 
-![](static/Ad9JbHfVuoM4Mcx2hkQcHPjune7.png)
+![](thread/Ad9JbHfVuoM4Mcx2hkQcHPjune7.png)
 
 ①、volatile 和 synchronized 关键字
 
@@ -146,7 +146,7 @@ synchronized 可以修饰方法，或者以同步代码块的形式来使用，�
 
 ThreadLocal 是 Java 中提供的一种用于**实现线程局部变量**的工具类。就是每个线程都可以拥有自己的独立副本，从而实现线程隔离，用于解决多线程中共享对象的线程安全问题
 
-![](static/RRzibqzEhoAfMBxmi0lcIvl0n5f.png)
+![](thread/RRzibqzEhoAfMBxmi0lcIvl0n5f.png)
 
 ### 你在工作中用到过 ThreadLocal 吗？
 
@@ -161,7 +161,7 @@ ThreadLocal 是 Java 中提供的一种用于**实现线程局部变量**的工�
 - 每个线程在往 ThreadLocal 里设置值的时候，都是往自己的 ThreadLocalMap 里存，读也是以某个 ThreadLocal 作为引用，在自己的 map 里找对应的 key，从而实现了线程隔离。
 - ThreadLocal 本身不存储值，它只是作为一个 key 来让线程往 ThreadLocalMap 里存取值
 
-![](static/NC9nbkcDWoFjquxqAnjcf3NmnTD.png)
+![](thread/NC9nbkcDWoFjquxqAnjcf3NmnTD.png)
 
 ## CAS 自旋锁？实现乐观锁
 
@@ -189,7 +189,7 @@ i++ 需要基本的三个步骤：
 
 CAS 的经典三大问题：
 
-![](static/FHhFbjf0zo8uofxc6fJcse1xnYf.png)
+![](thread/FHhFbjf0zo8uofxc6fJcse1xnYf.png)
 
 CAS 三大问题
 
@@ -240,13 +240,13 @@ CAS 保证的是对一个变量执行操作的原子性，如果对多个变量�
 
 死锁发生在多个线程相互等待对方释放锁资源，导致所有线程都无法继续执行。
 
-![](static/OzZtbekDqoUJONxKdTXcPyofnlh.png)
+![](thread/OzZtbekDqoUJONxKdTXcPyofnlh.png)
 
 三分恶面渣逆袭：死锁示意图
 
 ### 为什么会产生死锁呢？
 
-![](static/LppCbVz1roCMICxAXmJcUPmlnqh.png)
+![](thread/LppCbVz1roCMICxAXmJcUPmlnqh.png)
 
 三分恶面渣逆袭：死锁产生必备四条件
 
@@ -273,10 +273,10 @@ CAS 保证的是对一个变量执行操作的原子性，如果对多个变量�
 ```java
 // 死锁的例子
 class DeadLockDemo {
-    private static final Object lock1 = new Object();
-    private static final Object lock2 = new Object();
+    private thread final Object lock1 = new Object();
+    private thread final Object lock2 = new Object();
 
-    public static void main(String[] args) {
+    public thread void main(String[] args) {
         new Thread(() -> {
             synchronized (lock1) {
                 System.out.println("线程1获取到了锁1");
@@ -322,13 +322,13 @@ class DeadLockDemo {
 
 1. 异步下单的时候
 
-![](static/JrfebBDCNoUTrrx5qZtcF9Y0nfh.png)
+![](thread/JrfebBDCNoUTrrx5qZtcF9Y0nfh.png)
 
 1. 逻辑过期解决缓存击穿，缓存重建（查询场馆信息时）
 
-![](static/AANcbo5ZPobDCExFiYpcl51snPg.png)
+![](thread/AANcbo5ZPobDCExFiYpcl51snPg.png)
 
-![](static/YYq7bcvcuoZKrfxUsTScB4vvn7g.png)
+![](thread/YYq7bcvcuoZKrfxUsTScB4vvn7g.png)
 
 ### 创建线程以及线程池主要参数有哪些？
 
@@ -340,7 +340,7 @@ new ThreadPoolExecutor(1, 1,  0L, TimeUnit.MILLISECONDS,
 
 线程池有 7 个参数，需要重点关注 `corePoolSize`、`maximumPoolSize`、`workQueue`、`handler` 这四个。
 
-![](static/PsbTblMnqo4guIxZ8MVc9QoonEe.png)
+![](thread/PsbTblMnqo4guIxZ8MVc9QoonEe.png)
 
 三分恶面渣逆袭：线程池参数
 
@@ -384,7 +384,7 @@ keepAliveTime 参数的时间单位
 1. 当一个线程完成任务时，它会从队列中取下一个任务来执行。
 2. 当一个线程无事可做，超过一定的时间（keepAliveTime）时，线程池会判断，如果当前运行的线程数大于 corePoolSize，那么这个线程就被停掉。所以线程池的所有任务完成后，它最终会收缩到 corePoolSize 的大小
 
-![](static/E4U6bzw9zo8oxYxrBKRc2B7vnyh.png)
+![](thread/E4U6bzw9zo8oxYxrBKRc2B7vnyh.png)
 
 线程池执行流程
 
@@ -416,6 +416,6 @@ try { Object s = future.get(); } catch (InterruptedException e) {
 
 面试常问，主要有四种，都是通过工具类 Excutors 创建出来的
 
-![](static/NPQybdfahoepLfx6VNCc5Wcynag.png)
+![](thread/NPQybdfahoepLfx6VNCc5Wcynag.png)
 
 ##

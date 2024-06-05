@@ -5,9 +5,9 @@ title: Maven
 tag:
  - 开发工具
 top: 12     # 排序
-# sticky: 1  # 精选文章排序
-# recommend: 1 # 推荐文章排序
-sidebar: false # 侧边栏
+# sticky: 1  # 精选文章热度
+recommend: 100 # 推荐文章排序
+# sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---
 # Maven 笔记
@@ -34,7 +34,7 @@ sidebar: false # 侧边栏
 
 就是为了对所有的构建过程进行抽象和统一，包含了项目的清理；初始化、编译、测试、打包、集成测试、验证；部署和站点生成等构建步骤。
 
-![](static/YoU5brR4QopnNQxJMAocaS5Pncb.png)
+![](maven/YoU5brR4QopnNQxJMAocaS5Pncb.png)
 
 Maven 定义了 3 个生命周期 `META-INF/plexus/components.xml`：
 

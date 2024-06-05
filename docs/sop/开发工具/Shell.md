@@ -5,9 +5,9 @@ title: Shell
 tag:
  - 开发工具
 top: 9     # 排序
-sticky: 80  # 精选文章排序
-recommend: 1 # 推荐文章排序
-sidebar: false # 侧边栏
+sticky: 80  # 精选文章热度
+recommend: 4 # 推荐文章排序
+# sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---
 # Shell 笔记

@@ -1,13 +1,13 @@
 ---
 description: RabbitMQ的基础知识
-title: 消息队列
+title: RabbitMQ
 # readingTime: false
 tag:
  - 开发工具
 top: 10     # 排序
-# sticky: 1  # 精选文章排序
+# sticky: 1  # 精选文章热度
 # recommend: 1 # 推荐文章排序
-sidebar: false # 侧边栏
+# sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---
 # 消息队列
@@ -30,7 +30,7 @@ sidebar: false # 侧边栏
 
 RabbitMQ 的整体模型架构如下：
 
-![](static/UYY8b5WQPo0D7Ex0LutcOgegnke.png)
+![](rabbitmq/UYY8b5WQPo0D7Ex0LutcOgegnke.png)
 
 RabbitMQ 的整体模型架构
 
@@ -74,13 +74,13 @@ _##开启 confirm 确认机制_
 publisher-confirms: true
 
 ```
-	![](static/WkDDbTKd1ozerVxruhacVOfQn1e.png)
+	![](rabbitmq/WkDDbTKd1ozerVxruhacVOfQn1e.png)
 
 2. RabbitMQ 自身：持久化、集群（普通模式、镜像模式）
 
 消息持久化：相关的数据都持久化到硬盘中。在Spring Boot中消息默认就是持久化的。
 
-![](static/OOlLbLRuIoSNEAx6hSCcVmLFn69.png)
+![](rabbitmq/OOlLbLRuIoSNEAx6hSCcVmLFn69.png)
 
 1. RabbitMQ 到消费者：
 	1. ACK机制改为手动
@@ -91,7 +91,7 @@ publisher-confirms: true
 
 SpringBoot 给我们提供了一种重试机制，当消费者执行的业务方法报错时会重试执行消费者业务方法。
 
-![](static/AcvHbdgpgoUTrIx1g2pcdFcDn2f.png)
+![](rabbitmq/AcvHbdgpgoUTrIx1g2pcdFcDn2f.png)
 
 
 

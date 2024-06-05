@@ -5,9 +5,9 @@ title: Spring
 tag:
  - 开发工具
 top: 6     # 排序
-# sticky: 6  # 精选文章排序
+# sticky: 6  # 精选文章热度
 # recommend: 6 # 推荐文章排序
-sidebar: false # 侧边栏
+# sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---
 # Spring
@@ -16,7 +16,7 @@ sidebar: false # 侧边栏
 
 ### Spring 特性
 
-![](static/NnjnbSVB7oRqrUxQ7Skckri6nmf.png)
+![](spring/NnjnbSVB7oRqrUxQ7Skckri6nmf.png)
 
 Spring 特性
 
@@ -46,7 +46,7 @@ Spring 对 JavaEE 开发中非常难用的一些 API（JDBC、JavaMail、远程�
 
 ### Spring 常用注解
 
-![](static/CIQ5bp65PoMHZvxQQMqcGCDPnJi.png)
+![](spring/CIQ5bp65PoMHZvxQQMqcGCDPnJi.png)
 
 - @Autowired：Spring 提供的工具（**优先按类型匹配**）
 - @Resource: JDK 内置的（**优先按名称匹配**）
@@ -77,7 +77,7 @@ Spring 框架中的 `@Transactional` 对事务进行管理的时候，有一些�
 
 1. **自调用问题**：如果在同一个类中，一个没有加 @Transactional 注解的方法内部调用了加了 @Transactional 的另一个方法，那么事务是不会起作用的。这是因为 Spring 的 AOP 事务管理默认是通过动态代理实现的，而自调用是无法触发动态代理的。
 
-![](static/FI7Wb3ECIoCSHkxh34gcIyVgnld.png)
+![](spring/FI7Wb3ECIoCSHkxh34gcIyVgnld.png)
 
 1. **数据库引擎不支持事务**：如果你的数据库引擎（比如 MySQL 的 MyISAM 引擎）不支持事务，那么 @Transactional 也无法起作用。
 2. **异常处理不当**：默认情况下，Spring 只有在抛出的是运行时异常（也就是非检查异常，比如 NullPointerException，IndexOutOfBoundsException 等 RuntimeException 及其子类）或者 Error 时，才会回滚事务，而在遇到编译时异常（即需要被显式地捕获处理的异常 IOException、SQLException）时，是不会回滚事务的。
@@ -123,25 +123,25 @@ Spring 的 IoC 容器工作的过程，其实可以划分为两个阶段：容�
 
 其中容器启动阶段主要做的工作是加载和解析配置文件，保存到对应的 Bean 定义中。
 
-![](static/SHxTbvzfvoI3nhxQMifcFeONnmf.png)
+![](spring/SHxTbvzfvoI3nhxQMifcFeONnmf.png)
 
 ### Spring Bean 生命周期
 
 Spring 中 Bean 的生命周期大致分为四个阶段：实例化（Instantiation）、属性赋值（Populate）、初始化（Initialization）、销毁（Destruction）。
 
-![](static/Mi6JbjEZvoYjm7xoeeLcmEm4nkd.png)
+![](spring/Mi6JbjEZvoYjm7xoeeLcmEm4nkd.png)
 
 Bean 生命周期四个阶段
 
 对应的完整步骤如下图所示：
 
-![](static/I5TBbuzvdofqPxxgUX1cMX0BnJY.png)
+![](spring/I5TBbuzvdofqPxxgUX1cMX0BnJY.png)
 
 ### 有哪些依赖注入的方法？
 
 Spring 支持构造方法注入、属性注入、工厂方法注入,其中工厂方法注入，又可以分为静态工厂方法注入和非静态工厂方法注入。
 
-![](static/PWRjbDikPoMLu1xA0hycxAcAnTd.png)
+![](spring/PWRjbDikPoMLu1xA0hycxAcAnTd.png)
 
 Spring 依赖注入方法
 
@@ -157,7 +157,7 @@ Spring 提供的这种方式，可以按照某些规则进行 Bean 的自动装�
 
 Spring 提供了 4 种自动装配类型：
 
-![](static/U7T9b6fnyoxN1ax8FPHcQrqvndG.png)
+![](spring/U7T9b6fnyoxN1ax8FPHcQrqvndG.png)
 
 Spring 四种自动装配类型
 
@@ -165,7 +165,7 @@ Spring 四种自动装配类型
 
 Spring 的 Bean 主要支持五种作用域：
 
-![](static/TPWubwRagolUqAxCa1HcCdHqnFd.png)
+![](spring/TPWubwRagolUqAxCa1HcCdHqnFd.png)
 
 Spring Bean 支持作用域
 
@@ -201,13 +201,13 @@ AOP，也就是 Aspect-oriented Programming，译为面向切面编程。
 
 就是把一些业务逻辑中的相同代码抽取到一个独立的模块中，让业务逻辑更加清爽。
 
-![](static/AcmYbNOt4oMD94xIm9Fcht0uncc.png)
+![](spring/AcmYbNOt4oMD94xIm9Fcht0uncc.png)
 
 横向抽取
 
 比如说可以将日志记录、事务管理等分离出来，形成一个切面，然后在业务代码中引入这个切面，业务代码不再关心这些通用逻辑，只需要关心自己的业务实现，这样就实现了业务逻辑和通用逻辑的分离，提高代码的可重用性。
 
-![](static/CjBVbcw0tonJTSxFKVfcI0xvn2g.png)
+![](spring/CjBVbcw0tonJTSxFKVfcI0xvn2g.png)
 
 AOP 应用示例
 
@@ -235,7 +235,7 @@ AOP 一般有 5 种环绕方式：
 - 后置通知 (@After)
 - 环绕通知 (@Around)
 
-![](static/K0Hpb2MdmoJKbvxw3IFc2lsbnKb.png)
+![](spring/K0Hpb2MdmoJKbvxw3IFc2lsbnKb.png)
 
 ### 用到 AOP
 
@@ -339,7 +339,7 @@ Spring 的接口 TransactionDefinition 中定义了表示隔离级别的常量�
 
 Spring MVC 是基于模型-视图-控制器的 Web 框架，它的工作流程也主要是围绕着 Model、View、Controller 这三个组件展开的。
 
-![](static/Ps88b3OJDolULYxTaamc3dkOnRd.png)
+![](spring/Ps88b3OJDolULYxTaamc3dkOnRd.png)
 
 三分恶面渣逆袭：Spring MVC 的工作流程
 
@@ -371,4 +371,4 @@ Spring Boot 项目为了进一步简化，直接通过 `@SpringBootApplication` 
 
 画张图来总结下：
 
-![](static/AVpybFEf2o8VxRxyGCzcVUYnnaf.png)
+![](spring/AVpybFEf2o8VxRxyGCzcVUYnnaf.png)
