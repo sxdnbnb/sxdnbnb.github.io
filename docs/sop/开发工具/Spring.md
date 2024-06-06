@@ -24,23 +24,23 @@ Spring 特性
 
 Spring 的核心就是一个大的工厂容器，可以维护所有对象的创建和依赖关系，Spring 工厂用于生成 Bean，并且管理 Bean 的生命周期，实现高内聚低耦合的设计理念。
 
-1. AOP 编程的支持
+2. AOP 编程的支持
 
 Spring 提供了面向切面编程，可以方便的实现对程序进行权限拦截、运行监控等切面功能。
 
-1. 声明式事务的支持
+3. 声明式事务的支持
 
 支持通过配置就来完成对事务的管理，以前重复的一些事务提交、回滚的 JDBC 代码，都可以不用自己写了。
 
-1. 快捷测试的支持
+4. 快捷测试的支持
 
 Spring 对 Junit 提供支持，可以通过注解快捷地测试 Spring 程序。
 
-1. 快速集成功能
+5. 快速集成功能
 
 方便集成各种框架
 
-1. 复杂 API 模板封装
+6. 复杂 API 模板封装
 
 Spring 对 JavaEE 开发中非常难用的一些 API（JDBC、JavaMail、远程调用等）都提供了模板化的封装
 
@@ -92,7 +92,7 @@ Spring 框架中的 `@Transactional` 对事务进行管理的时候，有一些�
 
 ## IoC
 
-### 说一说什么是 IoC？什么是 DI？
+### 什么是 IoC？什么是 DI？
 
 所谓的 IoC（控制反转，Inversion of Control），就是由容器来控制对象的生命周期和对象之间的关系。
 
@@ -117,7 +117,7 @@ A 类需要 B 类，以前是 A 类自己 new 一个 B 类，现在是有人把 
 3. **依赖注入**：Spring IoC 容器会查看 Bean 对象之间的依赖关系，如果 A 对象依赖于 B 对象，那么 Spring IoC 容器会把已创建的 B 对象注入到 A 对象中。
 4. **Bean 对象的使用**：最后，当需要使用某个 Bean 对象时，你可以直接从 Spring IoC 容器中获取。如果配置的是单例模式，每次获取的都是同一个对象，如果是原型模式，每次获取的会是一个新的对象。
 
-### 你知道 Spring 容器启动阶段会干什么吗？
+### Spring 容器启动阶段会干什么
 
 Spring 的 IoC 容器工作的过程，其实可以划分为两个阶段：容器启动阶段和 Bean 实例化阶段。
 
@@ -137,7 +137,7 @@ Bean 生命周期四个阶段
 
 ![](spring/I5TBbuzvdofqPxxgUX1cMX0BnJY.png)
 
-### 有哪些依赖注入的方法？
+### 依赖注入的方法
 
 Spring 支持构造方法注入、属性注入、工厂方法注入,其中工厂方法注入，又可以分为静态工厂方法注入和非静态工厂方法注入。
 
@@ -145,7 +145,7 @@ Spring 支持构造方法注入、属性注入、工厂方法注入,其中工厂
 
 Spring 依赖注入方法
 
-### Spring 有哪些自动装配的方式？
+### Spring 自动装配的方式
 
 > 什么是自动装配？
 
@@ -159,15 +159,14 @@ Spring 提供了 4 种自动装配类型：
 
 ![](spring/U7T9b6fnyoxN1ax8FPHcQrqvndG.png)
 
-Spring 四种自动装配类型
+<center>Spring 四种自动装配类型</center>
 
 ### Spring 中的 Bean 的作用域有哪些?
 
 Spring 的 Bean 主要支持五种作用域：
 
 ![](spring/TPWubwRagolUqAxCa1HcCdHqnFd.png)
-
-Spring Bean 支持作用域
+<center>Spring Bean 支持作用域</center>
 
 - singleton : 在 Spring 容器仅存在一个 Bean 实例，Bean 以单实例的方式存在，是 Bean 默认的作用域。
 - prototype : 每次从容器中调用 Bean 时，都会返回一个新的实例。
@@ -195,7 +194,7 @@ ThredLocal 能保证多线程下变量的隔离，可以在类中定义一个 Th
 
 ## AOP
 
-### 什么是 AOP
+### 什么是 AOP?
 
 AOP，也就是 Aspect-oriented Programming，译为面向切面编程。
 
@@ -209,14 +208,12 @@ AOP，也就是 Aspect-oriented Programming，译为面向切面编程。
 
 ![](spring/CjBVbcw0tonJTSxFKVfcI0xvn2g.png)
 
-AOP 应用示例
-
 AOP 的核心其实就是动态代理，可以使用 JDK 的动态代理，也可以使用 CGLIB 代理，主要应用于一些系统级服务，如日志收集、事务管理、安全检查、缓存、对象池管理等。
 
 - **JDK 动态代理**：JDK 原生的实现方式，需要被代理的目标类必须实现接口。因为这个技术要求**代理对象和目标对象实现同样的接口**（兄弟两个拜把子模式）。
 - **cglib 动态代理**：通过**继承被代理的目标类**实现代理，所以不需要目标类实现接口。(**CGLIB 通过动态生成一个需要被代理类的子类（即被代理类作为父类），该子类重写被代理类的所有不是 final 修饰的方法，并在子类中采用方法拦截的技术拦截父类所有的方法调用，进而织入横切逻辑。**)
 
-> 可以继续追问：AOP 有哪些核心概念？
+> AOP 有哪些核心概念？
 
 - 切面（Aspect）：类是对物体特征的抽象，切面就是对横切关注点的抽象
 - 连接点（Join Point）：被拦截到的点，因为 Spring 只支持方法类型的连接点，所以在 Spring 中，连接点指的是被拦截到的方法，实际上连接点还可以是字段或者构造方法
@@ -225,7 +222,7 @@ AOP 的核心其实就是动态代理，可以使用 JDK 的动态代理，也�
 - 目标对象 （Target）：代理的目标对象
 - 织入（Weabing）：织入是将增强添加到目标类的具体连接点上的过程。
 
-> 继续追问：AOP 有哪些环绕方式？
+> AOP 有哪些环绕方式？
 
 AOP 一般有 5 种环绕方式：
 
@@ -313,7 +310,7 @@ public class LogAspect {
 1. 像 `@Transactional` 注解，就是一个典型的 AOP 应用，它就是通过 AOP 来实现事务管理的。我们只需要在方法上添加 `@Transactional` 注解，Spring 就会在方法执行前后添加事务管理的逻辑。
    (其本质是通过 AOP 功能，对方法前后进行拦截，将事务处理的功能编织到拦截的方法中，也就是在目标方法开始之前启动一个事务，在目标方法执行完之后根据执行情况提交或者回滚事务。)
 
-CGLIB 动态代理实现：
+> CGLIB 动态代理实现：
 
 它通过继承方式实现代理，不需要接口，被广泛应用于 Spring AOP 中，用于提供方法拦截操作。
 
@@ -325,7 +322,7 @@ CGLIB 动态代理实现：
    - 重写 MethodInterceptor 接口的 intercept 方法以提供方法拦截逻辑。在目标方法执行前后添加自定义逻辑，然后通过 method.invoke 调用目标对象的方法。
 3. 第三步：客户端使用代理，首先创建目标对象（Solver 的实例），然后使用 ProxyFactory 创建该目标对象的代理。通过代理对象调用 solve 方法时，会先执行 intercept 方法中定义的逻辑，然后执行目标方法，最后再执行 intercept 方法中的后续逻辑。
 
-### Spring 的事务隔离级别？
+### Spring 的事务隔离级别
 
 Spring 的接口 TransactionDefinition 中定义了表示隔离级别的常量，当然其实主要还是对应数据库的事务隔离级别：
 
@@ -335,13 +332,12 @@ Spring 的接口 TransactionDefinition 中定义了表示隔离级别的常量�
 4. ISOLATION_REPEATABLE_READ：可重复读
 5. ISOLATION_SERIALIZABLE：串行化
 
-## Spring MVC 的工作流程？
+## Spring MVC 的工作流程
 
 Spring MVC 是基于模型-视图-控制器的 Web 框架，它的工作流程也主要是围绕着 Model、View、Controller 这三个组件展开的。
 
 ![](spring/Ps88b3OJDolULYxTaamc3dkOnRd.png)
-
-三分恶面渣逆袭：Spring MVC 的工作流程
+<center>Spring MVC 的工作流程</center>
 
 ①、发起请求：客户端通过 HTTP 协议向服务器发起请求。
 
@@ -368,7 +364,5 @@ Spring Boot 项目为了进一步简化，直接通过 `@SpringBootApplication` 
 ①、`@EnableAutoConfiguration` 只是一个简单的注解的核心是 `AutoConfigurationImportSelector` 类。
 
 ②、`AutoConfigurationImportSelector` 实现了 `ImportSelector` 接口，这个接口的作用就是收集需要导入的配置类，配合 `@Import(）` 就将相应的类导入到 Spring 容器中。
-
-画张图来总结下：
 
 ![](spring/AVpybFEf2o8VxRxyGCzcVUYnnaf.png)
