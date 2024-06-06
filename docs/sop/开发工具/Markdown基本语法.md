@@ -603,9 +603,9 @@ function test() {
 
 ```markdown
 可使用相对路径（前提是有该路径下的文件）
-[test](test.md)
+[Git](Git.md)
 ```
-[test](./md-img/test.md)
+[Git](Git.md)
 
 
 
