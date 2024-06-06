@@ -32,6 +32,7 @@ const blogTheme = getThemeConfig({
     copyright: {
       message: 'MIT License | 暮冬浅夏',
       link: 'https://github.com/sxdnbnb',
+      icon: '<img src="/logo.png"/>',
     },
     version: false,
     // icpRecord: {
