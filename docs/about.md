@@ -8,7 +8,7 @@ sidebar: false # 侧边栏
    * [Java基础](./sop/Java基础/java.md)
    * [Java集合](./sop/Java基础/Collection.md)
    * [线程并发](./sop/Java基础/Thread_Concurrent.md)
-* [Java项目]([Java](https://sxdnbnb.github.io/?tag=Java&type=info))
+* [Java项目](https://sxdnbnb.github.io/?tag=%E9%A1%B9%E7%9B%AE&type=success)
   * [图书管理系统Demo](./sop/Springboot项目/library.md)
 * [开发工具](https://sxdnbnb.github.io/?tag=%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7&type=success)
   * [Git](./sop/开发工具/Git.md)
