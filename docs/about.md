@@ -4,10 +4,12 @@ sidebar: false # 侧边栏
 ---
 # 文章目录
 学习笔记:
-*  [Java](https://sxdnbnb.github.io/?tag=Java&type=info)
+* [Java](https://sxdnbnb.github.io/?tag=Java&type=info)
    * [Java基础](./sop/Java基础/java.md)
    * [Java集合](./sop/Java基础/Collection.md)
    * [线程并发](./sop/Java基础/Thread_Concurrent.md)
+* [Java项目]([Java](https://sxdnbnb.github.io/?tag=Java&type=info))
+  * [图书管理系统Demo](./sop/Springboot项目/library.md)
 * [开发工具](https://sxdnbnb.github.io/?tag=%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7&type=success)
   * [Git](./sop/开发工具/Git.md)
   * [Linux](./sop/开发工具/Linux.md)

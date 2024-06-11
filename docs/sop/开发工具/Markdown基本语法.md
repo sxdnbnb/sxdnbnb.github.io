@@ -5,7 +5,7 @@ title: Markdown
 tag:
  - 开发工具
 top: 100     # 排序
-# sticky: 1  # 精选文章热度
+sticky: 40 # 精选文章热度
 # recommend: 2 # 推荐文章排序
 # sidebar: false # 侧边栏
 # author: 暮冬浅夏

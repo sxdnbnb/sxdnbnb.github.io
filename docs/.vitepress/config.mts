@@ -65,6 +65,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: 'Java基础', link: 'https://sxdnbnb.github.io/?tag=Java&type=info' },
+      { text: 'Java项目', link: 'https://sxdnbnb.github.io/?tag=%E9%A1%B9%E7%9B%AE&type=success' },
       { text: '开发工具', link: 'https://sxdnbnb.github.io/?tag=%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7&type=success' },
       { text: '数据库', link: 'https://sxdnbnb.github.io/?tag=%E6%95%B0%E6%8D%AE%E5%BA%93&type=warning' },
       { text: '408', link: 'https://sxdnbnb.github.io/?tag=408&type=' },

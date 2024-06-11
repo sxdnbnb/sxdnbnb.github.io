@@ -11,6 +11,7 @@ sticky: 100  # 精选文章热度
 # author: 暮冬浅夏
 ---
 # 图书管理系统Demo
+## [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sxdnbnb/libraryDemo)
 ## 项目目录结构
 ```Bash
 ├─java
