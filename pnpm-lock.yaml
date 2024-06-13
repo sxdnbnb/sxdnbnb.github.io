@@ -12,8 +12,8 @@ importers:
         specifier: ^2.3.1
         version: 2.3.1(vue@3.4.26(typescript@5.4.5))
       '@sugarat/theme':
-        specifier: ^0.3.6
-        version: 0.3.6(@element-plus/icons-vue@2.3.1(vue@3.4.26(typescript@5.4.5)))(element-plus@2.7.4(vue@3.4.26(typescript@5.4.5)))(pagefind@1.1.0)(typescript@5.4.5)(vitepress@1.2.2(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5))(vue@3.4.26(typescript@5.4.5))
+        specifier: ^0.4.3
+        version: 0.4.3(@element-plus/icons-vue@2.3.1(vue@3.4.26(typescript@5.4.5)))(element-plus@2.7.4(vue@3.4.26(typescript@5.4.5)))(pagefind@1.1.0)(typescript@5.4.5)(vitepress@1.2.3(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5))(vue@3.4.26(typescript@5.4.5))
       element-plus:
         specifier: ^2.7.2
         version: 2.7.4(vue@3.4.26(typescript@5.4.5))
@@ -34,8 +34,8 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
       vitepress:
-        specifier: 1.2.2
-        version: 1.2.2(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5)
+        specifier: 1.2.3
+        version: 1.2.3(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5)
 
 packages:
 
@@ -449,8 +449,8 @@ packages:
   '@shikijs/transformers@1.6.2':
     resolution: {integrity: sha512-ndqTWyHnxmsLkowhKWTam26opw8hg5a34y6FAUG/Xf6E49n3MM//nenKxXiWpPYkNPl1KZnYXB1k+Ia46wjOZg==}
 
-  '@sugarat/theme@0.3.6':
-    resolution: {integrity: sha512-UfDNzEOAbHBQj96GFXlmA09tKRha5inExucEtBJ/ewapUyo9FFTdDwvfgn4Qt+uut8NDMF1UnLs3tF7WnfhtJw==}
+  '@sugarat/theme@0.4.3':
+    resolution: {integrity: sha512-tyHrxhNRc82skTWdy3kVJcF3M47279yBzXWqx7cignmt7uPNOYBe6u+r5lOCOBb3mUJ6o0hNTqm8hk2YYimYFA==}
     peerDependencies:
       '@element-plus/icons-vue': ^2.3.1
       element-plus: ^2.7
@@ -1372,8 +1372,8 @@ packages:
       mermaid: '10'
       vitepress: ^0.21.6 || ^1.0.0 || ^1.0.0-alpha
 
-  vitepress-plugin-pagefind@0.3.3:
-    resolution: {integrity: sha512-sko3JDj+2ig6czeeHH5ajAqzoIISgn2PATVC2PSvvL3PICU0grIBTrdfFthrfTdKLwcbcIQOBInbD7r5YbFl7Q==}
+  vitepress-plugin-pagefind@0.4.1:
+    resolution: {integrity: sha512-Zoz8irU+RTlg8yKRitlqbVbuuZuhY2l9emJb8S4ZZQLdrqnGKACbJLqklniR6RA7CHedPUHwbIGTvX0flG6JDA==}
     peerDependencies:
       pagefind: ^1.1.0
 
@@ -1388,8 +1388,8 @@ packages:
       vitepress: ^1.0.0-alpha.29
       vue: ^3.2.45
 
-  vitepress@1.2.2:
-    resolution: {integrity: sha512-uZ3nXR5NY4nYj3RJWCo5jev9qlNZAQo5SUXu1U0QSUx84cUm/o7hCTDVjZ4njVSVui+PsV1oAbdQOg8ygbaf4w==}
+  vitepress@1.2.3:
+    resolution: {integrity: sha512-GvEsrEeNLiDE1+fuwDAYJCYLNZDAna+EtnXlPajhv/MYeTjbNK6Bvyg6NoTdO1sbwuQJ0vuJR99bOlH53bo6lg==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4
@@ -1786,7 +1786,7 @@ snapshots:
     dependencies:
       shiki: 1.6.2
 
-  '@sugarat/theme@0.3.6(@element-plus/icons-vue@2.3.1(vue@3.4.26(typescript@5.4.5)))(element-plus@2.7.4(vue@3.4.26(typescript@5.4.5)))(pagefind@1.1.0)(typescript@5.4.5)(vitepress@1.2.2(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5))(vue@3.4.26(typescript@5.4.5))':
+  '@sugarat/theme@0.4.3(@element-plus/icons-vue@2.3.1(vue@3.4.26(typescript@5.4.5)))(element-plus@2.7.4(vue@3.4.26(typescript@5.4.5)))(pagefind@1.1.0)(typescript@5.4.5)(vitepress@1.2.3(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5))(vue@3.4.26(typescript@5.4.5))':
     dependencies:
       '@element-plus/icons-vue': 2.3.1(vue@3.4.26(typescript@5.4.5))
       '@giscus/vue': 2.4.0(vue@3.4.26(typescript@5.4.5))
@@ -1794,6 +1794,7 @@ snapshots:
       '@mermaid-js/mermaid-mindmap': 9.3.0
       '@vue/shared': 3.4.27
       '@vueuse/core': 9.13.0(vue@3.4.26(typescript@5.4.5))
+      cross-spawn: 7.0.3
       element-plus: 2.7.4(vue@3.4.26(typescript@5.4.5))
       fast-glob: 3.3.2
       gray-matter: 4.0.3
@@ -1802,10 +1803,10 @@ snapshots:
       oh-my-live2d: 0.19.3
       swiper: 11.1.4
       vitepress-markdown-timeline: 1.2.1
-      vitepress-plugin-mermaid: 2.0.13(mermaid@10.9.1)(vitepress@1.2.2(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5))
-      vitepress-plugin-pagefind: 0.3.3(pagefind@1.1.0)(typescript@5.4.5)
-      vitepress-plugin-rss: 0.2.6(vitepress@1.2.2(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5))
-      vitepress-plugin-tabs: 0.2.0(vitepress@1.2.2(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5))(vue@3.4.26(typescript@5.4.5))
+      vitepress-plugin-mermaid: 2.0.13(mermaid@10.9.1)(vitepress@1.2.3(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5))
+      vitepress-plugin-pagefind: 0.4.1(pagefind@1.1.0)(typescript@5.4.5)
+      vitepress-plugin-rss: 0.2.6(vitepress@1.2.3(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5))
+      vitepress-plugin-tabs: 0.2.0(vitepress@1.2.3(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5))(vue@3.4.26(typescript@5.4.5))
     transitivePeerDependencies:
       - '@vue/composition-api'
       - pagefind
@@ -2885,14 +2886,14 @@ snapshots:
     dependencies:
       dayjs: 1.11.11
 
-  vitepress-plugin-mermaid@2.0.13(mermaid@10.9.1)(vitepress@1.2.2(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5)):
+  vitepress-plugin-mermaid@2.0.13(mermaid@10.9.1)(vitepress@1.2.3(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5)):
     dependencies:
       mermaid: 10.9.1
-      vitepress: 1.2.2(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5)
+      vitepress: 1.2.3(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5)
     optionalDependencies:
       '@mermaid-js/mermaid-mindmap': 9.3.0
 
-  vitepress-plugin-pagefind@0.3.3(pagefind@1.1.0)(typescript@5.4.5):
+  vitepress-plugin-pagefind@0.4.1(pagefind@1.1.0)(typescript@5.4.5):
     dependencies:
       '@vueuse/core': 9.13.0(vue@3.4.26(typescript@5.4.5))
       cross-spawn: 7.0.3
@@ -2906,20 +2907,20 @@ snapshots:
       - '@vue/composition-api'
       - typescript
 
-  vitepress-plugin-rss@0.2.6(vitepress@1.2.2(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5)):
+  vitepress-plugin-rss@0.2.6(vitepress@1.2.3(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5)):
     dependencies:
       cross-spawn: 7.0.3
       fast-glob: 3.3.2
       feed: 4.2.2
       gray-matter: 4.0.3
-      vitepress: 1.2.2(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5)
+      vitepress: 1.2.3(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5)
 
-  vitepress-plugin-tabs@0.2.0(vitepress@1.2.2(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5))(vue@3.4.26(typescript@5.4.5)):
+  vitepress-plugin-tabs@0.2.0(vitepress@1.2.3(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5))(vue@3.4.26(typescript@5.4.5)):
     dependencies:
-      vitepress: 1.2.2(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5)
+      vitepress: 1.2.3(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5)
       vue: 3.4.26(typescript@5.4.5)
 
-  vitepress@1.2.2(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5):
+  vitepress@1.2.3(@algolia/client-search@4.23.3)(async-validator@4.2.5)(fuse.js@6.6.2)(postcss@8.4.38)(sass@1.77.4)(search-insights@2.14.0)(typescript@5.4.5):
     dependencies:
       '@docsearch/css': 3.6.0
       '@docsearch/js': 3.6.0(@algolia/client-search@4.23.3)(search-insights@2.14.0)
