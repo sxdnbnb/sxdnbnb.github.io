@@ -1922,7 +1922,7 @@ UPDATE `order` SET status = ? , pay_time = ? WHERE id = ? AND status = 1
 而最后一种场景，大家设想一下这样的场景：
 如图，有一组绑定的交换机（`ttl.fanout`）和队列（`ttl.queue`）。但是`ttl.queue`没有消费者监听，而是设定了死信交换机`hmall.direct`，而队列`direct.queue1`则与死信交换机绑定，RoutingKey是blue：
 
-![Alt](Rabbitmq/image4.png)
+![Alt](rabbitmq/image4.png)
 
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1687573175803-41a1c870-93bc-4307-974f-891de1b5a42d.png#averageHue=%23faf3f2&clientId=u76b62a19-f8dc-4&from=paste&height=340&id=u380f1403&originHeight=422&originWidth=1301&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=59423&status=done&style=none&taskId=ucbcde27e-d210-43e8-8e35-7557d121729&title=&width=1049.546184842849)
 
