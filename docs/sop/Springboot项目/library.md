@@ -360,6 +360,126 @@ public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements IB
 ![Alt text](library/image-9.png)
 ![Alt text](library/image-10.png)
 ![Alt text](library/image-11.png)
+
+## 引入redis做缓存
+1. maven添加依赖
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+<dependency>
+    <groupId>cn.hutool</groupId>
+    <artifactId>hutool-all</artifactId>
+    <version>5.7.17</version>
+</dependency>
+```
+
+2. 配置文件添加
+```yaml
+  data:
+    redis:
+      host: 172.31.177.123
+      port: 6379
+      #  password: 
+      database: 1
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 10
+          min-idle: 1
+          time-between-eviction-runs: 10s
+```
+
+3. utils中添加RedisConstants类
+```java
+public class RedisConstants {
+    public static final Long CACHE_Book_TTL = 30L;
+    public static final String CACHE_Book_KEY = "cache:book:";
+
+    public static final Long CACHE_NULL_TTL = 2L;
+}
+```
+
+4. 改造BookServiceImpl.class，增加redis缓存
+```java
+public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements IBookService {
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
+
+    // 使用redis缓存
+    @Override
+    public Result queryBookById(Long id) {
+        String key = CACHE_Book_KEY + id;
+        // 1.从redis查询书籍缓存
+        String bookJson = stringRedisTemplate.opsForValue().get(key);
+        // 2.判断是否存在
+        if (StrUtil.isNotBlank(bookJson)) {
+            // 3.存在，直接返回
+            Book book = JSONUtil.toBean(bookJson, Book.class);
+            return Result.ok(book);
+        }
+        // 判断命中的是否是空值
+        if (bookJson != null) {
+            // 返回一个错误信息
+            return Result.fail("图书信息不存在！");
+        }
+
+        // 4.不存在，根据id查询数据库
+        Book book = getById(id);
+        // 5.不存在，返回错误
+        if (book == null) {
+            // 将空值写入redis
+            stringRedisTemplate.opsForValue().set(key, "", CACHE_NULL_TTL, TimeUnit.MINUTES);
+            // 返回错误信息
+            return Result.fail("图书不存在！");
+        }
+        // 6.存在，写入redis
+        stringRedisTemplate.opsForValue().set(key, JSONUtil.toJsonStr(book), CACHE_Book_TTL, TimeUnit.MINUTES);
+        // 7.返回
+        return Result.ok(book);
+    }
+    
+    @Override
+    @Transactional   // 开启事务
+    public Result updateBook(Book book) {
+        Long id = book.getId();
+        if (id == null) {
+            return Result.fail("图书id不能为空！");
+        }
+        // 1.更新数据库
+        updateById(book);
+        // 2.删除缓存
+        stringRedisTemplate.delete(CACHE_Book_KEY + id);
+        return Result.ok();
+    }
+
+    @Override
+    @Transactional   // 开启事务
+    public Result deleteById(Book book) {
+        Long id = book.getId();
+        if (id == null) {
+            return Result.fail("图书不存在");
+        }
+        // 1.删除数据库
+        removeById(book);
+        // 2.删除缓存
+        stringRedisTemplate.delete(CACHE_Book_KEY + id);
+        return Result.ok();
+    }
+}
+```
+
+5. Postman进行接口测试
+
+查询时，redis中成功写入缓存，再查询时直接从缓存中得到结果。
+![Alt text](library/image-14.png)
+![Alt text](library/image-15.png)
+
+更新时，数据库被更改，redis中的缓存被删除。
+![Alt text](library/image-16.png)
+![Alt text](library/image-17.png)
+
 ### Lombok 常用注解
 >Lombok是一个编译时注释预处理器，有助于在编译时注入一些代码。Lombok提供了一组在开发时处理的注释，以将代码注入到Java应用程序中，注入的代码在开发环境中立即可用。
 - @Data \
