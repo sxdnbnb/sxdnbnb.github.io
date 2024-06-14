@@ -35,6 +35,13 @@ export default defineConfig({
       `LA.init({id:"3IdmiCNCA52rjASE",ck:"3IdmiCNCA52rjASE",hashMode:true})`
     ],
     [
+      'meta',
+      {
+          'name': 'referrer',
+          'content': 'no-referrer'
+      }
+    ],
+    [
       'script',
       {
         id: 'LA-DATA-WIDGET',
