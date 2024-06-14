@@ -23,3 +23,4 @@ sidebar: false # 侧边栏
   * [MySQL](./sop/开发工具/MySQL.md)
 * [408](https://sxdnbnb.github.io/?tag=408&type=)
   * [计算机网络](./sop/408/ComputerNet.md)
+* [各类资源网站](./sop/resource/resource.md)

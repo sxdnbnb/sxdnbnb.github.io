@@ -76,7 +76,8 @@ export default defineConfig({
       { text: '开发工具', link: 'https://sxdnbnb.github.io/?tag=%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7&type=success' },
       { text: '数据库', link: 'https://sxdnbnb.github.io/?tag=%E6%95%B0%E6%8D%AE%E5%BA%93&type=warning' },
       { text: '408', link: 'https://sxdnbnb.github.io/?tag=408&type=' },
-      { text: '关于博客', link: '/about' },
+      { text: '一些资源😍', link: './sop/resource/resource.md' },
+      { text: '博客目录', link: '/about' },
       { text: '关于作者', link: 'https://github.com/sxdnbnb' }
     ],
     socialLinks: [
