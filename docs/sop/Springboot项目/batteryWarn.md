@@ -10,7 +10,7 @@ sticky: 99  # 精选文章热度
 # sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---
-# 汽车电池预警
+# 汽车电池预警系统
 
 ## [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sxdnbnb/BatteryWarn)
 
