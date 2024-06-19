@@ -27,7 +27,7 @@ mysql -u'用户名' -p'密码' < mi_car.sql
 java -jar MiCar-0.0.1-SNAPSHOT.jar
 ```
 
-1. 浏览器输入网址 `http://localhost:8081/index` 进入前端界面
+1. 浏览器输入网址 `http://localhost:8081/index`进入前端界面
 
 ![](batteryWarn/KOHzbF1Lwoqz1yx5wAicgtg5nbg.png)
 
