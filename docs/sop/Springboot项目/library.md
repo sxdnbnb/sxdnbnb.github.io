@@ -4,8 +4,8 @@ title: 图书管理系统Demo
 # readingTime: false
 tag:
  - 项目
-top: 1     # 排序
-sticky: 100  # 精选文章热度
+# top: 2     # 排序
+sticky: 98  # 精选文章热度
 # recommend: 6 # 推荐文章排序
 # sidebar: false # 侧边栏
 # author: 暮冬浅夏
