@@ -22,12 +22,12 @@ sticky: 99  # 精选文章热度
 mysql -u'用户名' -p'密码' < mi_car.sql
 ```
 
-2. 运行 jar 包，启动项目，文件位置：`target/MiCar-0.0.1-SNAPSHOT.jar`
+1. 运行 jar 包，启动项目
 ```java
 java -jar MiCar-0.0.1-SNAPSHOT.jar
 ```
 
-3. 浏览器输入网址 http://localhost:8081/index 进入前端界面
+1. 浏览器输入网址 `http://localhost:8081/index` 进入前端界面
 
 ![](batteryWarn/KOHzbF1Lwoqz1yx5wAicgtg5nbg.png)
 
