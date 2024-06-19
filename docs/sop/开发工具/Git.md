@@ -5,7 +5,7 @@ title: Git
 tag:
  - 开发工具
 top: 7     # 排序
-sticky: 99  # 精选文章热度
+sticky: 98  # 精选文章热度
 recommend: 1 # 推荐文章排序
 # sidebar: false # 侧边栏
 # author: 暮冬浅夏

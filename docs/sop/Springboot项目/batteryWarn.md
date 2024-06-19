@@ -14,7 +14,7 @@ sticky: 99  # 精选文章热度
 
 ## [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sxdnbnb/BatteryWarn)
 
-![Alt text](batteryWarn/image.png)
+# ![Alt text](batteryWarn/image.png)
 ## 一、MiCar-0.0.1-SNAPSHOT.jar 使用文档
 
 1. 在终端运行 `mi_car.sql`，构建数据库，文件位置：`src/main/resources/db/mi_car.sql`
