@@ -1,5 +1,5 @@
 import BlogTheme from '@sugarat/theme'
-
+import busuanzi from 'busuanzi.pure.js'
 // 自定义样式重载
 // import './style.scss'
 
