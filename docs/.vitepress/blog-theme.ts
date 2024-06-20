@@ -28,9 +28,11 @@ const blogTheme = getThemeConfig({
   // 页脚
   footer: {
     // message 字段支持配置为HTML内容，配置多条可以配置为数组
+    // 本站总访问量：busuanzi_value_site_pv，本文总阅读量：busuanzi_value_page_pv
+    // 本站总访客数：busuanzi_value_site_uv
     message: `
-    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-  `,
+      <span id="busuanzi_container_site_pv">&#128512;本站总访问量<span id="busuanzi_value_site_pv"></span>次</span><span style="margin: 0 10px;"></span><span id="busuanzi_container_site_uv">&#128538;本站总访客数<span id="busuanzi_value_site_uv"></span>次</span>
+    `,
     // message: '下面 的内容和图标都是可以修改的噢（当然本条内容也是可以隐藏的）',
     copyright: {
       message: 'MIT License | 暮冬浅夏',
