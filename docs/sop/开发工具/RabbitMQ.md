@@ -151,7 +151,7 @@ RabbitMQ是基于Erlang语言开发的开源消息通信中间件，官网地址
 [Messaging that just works — RabbitMQ](https://www.rabbitmq.com/)
 
 ### 安装
-我们同样基于Docker来安装RabbitMQ，使用下面的命令即可：
+我们基于Docker来安装RabbitMQ，使用下面的命令即可：
 ```shell
 docker run \
  -e RABBITMQ_DEFAULT_USER=itheima \
