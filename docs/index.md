@@ -2,8 +2,8 @@
 layout: home
 # 首页部分元素定制
 blog:
- name: '东哥的技术小窝'
- motto: 都是精神食粮
+ name: '🐇冬冬的技术小窝'
+ motto: 都是精神食粮🍚
  inspiring:
   - 努力做一个积极的人
   - 不埋怨谁，不嘲笑谁，也不羡慕谁
