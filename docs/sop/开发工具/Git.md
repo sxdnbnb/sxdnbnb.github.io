@@ -15,12 +15,6 @@ recommend: 1 # 推荐文章排序
 ## 常用命令
 
 ### 初始化
-::: hljs-center
-
-哈哈哈
-
-:::
-
 ![](git/T40Bb2E9Eo2cukxhpmDc2U2rnMf.png)
 
 ![](git/X4YabtkK5oUuPbxvZkfc2o5pn8c.png)
