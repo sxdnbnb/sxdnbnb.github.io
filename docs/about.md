@@ -3,11 +3,15 @@ sticky: 100
 sidebar: false # 侧边栏
 ---
 # 文章目录
+
 学习笔记:
+
 * [Java](https://sxdnbnb.github.io/?tag=Java&type=info)
-   * [Java基础](./sop/Java基础/java.md)
-   * [Java集合](./sop/Java基础/Collection.md)
-   * [线程并发](./sop/Java基础/Thread_Concurrent.md)
+  * [Java基础](./sop/Java基础/java.md)
+  * [Java集合](./sop/Java基础/Collection.md)
+  * [线程并发](./sop/Java基础/Thread_Concurrent.md)
+  * [Lambda表达式用法](./sop/Java基础/Lambda.md)
+  * [Stream流的用法](./sop/Java基础/Stream.md)
 * [Java项目](https://sxdnbnb.github.io/?tag=%E9%A1%B9%E7%9B%AE&type=success)
   * [图书管理系统Demo](./sop/Springboot项目/library.md)
   * [汽车电池预警系统](./sop/Springboot项目/batteryWarn.md)
