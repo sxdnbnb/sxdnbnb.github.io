@@ -5,7 +5,7 @@ title: Stream流的用法
 tag:
  - Java
 # top: 1     # 排序
-# sticky: 1  # 精选文章热度
+sticky: 20  # 精选文章热度
 # recommend: 1 # 推荐文章排序
 # sidebar: false # 侧边栏
 # author: 暮冬浅夏

@@ -5,8 +5,8 @@ title: 常用的Lambda表达式应用场景
 tag:
  - Java
 # top: 1     # 排序
-# sticky: 1  # 精选文章热度
-# recommend: 1 # 推荐文章排序
+sticky: 20  # 精选文章热度
+# recommend: 50 # 推荐文章排序
 # sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---

@@ -25,6 +25,7 @@ sidebar: false # 侧边栏
   * [Maven](./sop/开发工具/maven.md)
   * [Markdown](./sop/开发工具/Markdown基本语法.md)
   * [Docker](./sop/开发工具/Docker.md)
+  * [开发工具安装](./sop/开发工具/开发工具安装.md)
 * [数据库](https://sxdnbnb.github.io/?tag=%E6%95%B0%E6%8D%AE%E5%BA%93&type=warning)
   * [MySQL](./sop/开发工具/MySQL.md)
 * [408](https://sxdnbnb.github.io/?tag=408&type=)
