@@ -212,11 +212,11 @@ RabbitMQ对应的架构如图：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1687136827222-52374724-79c9-4738-b53f-653cc0805d22.png#averageHue=%23e8d7b3&clientId=u6a529863-cf4b-4&from=paste&height=495&id=ub8dd8df6&originHeight=614&originWidth=1458&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=104273&status=done&style=none&taskId=uc0c132a5-73a3-4024-819f-61241da2511&title=&width=1176.2016429676203)
 其中包含几个概念：
 
-- `**publisher**`：生产者，也就是发送消息的一方
-- `**consumer**`：消费者，也就是消费消息的一方
-- `**queue**`：队列，存储消息。生产者投递的消息会暂存在消息队列中，等待消费者处理
-- `**exchange**`：交换机，负责消息路由。生产者发送的消息由交换机决定投递到哪个队列。
-- `**virtual host**`：虚拟主机，起到数据隔离的作用。每个虚拟主机相互独立，有各自的exchange、queue
+- **publisher**：生产者，也就是发送消息的一方
+- **consumer**：消费者，也就是消费消息的一方
+- **queue**：队列，存储消息。生产者投递的消息会暂存在消息队列中，等待消费者处理
+- **exchange**：交换机，负责消息路由。生产者发送的消息由交换机决定投递到哪个队列。
+- **virtual host**：虚拟主机，起到数据隔离的作用。每个虚拟主机相互独立，有各自的exchange、queue
 
 上述这些东西都可以在RabbitMQ的管理控制台来管理，下一节我们就一起来学习控制台的使用。
 
