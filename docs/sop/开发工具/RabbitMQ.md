@@ -172,10 +172,41 @@ docker run \
 - 15672：RabbitMQ提供的管理控制台的端口
 - 5672：RabbitMQ的消息发送处理接口
 
-安装完成后，我们访问 http://192.168.150.101:15672即可看到管理控制台。首次访问需要登录，默认的用户名和密码在配置文件中已经指定了。
+安装完成后，我们访问 http://{虚拟机ip}:15672即可看到管理控制台。首次访问需要登录，默认的用户名和密码在配置文件中已经指定了。
 登录后即可看到管理控制台总览页面：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1687137883587-56417f79-a649-43a5-be88-2ff777d3cd25.png#averageHue=%23f7f6f6&clientId=u6a529863-cf4b-4&from=paste&height=707&id=u7d848ee1&originHeight=876&originWidth=1572&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=83168&status=done&style=none&taskId=ub505f8cf-075f-462b-bce3-e0df935715d&title=&width=1268.168026574142)
 
+#### 配置
+如果需要进入15672端口的ui界面，需要进入容器开启web管理插件
+```yaml
+# 查看运行的容器
+docker ps -a 
+# 根据容器id进入容器内部
+docker exec -it {rabbitmq容器名称或者id} /bin/bash 
+# 开启web管理插件
+rabbitmq-plugins enable rabbitmq_management 
+```
+
+#### 问题解决
+1. 如果出现`Stats in management UI are disabled on this node`
+    ```yaml
+    # 进入容器
+    docker exec -it {rabbitmq容器名称或者id} /bin/bash
+
+    #进入容器后，cd到以下路径
+    cd /etc/rabbitmq/conf.d/
+
+    #修改 management_agent.disable_metrics_collector = false
+    echo management_agent.disable_metrics_collector = false > management_agent.disable_metrics_collector.conf
+
+    #退出容器
+    exit
+
+    #重启rabbitmq容器
+    docker restart {rabbitmq容器id或容器名称}
+    ```
+2. 如果出现`All stable feature flags must be enabled after completing an upgrade`
+    登录 RabbitMQ 的管理界面，导航到 “Admin” -> “Feature Flags”，确保所有稳定的特性标志都是启用状态。如果有任何标志未启用，请将其启用。
 
 RabbitMQ对应的架构如图：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1687136827222-52374724-79c9-4738-b53f-653cc0805d22.png#averageHue=%23e8d7b3&clientId=u6a529863-cf4b-4&from=paste&height=495&id=ub8dd8df6&originHeight=614&originWidth=1458&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=104273&status=done&style=none&taskId=uc0c132a5-73a3-4024-819f-61241da2511&title=&width=1176.2016429676203)
