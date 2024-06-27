@@ -374,7 +374,7 @@ SpringAMQP提供了三个功能：
 - publisher直接发送消息到队列
 - 消费者监听并处理队列中的消息
 
-:::warning
+:::
 **注意**：这种模式一般测试使用，很少在生产中使用。
 :::
 
@@ -1367,7 +1367,7 @@ docker stop mq
 ```
 然后测试发送一条消息，会发现会每隔1秒重试1次，总共重试了3次。消息发送的超时重试机制配置成功了！
 
-:::warning
+:::
 **注意**：当网络不稳定的时候，利用重试机制可以有效提高消息发送的成功率。不过SpringAMQP提供的重试机制是**阻塞式**的重试，也就是说多次重试等待的过程中，当前线程是被阻塞的（后边的程序会等待）。
 如果对于业务性能有要求，建议禁用重试机制。如果一定要使用，请合理配置等待时长和重试次数，当然也可以考虑使用异步线程来执行发送消息的代码。
 :::
@@ -1493,7 +1493,7 @@ void testPublisherConfirm() {
 当我们修改为正确的`RoutingKey`以后，就不会触发`return callback`了，只收到ack。
 而如果连交换机都是错误的，则只会收到nack。
 
-:::warning
+:::
 **注意**：
 开启生产者确认比较消耗MQ性能，一般不建议开启。而且大家思考一下触发确认的几种情况：
 
@@ -1526,7 +1526,7 @@ void testPublisherConfirm() {
 在控制台发送消息的时候，可以添加很多参数，而消息的持久化是要配置一个`properties`：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1687354083723-84971642-712d-42bc-ba65-6e3b3b33758c.png#averageHue=%23faf8f8&clientId=ue4302575-73b6-4&from=paste&height=423&id=T4xqJ&originHeight=524&originWidth=995&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=17663&status=done&style=none&taskId=u75d6c2e2-1770-43f8-9a9f-9bc5f480099&title=&width=802.6890498990275)
 
-:::warning
+:::
 **说明**：在开启持久化机制以后，如果同时还开启了生产者确认，那么MQ会在消息持久化以后才发送ACK回执，进一步确保消息的可靠性。
 不过出于性能考虑，为了减少IO次数，发送到MQ的消息并不是逐条持久化到数据库的，而是每隔一段时间批量持久化。一般间隔在100毫秒左右，这就会导致ACK有一定的延迟，因此建议生产者确认全部采用异步方式。
 :::
@@ -1619,9 +1619,9 @@ rabbitmqctl set_policy Lazy "^lazy-queue$" '{"queue-mode":"lazy"}' --apply-to qu
 
 由于消息回执的处理代码比较统一，因此SpringAMQP帮我们实现了消息确认。并允许我们通过配置文件设置ACK处理方式，有三种模式：
 
-- `**none**`：不处理。即消息投递给消费者后立刻ack，消息会立刻从MQ删除。非常不安全，不建议使用
-- `**manual**`：手动模式。需要自己在业务代码中调用api，发送`ack`或`reject`，存在业务入侵，但更灵活
-- `**auto**`：自动模式。SpringAMQP利用AOP对我们的消息处理逻辑做了环绕增强，当业务正常执行时则自动返回`ack`.  当业务出现异常时，根据异常判断返回不同结果：
+- **none**：不处理。即消息投递给消费者后立刻ack，消息会立刻从MQ删除。非常不安全，不建议使用
+- **manual**：手动模式。需要自己在业务代码中调用api，发送`ack`或`reject`，存在业务入侵，但更灵活
+- **auto**：自动模式。SpringAMQP利用AOP对我们的消息处理逻辑做了环绕增强，当业务正常执行时则自动返回`ack`.  当业务出现异常时，根据异常判断返回不同结果：
    - 如果是**业务异常**，会自动返回`nack`；
    - 如果是**消息处理或校验异常**，自动返回`reject`;
 
@@ -1959,7 +1959,7 @@ UPDATE `order` SET status = ? , pay_time = ? WHERE id = ? AND status = 1
 
 假如我们现在发送一条消息到`ttl.fanout`，RoutingKey为blue，并设置消息的**有效期**为5000毫秒：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1687573506181-f0af9da1-0b0b-4cfb-afca-f5febb306cdf.png#averageHue=%23faf4f4&clientId=u76b62a19-f8dc-4&from=paste&height=349&id=u9604efe2&originHeight=432&originWidth=1421&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=60694&status=done&style=none&taskId=u7e667f84-8779-47db-af73-7598ea5759e&title=&width=1146.3529044286615)
-:::warning
+:::
 **注意**：尽管这里的`ttl.fanout`不需要RoutingKey，但是当消息变为死信并投递到死信交换机时，会沿用之前的RoutingKey，这样`hmall.direct`才能正确路由消息。
 :::
 
@@ -1972,7 +1972,7 @@ UPDATE `order` SET status = ? , pay_time = ? WHERE id = ? AND status = 1
 也就是说，publisher发送了一条消息，但最终consumer在5秒后才收到消息。我们成功实现了**延迟消息**。
 
 ### 4.1.3.总结
-:::warning
+:::
 **注意：**
 RabbitMQ的消息过期是基于追溯方式来实现的，也就是说当一个消息的TTL到期以后不一定会被移除或投递到死信交换机，而是在消息恰好处于队首时才会被处理。
 当队列中消息堆积很多的时候，过期消息可能不会被按时处理，因此你设置的TTL时间不一定准确。
@@ -2082,7 +2082,7 @@ void testPublisherDelayMessage() {
 ```
 
 
-:::warning
+:::
 **注意：**
 延迟消息插件内部会维护一个本地数据库表，同时使用Elang Timers功能实现计时。如果消息的延迟时间设置较长，可能会导致堆积的延迟消息非常多，会带来较大的CPU开销，同时延迟消息的时间会存在误差。
 因此，**不建议设置延迟时间过长的延迟消息**。
