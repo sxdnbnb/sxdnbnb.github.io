@@ -14,7 +14,104 @@ sticky: 99  # 精选文章热度
 
 ## [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sxdnbnb/BatteryWarn)
 
-# ![Alt text](batteryWarn/image.png)
+## 背景
+
+BMS 系统是智能化管理及维护各个电池单元，防止电池出现过充电和过放电、延长电池的使用寿命、监控电池状态的系统。在 BMS 系统中存在大量电池各种信号的规则管理以及监控，良好的是处理信号，并且根据规则，生成相关预警信息，能够极大提升用户体验。为此需要大家完成一套支持规则配置、信号预警的系统，来解决电池各种突发情况和提升用户体验。
+
+## 需求
+
+### 整体业务图
+![Alt text](batteryWarn\image2.png)
+
+### 功能模块说明
+
+1. 支持**车辆信息**（vid,车架编号,电池类型,总里程(km),电池健康状态(%)）
+
+    > 车辆信息录入是因为：先有车才有电池，最后才会在车行驶中产生电流信号
+    > vid: Vehicle Identification 车辆识别码，每辆车唯一，16 位随机字符串
+    > 电池类型：三元电池、铁锂电池
+    >
+    >![Alt text](batteryWarn\image3.png)
+
+2. **规则**（包括：序号，规则编号，名称，预警规则，电池类型）
+    > 预警规则：包含预警规则描述以及预警等级（0 级最高响应）
+    >
+    > 电池类型：不同类型电池对应规则不同
+    > 信号：Mx（最高电压）,Mi（最小电压）、Ix（最高电流）,Ii（最小电流）
+    ># ![Alt text](batteryWarn/image.png)
+
+
+### 预警接口
+
+Server 需要提供以下接口。
+
+- 上报接口
+  接口名：/api/warn
+  接口方法：POST
+  Body：格式为数组，数组内的每个元素包含以下字段。
+  ![Alt text](batteryWarn\image4.png)                  |
+
+Body 示例：
+
+```json
+[
+  {
+    "carId": 1,
+    "warnId": 1,
+    "signal": "{\"Mx\":12.0,\"Mi\":0.6}"
+  },
+  {
+    "carId": 2,
+    "warnId": 2,
+    "signal": "{\"Ix\":12.0,\"Ii\":11.7}"
+  }，
+   {
+    "carId": 3,
+    "signal": "{\"Mx\":11.0,\"Mi\":9.6,\"Ix\":12.0,\"Ii\":11.7}"
+  }
+]
+```
+
+接口返回信息：
+
+![Alt text](batteryWarn\image5.png)
+
+```json
+{
+    "status": 200,
+    "msg": "ok",
+    "data": 
+        [
+            {
+                "车架编号": 1,
+                "电池类型": "三元电池",
+                "warnName": "电压差报警",
+                "warnLevel": 0
+            },
+            {
+                "车架编号": 2,
+                "电池类型": "铁锂电池",
+                "warnName": "电流差报警",
+                "warnLevel": 2
+            },
+            {
+                "车架编号": 3,
+                "电池类型": "三元电池",
+                "warnName": "电压差报警",
+                "warnLevel": 2
+            },
+            {
+                "车架编号": 3,
+                "电池类型": "三元电池",
+                "warnName": "电流差报警",
+                "warnLevel": 2
+            }
+         ]
+}
+```
+
+
+
 ## 一、MiCar-0.0.1-SNAPSHOT.jar 使用文档
 
 1. 在终端运行 `mi_car.sql`，构建数据库，文件位置：`src/main/resources/db/mi_car.sql`
