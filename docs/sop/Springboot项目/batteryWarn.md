@@ -6,7 +6,7 @@ tag:
  - 项目
 # top: 3     # 排序
 sticky: 99  # 精选文章热度
-# recommend: 2 # 推荐文章排序
+recommend: 9 # 推荐文章排序
 # sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---
