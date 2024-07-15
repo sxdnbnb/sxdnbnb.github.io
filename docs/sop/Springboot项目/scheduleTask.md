@@ -62,8 +62,10 @@ public class MyScheduledExecutorService {
 ```java
 @SpringBootApplication
 @EnableScheduling // 开启定时任务
-public class DemoApplication {
-    // do someing
+public class ScheduleTaskApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ScheduleTaskApplication.class, args);
+    }
 }
 ```
 ② 添加定时任务
@@ -81,7 +83,9 @@ public class TaskUtils {
     }
 }
 ```
-注意：定时任务是自动触发的无需手动干预，也就是说 Spring Boot 启动后会自动加载并执行定时任务。
+> 这里有个要注意的细节，就是启动类需要能扫描到定时任务类，否则定时任务启动不起来。不仅需要@Component注解，也需要将启动类位置不能位于定时任务类之下
+
+>定时任务是自动触发的无需手动干预，也就是说 Spring Boot 启动后会自动加载并执行定时任务。
 #### Cron 表达式
 Spring Task 的实现需要使用 cron 表达式来声明执行的频率和规则，cron 表达式是由 6 位或者 7 位组成的（最后一位可以省略），每位之间以空格分隔，每位从左到右代表的含义如下：
 ![Alt text](schedule\image.png)
