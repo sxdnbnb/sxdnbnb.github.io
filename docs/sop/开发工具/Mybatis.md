@@ -87,11 +87,11 @@ MyBatis是"半自动"的ORM框架，即SQL语句需要开发者自定义，MyBat
 在 XML 中写 SQL，用到特殊字符的可用转义字符替换。
 但使用转义字符比较麻烦，不容易记住，可使用`<![CDATA[ ]]>`标记里面的内容不被 XML 解析器解析，保留为文本。
 `<![CDATA[ SELECT * FROM  user WHERE  age  <= 30 AND age >= 18 ]]>`
-六、模糊查询
+## 六、模糊查询
 mapper.xml 中写模湖查询需要使用 `concat` 来连接
 
  `like concat('%', #{param}, '%')`  或者 `like '%${param}%'`  --推荐使用前者，可以避免sql注入。
-七、其他
+## 七、其他
  1. ${ } 和 #{}的区别
 
 `#`可以防止sql注入 而 `$` 不能
