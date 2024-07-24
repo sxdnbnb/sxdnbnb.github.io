@@ -24,10 +24,10 @@ MyBatis是"半自动"的ORM框架，即SQL语句需要开发者自定义，MyBat
 ## 二、mapper.xml
 - **mapper**：指定唯一的namespace，一般设置成mapper类的全路径名。
 - **insert**：对应SQL中的insert插入语句。
-**id**：为该语句的属性，通常与mapper java 文件的方法名相同。
-**parameterType**：参入插入语句的参数类型。
-**useGeneratedKeys**：主键使用数据库自增策略，需要数据库底层支持，并返回主键到keyProperty指定的属性名。
-**keyProperty**：指示主键映射到实体类的属性名。
+  - **id**：为该语句的属性，通常与mapper java 文件的方法名相同。
+  - **parameterType**：参入插入语句的参数类型。
+  - **useGeneratedKeys**：主键使用数据库自增策略，需要数据库底层支持，并返回主键到keyProperty指定的属性名。
+  - **keyProperty**：指示主键映射到实体类的属性名。
 ```xml
   <mapper namespace="org.mybatis.mapper.UserMapper">
       <!-- useGeneratedKeys:返回主键
@@ -69,9 +69,9 @@ MyBatis是"半自动"的ORM框架，即SQL语句需要开发者自定义，MyBat
   ```
 
 3. 指定参数类型
-参数也可以指定一个特殊的数据类型。
+- 参数也可以指定一个特殊的数据类型。
 `#{property,javaType=int,jdbcType=NUMERIC}`
-对于数值类型，还有一个小数保留位数的设置，来确定小数点后保留的位数。
+- 对于数值类型，还有一个小数保留位数的设置，来确定小数点后保留的位数。
 `#{height,javaType=double,jdbcType=NUMERIC,numericScale=2}`
 ## 五、XML转义字符
 少部分特殊字符写入到 XML 文件会被 XML 语法检测报错,XML为这些字符提供了转义
