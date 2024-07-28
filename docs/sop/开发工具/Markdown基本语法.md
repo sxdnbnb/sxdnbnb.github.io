@@ -23,6 +23,10 @@ sticky: 40 # 精选文章热度
 
 当前许多网站都广泛使用 `Markdown` 来撰写帮助文档或是用于论坛上发表消息。例如：GitHub、简书、知乎等
 
+### vscode中好用的Markdown插件
+1. Markdown All in One  
+2. Markdown Preview Enhanced
+3. Markdown Shortcuts
 ## 二、徽章
 
 #### 什么是徽章
