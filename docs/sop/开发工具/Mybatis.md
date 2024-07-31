@@ -175,6 +175,7 @@ MyBatis获取参数值的两种方式：`${}`和`#{}`
 Mybatis框架的动态SQL技术是一种根据特定条件动态拼装SQL语句的功能，它存在的意义是为了解决拼接SQL语句字符串时的痛点问题。
 1. if test
   > 一般在列表页面,有多个查询条件,并且不确定条件是否使用的时候可以使用 if test语法。
+
   >if标签可通过test属性的表达式进行判断，若表达式的结果为true，则标签中的内容会执行；反之标签中的内容不会执行。
 
   ```xml
@@ -199,8 +200,11 @@ Mybatis框架的动态SQL技术是一种根据特定条件动态拼装SQL语句�
   ```
 2. where
   > **where和if一般结合使用：**
+
   >a>若where标签中的if条件都不满足，则where标签没有任何功能，即不会添加where关键字
+
   >b>若where标签中的if条件满足，则where标签会自动添加where关键字，并将条件最前方多余的and去掉
+
   >注意：where标签不能去掉条件最后多余的and
   ```xml
   <select id="getEmpListByMoreTJ2" resultType="Emp">
@@ -222,10 +226,15 @@ Mybatis框架的动态SQL技术是一种根据特定条件动态拼装SQL语句�
 
 3. trim
   > **trim用于去掉或添加标签中的内容**
+
   >常用属性：
+
   >prefix：在trim标签中的内容的前面添加某些内容
+
   >prefixOverrides：在trim标签中的内容的前面去掉某些内容
+
   >suffix：在trim标签中的内容的后面添加某些内容
+
   >suffixOverrides：在trim标签中的内容的后面去掉某些内容
 
   ```xml
@@ -248,13 +257,19 @@ Mybatis框架的动态SQL技术是一种根据特定条件动态拼装SQL语句�
 
 4. foreach
   >遍历数组和集合
+
   > 属性
+
     >collection: 设置要循环的数组或集合
+
     >item: 表示集合或数组中的每一个数据
+
     >separator: 设置循环体之间的分隔符
+
     >open: 设置foreach标签中的内容的开始符
-    >close: 设置foreach标签中的内容的结束符
     
+    >close: 设置foreach标签中的内容的结束符
+
   ```xml
   <!--int insertMoreEmp(List<Emp> emps);-->
   <insert id="insertMoreEmp">
