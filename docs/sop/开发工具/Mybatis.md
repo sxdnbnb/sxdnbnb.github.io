@@ -267,7 +267,7 @@ Mybatis框架的动态SQL技术是一种根据特定条件动态拼装SQL语句�
     >separator: 设置循环体之间的分隔符
 
     >open: 设置foreach标签中的内容的开始符
-    
+
     >close: 设置foreach标签中的内容的结束符
 
   ```xml
