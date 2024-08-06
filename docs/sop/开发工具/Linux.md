@@ -82,6 +82,7 @@ recommend: 2 # 推荐文章排序
 - `vim 文件名`：修改文件的内容（改）。\
   在实际开发中，使用 vim 编辑器主要作用就是修改配置文件，下面是一般步骤：`vim 文件------>进入文件----->命令模式------>按i进入编辑模式----->编辑文件 ------->按Esc进入底行模式----->输入：wq/q!`\
   （输入 `wq` 代表写入内容并退出，即保存；输入 `q!`代表强制退出不保存）。
+- `vim info.log`：进入文件。然后，按`？`关键字，搜寻匹配关键字相关内容！如`？getName`，则会高亮显示关键字相关内容
 
 ## **文件压缩**
 
@@ -185,6 +186,46 @@ Linux 中的打包文件一般是以 `.tar` 结尾的，压缩的命令一般是
   `reboot -w`：做个重开机的模拟（只有纪录并不会真的重开机）。
 - `echo`：将文本输出到标准输出\
   `echo "Hello, World!"`
+
+## **查看日志**
+* `zcat file.gz` : 查看 gz 压缩文件的内容
+
+* `tail -f info.log`  :动态查看实时输出info.log日志
+
+* `tail -n 200 info.log`：查看info.log日志后200行
+
+* `tail -f info.log | grep "orderId"`：动态查看含有关键字orderId的日志
+
+* `cat info.log`：查看info.log的全部日志内容
+
+* `cat info.log | grep "java"`：查看info.log的java关键字关联的全部内容
+
+* `cat info.log | grep -A 5 "java"`：查看info.log的java关键字后5行关联的全部内容
+
+* `cat info.log | grep -B 10 "java"`：查看info.log的java关键字前10行关联的全部内容
+
+* `cat info.log | grep -C 20 "java"`：查看info.log的java关键字前后20行关联的全部内容
+
+* `less info.log` ：从头开始查看info.log日志内容
+
+* `more info.log`：查看info.log的日志内容，按下方附加操作滚动日志内容
+
+* `more info.log |grep "test"`：查看全部关键字test关联内容
+
+> 1. 全屏导航\
+`ctrl + F` - 向前移动一屏\
+`ctrl + B` - 向后移动一屏\
+`ctrl + D` - 向前移动半屏\
+`ctrl + U` - 向后移动半屏
+>2. 单行导航\
+`j` - 向前移动一行\
+`k` - 向后移动一行
+>3. 其它导航\
+`G` - 移动到最后一行\
+`g` - 移动到第一行\
+`q / ZZ` - 退出 `less` 命令
+
+* `head -n 20 info.log`：查看info.log日志的前20行内容
 
 ## **常用快捷键**
 ### 移动光标
