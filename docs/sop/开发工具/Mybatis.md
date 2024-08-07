@@ -82,7 +82,7 @@ MyBatis是"半自动"的ORM框架，即SQL语句需要开发者自定义，MyBat
   </mapper>
 ```
 > 注意：
-  1. 查询的标签`select`必须设置属性`resultType`或`resultMap`，用于设置实体类和数据库表的映射关系
+  1. **查询的标签`select`必须设置属性`resultType`或`resultMap`，用于设置实体类和数据库表的映射关系**
      - resultType：自动映射，用于属性名和表中字段名一致的情况
      - resultMap：自定义映射，用于一对多或多对一或字段名和属性名不一致的情况
   2. 当`查询的数据为多条时，只能使用集合`，不能使用实体类作为返回值，否则会抛出异常TooManyResultsException；但是`若查询的数据只有一条，可以使用实体类或集合作为返回值`
@@ -101,7 +101,7 @@ MyBatis是"半自动"的ORM框架，即SQL语句需要开发者自定义，MyBat
 </select>
 ```
 ## 四、parameterType
-如果传递的是简单的参数，是简单的数据类型，参数类型可以省略，原生的类型或简单数据类型（比如整型和字符串）因为没有相关属性，它会完全用参数值来替代。
+**如果传递的是简单的参数，是简单的数据类型，参数类型可以省略**，原生的类型或简单数据类型（比如整型和字符串）因为没有相关属性，它会完全用参数值来替代。
 
 1. 省略参数
   ```xml
@@ -147,7 +147,7 @@ mapper.xml 中写模湖查询需要使用 `concat` 来连接 `like concat('%', #
 ## 七、获取参数值
 MyBatis获取参数值的两种方式：`${}`和`#{}`
  1. `${}` 和 `#{}`的区别
-   `${}`的本质就是字符串拼接，#{}的本质就是占位符赋值
+   `${}`的本质就是字符串拼接，`#{}`的本质就是占位符赋值
   - `#`可以实现预编译，会先把`#{变量}`编译成`?`，在执行时再取值，可以防止sql注入。
   - `$`是直接进行字符串替换。
   - `#`符号的应用场景：
@@ -168,10 +168,14 @@ MyBatis获取参数值的两种方式：`${}`和`#{}`
 -->
 ```
 2. 若mapper接口中的方法参数为实体类对象时, 此时可以使用`${}`和`#{}`，通过访问实体类对象中的属性名获取属性值，注意`${}`需要手动加单引号
-3. 可以通过`@Param`注解标识mapper接口中的方法参数。此时，会将这些参数放在map集合中，以@Param注解的value属性值为键，以参数为值；以param1,param2...为键，以参数为值；只需要通过`${}`和`#{}`访问map集合的键就可以获取相对应的值，注意`${}`需要手动加单引号
-`(@Param("username") String name)`
+3. **可以通过`@Param`注解标识mapper接口中的方法参数**。此时，会将这些参数放在map集合中，以@Param注解的value属性值为键，以参数为值；以param1,param2...为键，以参数为值；只需要通过`${}`和`#{}`访问map集合的键就可以获取相对应的值，注意`${}`需要手动加单引号。
+**Mapper接口：
+`int insert((@Param("username") String name, @Param("userage") int age))`
+xml：
+`insert into usertable (username, userage) values (#{username,jdbcType=VARCHAR}, #{userage})`**
 
-## 八、动态SQL
+
+## **八、动态SQL**
 Mybatis框架的动态SQL技术是一种根据特定条件动态拼装SQL语句的功能，它存在的意义是为了解决拼接SQL语句字符串时的痛点问题。
 1. if test
   > 一般在列表页面,有多个查询条件,并且不确定条件是否使用的时候可以使用 if test语法。
@@ -186,7 +190,7 @@ Mybatis框架的动态SQL技术是一种根据特定条件动态拼装SQL语句�
   ```
   
   ```xml
-  xxmaper.xml
+  mapper.xml
   <select id ="findByKeywords" parameterType="java.util.Map" resultType="com.example.test.vo.UserInfoVo">
     SELECT * from user where user_type =1 
       <if test="username != null">
