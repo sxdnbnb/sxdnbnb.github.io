@@ -30,6 +30,95 @@ recommend: 5 # 推荐文章排序
 
 ![](mysql/YhwxbcBYgoYAhzxesCZcSB4Onjc.png)
 
+>对于分组之后利用条件过滤的可以使用having关键字，其作用类似于where
+
+## 常用场景 
+
+* 查询平均成绩大于60分学生的学号和平均成绩:
+`select stu_id as '学号',avg(grade) as '平均成绩' from score group by stu_id having avg(grade) > 60;`
+
+* 查询至少选修两门课程的学生学号以及课程数目:
+`select stu_id as '学号',count(course_id) as '课程数目' from score group by stu_id having count(course_id) >= 2;`
+
+* 查询同名同姓学生名单并统计同名人数:
+`select name,count(*) as '人数' from student group by name having count(*) >= 2;`
+
+* 查询每门课程的平均成绩，结果按照平均成绩升序排序，平均成绩相同时，按照课程好降序排序:
+`select course_id,avg(grade) from score group by course_id order by avg(grade) asc,course_id desc;`
+
+* 查询两门以上成绩不满85分的同学的学号及其平均成绩:
+`select stu_id, avg(grade) from score where grade < 85 group by stu_id having count(course_id) >= 2;`
+
+* 查询各科成绩前两名的记录
+```sql
+SELECT 
+    stu_id, 
+    course_id, 
+    grade
+FROM (
+    SELECT 
+        stu_id, 
+        course_id, 
+        grade,
+        RANK() OVER(PARTITION BY course_id ORDER BY grade DESC) as rnk
+    FROM 
+        score
+) t 
+WHERE 
+    t.rnk <= 2;
+```
+* 查询出每门课程的大于80得人数和不大于80的人数
+>为了对每门课程中大于80与不大于80的进行统计，则得到以course_id进行分组即可，对于人数的统计可以使用函数来代替即利用`case...when...then...else...end`实现分数的判断。
+```sql
+select course_id,
+    sum(case when grade > 80 then 1 else 0 end) as '大于80',
+    sum(case when grade <= 80 then 1 else 0 end) as '不大于80' 
+from score 
+group by course_id;
+```
+
+* 使用分段[90,100],[80-90),[70,80),[60,70)区间统计各科成绩，统计各分段人数和，课程号，课程名称
+```sql
+select 
+    c1.id, c1.name,
+    sum(case when s.grade >= 60 and s.grade < 70 then 1 else 0 end) as '[60,70)',
+    sum(case when s.grade >= 70 and s.grade < 80 then 1 else 0 end) as '[70,80)',
+    sum(case when s.grade >= 80 and s.grade < 90 then 1 else 0 end) as '[80,90)',
+    sum(case when s.grade >= 90 and s.grade < 100 then 1 else 0 end) as '[90,100)' 
+    from score as s 
+        join course as c1 
+        on s.course_id = c1.id 
+    group by s.course_id;
+```
+* 查询至少有一门课与学号为“0001”的学生所学课程相同的学生的学号和姓名
+```sql
+select 
+    s1.id, s1.name 
+from 
+    student as s1 
+where s1.id in 
+    (select distinct(stu_id) 
+    from score where course_id in 
+        (select course_id from score where stu_id = '0001')) 
+    and s1.id != '0001';
+```
+* 查找表A中存在但表B中不存在的id
+`select A.id from A where (select count(1) from B where A.id = B.id) = 0;`
+
+## 窗口函数
+*  查询每门成绩最好的前两名学生
+```sql
+SELECT *
+FROM 
+(
+  SELECT *, DENSE_RANK() OVER (PARTITION BY course ORDER BY score DESC) as rank
+  FROM table_name
+) tmp
+WHERE rank <= 2;
+```
+  
+
+
 ## 数据库操作命令
 
 ①、创建数据库:
