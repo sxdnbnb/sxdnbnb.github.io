@@ -75,7 +75,9 @@ recommend: 1 # 推荐文章排序
 你可以整合上来自上游的分叉：要么用 `john/feature merge 本地 feature` ，要么 `rebase 本地feature 到john/feature` 的顶部。
 
 ![alt text](git/image-5.png)
+
 ![alt text](git/image-6.png)
+
 ![alt text](git/image-7.png)
 
 请注意，此 `rebase` 不违反 `Rebase 黄金规则`，因为只有你的本地 `feature` 提交被移动， 之前的所有内容都不会受到影响。这就像是说 "将我的更改添加到 John 已经完成的工作中"。在大多数情况下，这比通过合并提交与远程分支同步更直观。
