@@ -66,7 +66,6 @@ recommend: 1 # 推荐文章排序
 `rebase` 的主要好处是可以获得更清晰的项目历史。首先，它消除了 `git merge` 所需的不必要的合并提交；其次，正如你在上图中所看到的，`rebase` 会产生完美线性的项目历史记录，你可以在 `feature`分支上没有任何分叉的情况下一直追寻到项目的初始提交。这样可以通过命令 `git log，git bisect 和 gitk` 更容易导航查看项目。
 但是，`rebase` 会丢失合并提交的上下文，你也就无法看到上游更改是何时合并到 feature 中的。
 > `git rebase` 的黄金法则是永远不要在公共分支上使用它。
-
 ![alt text](git/image-3.png)
 
 当与另一个开发人员协作使用相同的功能并且你需要将他们的更改合并到你的 repository 时, 使用`rebase`。
@@ -74,7 +73,10 @@ recommend: 1 # 推荐文章排序
 ![alt text](git/image-4.png)
 
 你可以整合上来自上游的分叉：要么用 `john/feature merge 本地 feature` ，要么 `rebase 本地feature 到john/feature` 的顶部。
+
 ![alt text](git/image-5.png)
+![alt text](git/image-6.png)
+![alt text](git/image-7.png)
 
 请注意，此 `rebase` 不违反 `Rebase 黄金规则`，因为只有你的本地 `feature` 提交被移动， 之前的所有内容都不会受到影响。这就像是说 "将我的更改添加到 John 已经完成的工作中"。在大多数情况下，这比通过合并提交与远程分支同步更直观。
 
