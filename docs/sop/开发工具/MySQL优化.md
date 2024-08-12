@@ -10,7 +10,7 @@ recommend: 5 # 推荐文章排序
 # sidebar: false # 侧边栏
 # author: 暮冬浅夏
 ---
-
+# MySQL优化
 ## 一、Explain 工具介绍
 
 使用Explain可以查看sql的性能瓶颈信息，并根据结果进行sql的相关优化。在`select 语句前加上explain关键字`，执行的时候并不会真正执行sql语句，而是返回sql查询语句对应的执行计划信息。
