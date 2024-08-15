@@ -19,6 +19,7 @@ sidebar: false # 侧边栏
   * [Lombok常用注解](./sop/Springboot项目/Lombok.md)
   * [MyBatis-Plus常用注解](./sop/Springboot项目/MyBatis-Plus.md)
   * [定时任务的实现方式](./sop/Springboot项目/scheduleTask.md)
+  * [Spring定时任务动态配置](./sop/Springboot项目/Spring定时任务动态配置.md)
 
 * [开发工具](https://sxdnbnb.github.io/?tag=%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7&type=success)
   * [Git](./sop/开发工具/Git.md)
