@@ -1,3 +1,16 @@
+---
+description: 定时任务的3种实现方法
+title: 定时任务
+# readingTime: false
+tag:
+ - 项目
+# top: 8     # 排序
+# sticky: 90  # 精选文章热度
+# recommend: 1 # 推荐文章排序
+# sidebar: false # 侧边栏
+# author: 暮冬浅夏
+---
+# 定时任务
 ## 定时任务的3种实现方法
 ### Timer
 Timer 是 JDK 自带的定时任务执行类，无论任何项目都可以直接使用 Timer 来实现定时任务，所以 Timer 的优点就是使用方便，它的实现代码如下：

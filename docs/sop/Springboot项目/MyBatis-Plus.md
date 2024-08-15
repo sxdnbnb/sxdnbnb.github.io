@@ -1,3 +1,16 @@
+---
+description: MyBatis-Plus实体类注解
+title: MyBatis-Plus
+# readingTime: false
+tag:
+ - 项目
+# top: 8     # 排序
+# sticky: 90  # 精选文章热度
+# recommend: 1 # 推荐文章排序
+# sidebar: false # 侧边栏
+# author: 暮冬浅夏
+---
+# MyBatis-Plus
 ## MyBatis-Plus实体类注解
 - @TableName（"表名"）
 - @TableId（表名主键）\

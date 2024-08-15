@@ -1,4 +1,17 @@
-# **定时调度解决方案和对比**
+---
+description:  Spring实现可动态修改的调度任务
+title: 动态定时任务
+# readingTime: false
+tag:
+ - 项目
+# top: 8     # 排序
+# sticky: 90  # 精选文章热度
+# recommend: 1 # 推荐文章排序
+# sidebar: false # 侧边栏
+# author: 暮冬浅夏
+---
+# 动态定时任务
+## **定时调度解决方案和对比**
 
 现成的定时调度的解决方案有很多，总结下来有三大类：  
 **1\. 使用开源的定时调度框架，如Quartz、XXL-JOB、Elastic-Job。**  
@@ -10,7 +23,7 @@
 2.使用jdk自带的Timer，或者 ScheduledThreadPoolExecutor来自己手动实现，这种方式灵活度高，这种方式提供了高度的自定义性，允许开发者根据业务需求进行详细的任务调度实现。但同时，这些API相对较为底层，不支持直接使用cron表达式，如果需要此类功能，则可能需要额外开发cron表达式解析器，增加了开发成本。  
 3.使用Spring提供的 @Scheduled 注解，仅需简单配置cron表达式，即可实现定时任务的执行。鉴于当前大多数Java应用都在使用Spring框架，引入@Scheduled 注解的成本相对较低，且易于与现有Spring生态系统整合。
 
-# Spring 实现可动态修改的调度任务
+## Spring 实现可动态修改的调度任务
 
 众所周知，Sping中的调度任务仅需简单几步即可实现：
 
@@ -25,7 +38,7 @@
 **其实是不可以的**😊👍  
 定时调度策略、定时执行的业务逻辑，是在spring容器启动的时候就设置好的，而且spring并没有提供相关的接口（具体流程可看本文末尾的附录）。所以要想动态修改 定时调度的策略，那么就只能自己使用spring提供的现有工具实现一套简单的小框架。
 
-## 示例：
+### 示例：
 
 大体结构如下 ↓  
 
@@ -313,7 +326,7 @@ public abstract class AbstractScheduledTask<T extends ScheduledTaskExtParam> ext
 }
 ```
 
-# 附：Sping中的调度任务是如何实现的
+## 附：Sping中的调度任务是如何实现的
 
 简单来说：  
 1.在使用spring的项目中 ，在一个方法上添加一个 @Scheduled 注解  
@@ -324,7 +337,7 @@ public abstract class AbstractScheduledTask<T extends ScheduledTaskExtParam> ext
 
 > 图上绿色部分为Spring的类，浅黄色的为Java 原生的类
 
-## @EnableScheduling 与 自动装配
+### @EnableScheduling 与 自动装配
 
 当在配置类上使用 @EnableScheduling 注解时，Spring会创建一个名为 scheduledAnnotationProcessor 的bean。这个过程是通过 SchedulingConfiguration 类实现的。该类是 @EnableScheduling 注解导入的配置类，它负责创建ScheduledAnnotationBeanPostProcessor实例。
 
@@ -354,11 +367,11 @@ public class SchedulingConfiguration {
 }
 ```
 
-## @Scheduled
+### @Scheduled
 
 以cron任务做介绍，其他任务流程类似
 
-### 1.处理bean
+#### 1.处理bean
 
 当Spring创建bean时，ScheduledAnnotationBeanPostProcessor 的 postProcessAfterInitialization方法会被调用。这个方法会检查bean中的所有方法，寻找带有@Scheduled注解的方法。
 
@@ -399,7 +412,7 @@ public Object postProcessAfterInitialization(Object bean, String beanName) {
  }
 ```
 
-### 2.创建定时任务
+#### 2.创建定时任务
 
 对于每个解析到的 @Scheduled 注解，ScheduledAnnotationBeanPostProcessor 会创建一个定时任务。  
 它首先获取一个 TaskScheduler 实例（默认为 ThreadPoolTaskScheduler ），然后使用该实例为带有@Scheduled 注解的方法创建一个定时任务，任务的执行策略根据注解中的属性确定。  
@@ -485,7 +498,7 @@ public Object postProcessAfterInitialization(Object bean, String beanName) {
  }
 ```
 
-### 3.创建Runnable
+#### 3.创建Runnable
 
 createRunnable 方法用于创建一个 Runnable 实例，它封装了带有 @Scheduled 注解的方法的调用。这个Runnable 实例将被传递给任务调度器。
 
@@ -497,7 +510,7 @@ protected Runnable createRunnable(Object target, Method method) {
  }
 ```
 
-### 4.创建Trigger
+#### 4.创建Trigger
 
 createTrigger 方法根据 @Scheduled 注解的属性创建一个 Trigger 实例。Trigger 实例决定了任务的执行策略，如固定速率、固定延迟或 Cron 表达式。
 
@@ -511,7 +524,7 @@ public CronTrigger(String expression, ZoneId zoneId) {
 }
 ```
 
-### 5.配置调度任务
+#### 5.配置调度任务
 
 根据cron表达式对业务逻辑进行调度
 
@@ -534,7 +547,7 @@ return (newTask ? scheduledTask : null);
 }
 ```
 
-## 为@Scheduled自定义一个线程池
+### 为@Scheduled自定义一个线程池
 
 spring在执行调度任务前，会按照好一定的策略，寻找一个可用的线程池来执行调度任务
 
@@ -608,7 +621,7 @@ if (this.registrar.hasTasks() && this.registrar.getScheduler() == null) {
 
 **总结：所以还是自定义线程池吧，在第一步的时候，定义一个 SchedulingConfigurer 来完成对 register的配置。**
 
-## ScheduledExecutorService
+### ScheduledExecutorService
 
 Java的定时调度可以通过**Timer&TimerTask**来实现。由于其实现的方式为单线程，因此从JDK1.3发布之后就一直存在一些问题，大致如下：
 
@@ -663,12 +676,12 @@ ScheduledExecutorService在设计之初就是为了解决Timer&TimerTask的这�
 在线程池状态正常的情况下，最终会调用**ensurePrestart()**方法来完成线程的创建。主要逻辑有两个：  
 当前线程数未达到核心线程数，则创建核心线程；当前线程数已达到核心线程数，则创建非核心线程，不会将任务放到阻塞队列中，这一点是和普通线程池是不相同的。
 
-## ThreadPoolTaskScheduler
+### ThreadPoolTaskScheduler
 
 **ThreadPoolTaskScheduler** 是 Spring Framework 中的一个类，它实现了 Spring 的 TaskScheduler 接口。  
 它是基于 **ScheduledExecutorService** 的，提供了一个易于使用的 API 来处理 Spring 应用程序中的异步任务和定时任务。
 
-### 结构
+#### 结构
 
 **继承关系**：ThreadPoolTaskScheduler 继承自 ExecutorConfigurationSupport，这是一个辅助类，提供线程池配置的通用功能。  
 **成员变量**：
@@ -699,7 +712,7 @@ scheduleWithFixedDelay(Runnable task, long delay);
 //指定间隔时间执行一次任务，间隔时间为前一次任务完成到下一次开始时间
 ```
 
-### 执行 schedule 方法
+#### 执行 schedule 方法
 
 1.  **参数解析**：schedule 方法接收一个 Runnable 任务和 Trigger 对象。Trigger 定义了任务的执行计划。
     

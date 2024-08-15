@@ -1,3 +1,16 @@
+---
+description: Lombok 常用注解
+title: Lombok
+# readingTime: false
+tag:
+ - 项目
+# top: 8     # 排序
+# sticky: 90  # 精选文章热度
+# recommend: 1 # 推荐文章排序
+# sidebar: false # 侧边栏
+# author: 暮冬浅夏
+---
+# Lombok
 ## Lombok 常用注解
 >Lombok是一个编译时注释预处理器，有助于在编译时注入一些代码。Lombok提供了一组在开发时处理的注释，以将代码注入到Java应用程序中，注入的代码在开发环境中立即可用。
 ### @Data 
