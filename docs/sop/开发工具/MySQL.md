@@ -706,16 +706,174 @@ MySQL 默认的事务隔离级别是可重复读 (Repeatable Read)。
 
 - 慢查询日志：开启 MySQL 慢查询日志，再通过一些工具比如 mysqldumpslow 去分析对应的慢查询日志，找出问题的根源。
 - 服务监控：可以在业务的基建中加入对慢 SQL 的监控，常见的方案有字节码插桩、连接池扩展、ORM 框架过程，对服务运行中的慢 SQL 进行监控和告警。
+- 使用Explain可以查看sql的性能瓶颈信息，并根据结果进行sql的相关优化。
 
 ### 优化慢 SQL？
 
 ![](mysql/TfUzbqZXcofiHExn0AbcluATnDQ.png)
 
+#### 如何避免不必要的列？
+
+比如说尽量避免使用 `select *`，只查询需要的列，减少数据传输量。
+
+```sql
+SELECT * FROM employees WHERE department_id = 5;
+```
+
+改成：
+
+```sql
+SELECT employee_id, first_name, last_name FROM employees WHERE department_id = 5;
+```
+
+#### 如何进行分页优化？
+
+当数据量巨大时，传统的`LIMIT`和`OFFSET`可能会导致性能问题，因为数据库需要扫描`OFFSET + LIMIT`数量的行。
+
 延迟关联（Late Row Lookups）和书签（Seek Method）是两种优化分页查询的有效方法。
 
-①、延迟关联
+**①、延迟关联**
 
-延迟关联适用于需要从多个表中获取数据且主表行数较多的情况。它首先从主表中检索出需要的行 ID，然后再根据这些 ID 去关联其他的表获取详细信息，减少了不必要的 JOIN 操作。
+延迟关联适用于需要从多个表中获取数据且主表行数较多的情况。它首先从索引表中检索出需要的行 ID，然后再根据这些 ID 去关联其他的表获取详细信息。
+
+```sql
+SELECT e.id, e.name, d.details
+FROM employees e
+JOIN department d ON e.department_id = d.id
+ORDER BY e.id
+LIMIT 1000, 20;
+```
+
+延迟关联后：
+
+```sql
+SELECT e.id, e.name, d.details
+FROM (
+    SELECT id
+    FROM employees
+    ORDER BY id
+    LIMIT 1000, 20
+) AS sub
+JOIN employees e ON sub.id = e.id
+JOIN department d ON e.department_id = d.id;
+```
+
+首先对`employees`表进行分页查询，仅获取需要的行的 ID，然后再根据这些 ID 关联获取其他信息，减少了不必要的 JOIN 操作。
+
+**②、书签（Seek Method）**
+
+书签方法通过记住上一次查询返回的最后一行的某个值，然后下一次查询从这个值开始，避免了扫描大量不需要的行。
+
+假设需要对用户表进行分页，根据用户 ID 升序排列。
+
+```sql
+SELECT id, name
+FROM users
+ORDER BY id
+LIMIT 1000, 20;
+```
+
+书签方式：
+
+```sql
+SELECT id, name
+FROM users
+WHERE id > last_max_id  -- 假设last_max_id是上一页最后一行的ID
+ORDER BY id
+LIMIT 20;
+```
+
+优化后的查询不再使用`OFFSET`，而是直接从上一页最后一个用户的 ID 开始查询。这里的`last_max_id`是上一次查询返回的最后一行的用户 ID。这种方法有效避免了不必要的数据扫描，提高了分页查询的效率。
+
+
+#### 如何进行 JOIN 优化？
+
+对于 JOIN 操作，可以通过优化子查询、小表驱动大表、适当增加冗余字段、避免 join 太多表等方式来进行优化。
+
+**①、优化子查询**
+
+子查询，特别是在 select 列表和 where 子句中的子查询，往往会导致性能问题，因为它们可能会为每一行外层查询执行一次子查询。
+
+使用子查询：
+
+```sql
+select name from A where id in (select id from B);
+```
+
+使用 JOIN 代替子查询：
+
+```sql
+select A.name from A join B on A.id=B.id;
+```
+
+**②、小表驱动大表**
+
+在执行 JOIN 操作时，应尽量让行数较少的表（小表）驱动行数较多的表（大表），这样可以减少查询过程中需要处理的数据量。
+
+比如 left join，左表是驱动表，所以 A 表应小于 B 表，这样建立连接的次数就少，查询速度就快了。
+
+```sql
+select name from A left join B;
+```
+
+**③、适当增加冗余字段**
+
+在某些情况下，通过在表中适当增加冗余字段来避免 JOIN 操作，可以提高查询效率，尤其是在高频查询的场景下。
+
+比如，我们有一个订单表和一个商品表，查询订单时需要显示商品名称，如果每次都通过 JOIN 操作查询商品表，会降低查询效率。这时可以在订单表中增加一个冗余字段，存储商品名称，这样就可以避免 JOIN 操作。
+
+```sql
+select order_id, product_name from orders;
+```
+
+**④、避免使用 JOIN 关联太多的表**
+
+《[阿里巴巴 Java 开发手册](https://javabetter.cn/pdf/ali-java-shouce.html)》上就规定，不要使用 join 关联太多的表，最多不要超过 3 张表。
+
+因为 join 太多表会降低查询的速度，返回的数据量也会变得非常大，不利于后续的处理。
+
+如果业务逻辑允许，可以考虑将复杂的 JOIN 查询分解成多个简单查询，然后在应用层组合这些查询的结果。
+
+#### 如何进行排序优化？
+
+MySQL 生成有序结果的方式有两种：一种是对结果集进行排序操作，另外一种是按照索引顺序扫描得出的自然有序结果。
+
+因此在设计索引的时候要充分考虑到排序的需求。
+
+```sql
+select id, name from users order by name;
+```
+
+如果 name 字段上有索引，那么 MySQL 可以直接利用索引的有序性，避免排序操作。
+
+#### 如何进行 UNION 优化？
+
+UNION 操作用于合并两个或者多个 SELECT 语句的结果集。
+
+**①、条件下推**
+
+条件下推是指将 where、limit 等子句下推到 union 的各个子查询中，以便优化器可以充分利用这些条件进行优化。
+
+假设我们有两个查询分支，需要合并结果并过滤：
+
+```sql
+SELECT * FROM (
+    SELECT * FROM A
+    UNION
+    SELECT * FROM B
+) AS sub
+WHERE sub.id = 1;
+```
+
+可以改写成：
+
+```sql
+SELECT * FROM A WHERE id = 1
+UNION
+SELECT * FROM B WHERE id = 1;
+```
+
+通过将查询条件下推到 UNION 的每个分支中，每个分支查询都只处理满足条件的数据，减少了不必要的数据合并和过滤。
 
 ## 高性能
 
@@ -795,3 +953,6 @@ MySQL 的主从复制依赖于 binlog ，复制的过程就是将 binlog 中的�
 其他情况：
 
 也有可能是每个 sql 消耗资源并不多，但是突然之间，有大量的 session 连进来导致 cpu 飙升，这种情况就需要跟应用一起来分析为何连接数会激增，再做出相应的调整，比如说限制连接数等
+
+### 分库分表
+![alt text](mysql\image1.png)
