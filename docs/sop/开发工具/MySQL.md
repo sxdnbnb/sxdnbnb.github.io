@@ -955,4 +955,5 @@ MySQL 的主从复制依赖于 binlog ，复制的过程就是将 binlog 中的�
 也有可能是每个 sql 消耗资源并不多，但是突然之间，有大量的 session 连进来导致 cpu 飙升，这种情况就需要跟应用一起来分析为何连接数会激增，再做出相应的调整，比如说限制连接数等
 
 ### 分库分表
-![alt text](mysql\image1.png)
+![alt text](mysql\image-2.png)
+![alt text](mysql\image-1.png)
