@@ -41,5 +41,8 @@ sidebar: false # 侧边栏
 
 * [408](https://sxdnbnb.github.io/?tag=408&type=)
   * [计算机网络](./sop/408/ComputerNet.md)
+  
+* [算法]()
+  * [算法模板](./sop/算法/template.md)
 
 * [各类资源网站](./sop/resource/resource.md)
