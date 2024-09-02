@@ -219,7 +219,7 @@ for (int i = 0; i < n; i++){
 ```
 ## 长度为`k`的滑动窗口维护窗口中的元素之和
 ```java
-for (int i = 0; i < n; i++){
+for (int i = 0; i < n; i++){ // 遍历窗口尾部
     int head = i - k + 1; // 窗口头部
     // 窗口头部没滑到数组头部
     if (head < 0)｛
@@ -238,7 +238,7 @@ for (int i = 0; i < n; i++){
 更一般的，
 ```java
 // 窗口从数组的start开始, 每次滑动m
-for (int i = start; i < n; i += m){
+for (int i = start; i < n; i += m){ // 遍历窗口尾部
     int head = i - k + 1; // 窗口头部
     // 窗口头部没滑到数组头部
     if (head < start)｛
