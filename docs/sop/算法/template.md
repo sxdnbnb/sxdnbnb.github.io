@@ -217,17 +217,40 @@ for (int i = 0; i < n; i++){
         print(q.getFirst());
 }
 ```
-## 长度为k的滑动窗口维护窗口中的元素之和
+## 长度为`k`的滑动窗口维护窗口中的元素之和
 ```java
 for (int i = 0; i < n; i++){
+    int head = i - k + 1; // 窗口头部
     // 窗口头部没滑到数组头部
-    if (i - k + 1 < 0)｛
+    if (head < 0)｛
         sum += nums[i];
         continue;
     ｝
+    // 划入
     sum += nums[i];
-    max = Math.max(max, sum);
-    sum -= nums[i - k + 1];
+    // 操作
+    ...
+    // 划出
+    sum -= nums[head];
+}
+```
+
+更一般的，
+```java
+// 窗口从数组的start开始, 每次滑动m
+for (int i = start; i < n; i += m){
+    int head = i - k + 1; // 窗口头部
+    // 窗口头部没滑到数组头部
+    if (head < start)｛
+        ...
+        continue;
+    ｝
+    // 划入
+    ...
+    // 操作
+    ...
+    // 划出
+    ...
 }
 ```
 ## 不定长的滑动窗口
