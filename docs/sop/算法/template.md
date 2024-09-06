@@ -11,13 +11,13 @@ sticky: 90  # 精选文章热度
 # author: 暮冬浅夏
 ---
 # 算法模板
-## map计数
+## 1.map计数
 ```java
 for (int num : nums){
     map.put(num, map.getOrDefault(num, 0) + 1);
 }
 ```
-## 快速排序
+## 2.快速排序
 ```java
 // 调用：quick_sort(a, 0, n - 1)
 void quick_sort(int[] q, int l, int r){
@@ -39,7 +39,7 @@ void quick_sort(int[] q, int l, int r){
     quick_sort(q, j + 1, r);
 }
 ```
-## 归并排序
+## 3.归并排序
 ```java
     int[] temp = new int[n]; // 辅助数组
     // 将[l, r]排好序
@@ -72,7 +72,7 @@ void quick_sort(int[] q, int l, int r){
         }
     }
 ```
-## 二分
+## 4.二分
 ```java
     // 是否满足条件
     boolean check(int x){/*....*/}
@@ -99,7 +99,7 @@ void quick_sort(int[] q, int l, int r){
         return l;
     }
 ```
-## 一维前缀和
+## 5.一维前缀和
 ```java
     //S(i+1) = S(i) + a(i)
     // a(l)+a(l+1)+...+a(r) = S(r+1)-S(l)
@@ -107,7 +107,7 @@ void quick_sort(int[] q, int l, int r){
         s[i + 1] = s[i] + a[i];
     }
 ```
-## 一维差分
+## 6.一维差分
 ```java
     // 给区间[l, r]中的每个数加上c
     void insert(int l, int r, int c){
@@ -123,7 +123,7 @@ void quick_sort(int[] q, int l, int r){
         B[i + 1] += B[i];
     }
 ```
-## 双指针
+## 7.双指针
 ```java
     // i从头到尾，j不回头
     for (int i = 0, j = 0; i < n; i++){
@@ -132,7 +132,7 @@ void quick_sort(int[] q, int l, int r){
     }
 ```
 
-## 位运算
+## 8.位运算
 1. 求n的右数第k位二进制数
 ```java
 n >> k & 1;
@@ -153,14 +153,14 @@ n % (n - 1);
 ```java
 Integer.bitCount(int x);
 ```
-## 最大公约数
+## 9.最大公约数
 ```java
 int gcd(int a, int b){
     return b != 0 ? gcd(b, a % b) : a;
 }
 ```
 
-## 区间合并
+## 10.区间合并
 ```java
 public int[][] merge(int[][] intervals) {
     // L指向区间开头，R指向区间尾
@@ -182,7 +182,7 @@ public int[][] merge(int[][] intervals) {
     return ans.toArray(new int[ans.size()][2]);
 }
 ```
-## 单调栈
+## 11.单调栈
 应用：为数组中每个数找出它左边距离最近的比它小（大）的数
 
 思想：当a(x)<=a(y)，且y>x时，删掉a(x) 
@@ -197,7 +197,7 @@ for (int i = 0; i < n; i++){
 }
 ```
 
-## 单调队列（双端队列）
+## 12.单调队列（双端队列）
 应用：找出滑动窗口中的最值（滑动窗口头部坐标：i-k+1, k是窗口长度）
 
 操作：队列中存窗口元素的下标，如果a(i)比队尾下标对应的元素小，则队尾下标出队，再入a(i)下标
@@ -217,7 +217,7 @@ for (int i = 0; i < n; i++){
         print(q.getFirst());
 }
 ```
-## 长度为`k`的滑动窗口维护窗口中的元素之和
+## 13.长度为`k`的滑动窗口维护窗口中的元素之和
 ```java
 for (int i = 0; i < n; i++){ // 遍历窗口尾部
     int head = i - k + 1; // 窗口头部
@@ -253,7 +253,7 @@ for (int i = start; i < n; i += m){ // 遍历窗口尾部
     ...
 }
 ```
-## 不定长的滑动窗口
+## 14.不定长的滑动窗口
 遍历右端点，左端点找满足条件的
 ```java
 for (int r = 0; r < n; r++){
@@ -264,7 +264,7 @@ for (int r = 0; r < n; r++){
     }
 }
 ```
-## 二叉树
+## 15.二叉树
 - 不要思考整体，聚焦局部，考虑单独抽出一个二叉树节点需要做什么
 - 明确递归函数定义，并利用定义
 1. 遍历
@@ -302,7 +302,7 @@ int count(TreeNode root) {
     return leftCount + rightCount + 1;
 }
 ```
-## DP动态规划（输入分解问题，关注子树）
+## 16.DP动态规划（输入分解问题，关注子树）
 - 假设dp[0,...,i-1]被计算出来了，考虑怎么求dp[i]
 
 - 遍历过程中，所需的状态必须是已经被计算出来
@@ -339,7 +339,7 @@ for 状态1 in 状态1的所有取值：
             dp[状态1][状态2][...] = 求最值(选择1，选择2...)
 ```
 
-## 回溯（属于遍历问题，关注树枝）
+## 17.回溯（属于遍历问题，关注树枝）
 时间复杂度: O(n!)
 
 抽象地说，解决一个回溯问题，实际上就是遍历一棵决策树的过程，树的每个叶子节点存放着一个合法答案。你把整棵树遍历一遍，把叶子节点上的答案都收集起来，就能得到所有的合法答案。
@@ -366,7 +366,7 @@ void backtrack(路径, 选择列表)
     }  
 ```
 
-### 排列/组合/子集问题
+### 18.排列/组合/子集问题
 ![alt text](template\image.png)
 ![alt text](template\image-1.png)
 1. 元素无重不可复选，即 nums 中的元素都是唯一的，每个元素最多只能被使用一次，backtrack 核心代码如下：
@@ -473,7 +473,7 @@ void backtrack(int[] nums) {
     }
 }
 ```
-## DFS（属于遍历问题，关注单个节点）
+## 19.DFS（属于遍历问题，关注单个节点）
 ```java
 void backtrack(...) {
     if (到达叶子节点) {
@@ -489,7 +489,7 @@ void backtrack(...) {
     ...
 }
 ```
-### DFS和回溯
+### 20.DFS和回溯
 ```java
 // 回溯
 void backtrack(Node root) {
@@ -527,7 +527,7 @@ void dfs(Node root) {
     printf("我在 %s 节点上撤销选择", root);
 }
 ```
-## BFS
+## 21.BFS
 应用场景：问题的本质是在一幅「图」中找到从起点 start 到终点 target 的最近距离
 ```java
 // 计算从起点 start 到终点 target 的最近距离
@@ -557,4 +557,46 @@ int BFS(Node start, Node target) {
     }
     // 如果走到这里，说明在图中没有找到目标节点
 }
+```
+### 22.字典树
+```java
+    int N = 300010;
+    int[][] son = new int[N][26]; // 儿子的位置 = son[父亲的位置][儿子的名字];
+    int idx = 0; // 全局编号
+    int[] cnt = new int[N]; // 记录字符串个数
+
+    // 插入
+    public void insert(String word) {
+        int p = 0; // 节点指针
+        for (int i = 0; i < word.length(); i++){
+            int u = word.charAt(i) - 'a';
+            if (son[p][u] == 0)
+                son[p][u] = ++idx;
+            p = son[p][u];
+        }
+        cnt[p]++; // 个数增加
+    }
+    // 查找是否存在
+    public boolean search(String word) {
+        int p = 0;
+        for (int i = 0; i < word.length(); i++){
+            int u = word.charAt(i) - 'a';
+            if (son[p][u] == 0)
+                return false; 
+            p = son[p][u];
+        }
+        return cnt[p] != 0;
+    }
+    
+    // 查找是否是前缀
+    public boolean startsWith(String prefix) {
+        int p = 0;
+        for (int i = 0; i < prefix.length(); i++){
+            int u = prefix.charAt(i) - 'a';
+            if (son[p][u] == 0)
+                return false; 
+            p = son[p][u];
+        }
+        return true;
+    }
 ```
