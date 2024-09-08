@@ -600,3 +600,47 @@ int BFS(Node start, Node target) {
         return true;
     }
 ```
+### 23.并查集
+应用：将两个集合合并、询问两个元素是否在一个集合中
+```java
+class UnionFind {
+    int[] parents;
+
+    public UnionFind(int totalNodes) { // 初始化
+        parents = new int[totalNodes];
+        for (int i = 0; i < totalNodes; i++) {
+            parents[i] = i;
+        }
+    }
+	// 合并两个元素
+    void union(int node1, int node2) {
+        int root1 = find(node1);
+        int root2 = find(node2);
+        if (root1 != root2) {
+            parents[root2] = root1;
+        }
+    }
+    // 返回元素的祖宗节点
+    int find(int node) {
+        if (parents[node] != node){
+            parents[node] = find(parents[node]);
+        }
+        return parents[node];
+    }
+    // 判断是否在统一集合中
+    boolean isConnected(int node1, int node2) {
+        return find(node1) == find(node2);
+    }
+}
+```
+### 24.求最大子数组之和（Kadane算法）
+```java
+public int maxSubArray(int[] nums) {
+    int pre = 0, maxAns = nums[0];
+    for (int x : nums) {
+        pre = Math.max(pre + x, x);
+        maxAns = Math.max(maxAns, pre);
+    }
+    return maxAns;
+}
+```
