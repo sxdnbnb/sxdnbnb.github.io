@@ -644,3 +644,107 @@ public int maxSubArray(int[] nums) {
     return maxAns;
 }
 ```
+### 25.邻接表存图
+```java
+    // 图中共有n个节点
+    List<Integer>[] graph = new LinkedList[n];
+    for (int i = 0; i < n; i++) {
+        graph[i] = new LinkedList<>();
+    }
+    for (int[] edge : edges) {
+        int from = edge[0], to = edge[1];
+        // 添加一条从 from 指向 to 的有向边
+        graph[from].add(to);
+    }
+```
+### 26.邻接矩阵存图
+```java
+    int[][] graph = new int[n][n];
+    for (int[] edge : edges) {
+        int from = edge[0];
+        int to = edge[1];
+        graph[from][to] = 1; 
+    }
+```
+### 判断有向无环图
+1. 拓扑排序
+```java
+    // 构建入度数组
+    int[] indegree = new int[n];
+    for (int[] edge : edges) {
+        int from = edge[0], to = edge[1];
+        // 节点 to 的入度加一
+        indegree[to]++;
+    }
+
+    // 根据入度初始化队列中的节点
+    Queue<Integer> q = new LinkedList<>();
+    for (int i = 0; i < n; i++) {
+        if (indegree[i] == 0) {
+            // 节点 i 没有入度，即没有依赖的节点
+            // 可以作为拓扑排序的起点，加入队列
+            q.offer(i);
+        }
+    }
+
+    // 记录遍历的节点个数
+    int count = 0;
+    // 开始执行 BFS 循环
+    while (!q.isEmpty()) {
+        // 弹出节点 cur，并将它指向的节点的入度减一
+        int cur = q.poll();
+        count++;
+        for (int next : graph[cur]) {
+            indegree[next]--;
+            if (indegree[next] == 0) {
+                // 如果入度变为 0，说明 next 依赖的节点都已被遍历
+                q.offer(next);
+            }
+        }
+    }
+
+    // 如果所有节点都被遍历过，说明不成环
+    return count == n;
+```
+2. DFS实现
+```java
+    // 记录一次 traverse 递归经过的节点
+    boolean[] onPath;
+    // 记录遍历过的节点，防止走回头路
+    boolean[] visited;
+    // 记录图中是否有环
+    boolean hasCycle = false;
+
+    public boolean canFinish(int n, int[][] edges) {
+        List<Integer>[] graph = buildGraph(n, edges);
+        onPath = new boolean[n];
+        visited = new boolean[n];
+        // 遍历图中的所有节点
+        for (int i = 0; i < n; i++){
+            traverse(graph, i);
+        }
+        return !hasCycle;
+    }
+
+    // dfs
+    void traverse(List<Integer>[] graph, int s) {
+        // 如果已经找到了环，也不用再遍历了
+        if (hasCycle || visited[s])
+            return;
+        if (onPath[s]){
+            // 出现环
+            hasCycle = true;
+        }
+        // 选择
+        visited[s] = true;
+        onPath[s] = true;
+        
+        // 遍历
+        for (int i : graph[s]){
+            traverse(graph, i);
+        }
+        // 取消选择
+        onPath[s] = false;
+            
+    }
+```
