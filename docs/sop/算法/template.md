@@ -366,7 +366,7 @@ void backtrack(路径, 选择列表)
     }  
 ```
 
-### 18.排列/组合/子集问题
+## 18.排列/组合/子集问题
 ![alt text](template\image.png)
 ![alt text](template\image-1.png)
 1. 元素无重不可复选，即 nums 中的元素都是唯一的，每个元素最多只能被使用一次，backtrack 核心代码如下：
@@ -489,7 +489,7 @@ void backtrack(...) {
     ...
 }
 ```
-### 20.DFS和回溯
+## 20.DFS和回溯
 ```java
 // 回溯
 void backtrack(Node root) {
@@ -558,7 +558,7 @@ int BFS(Node start, Node target) {
     // 如果走到这里，说明在图中没有找到目标节点
 }
 ```
-### 22.字典树
+## 22.字典树
 ```java
     int N = 300010;
     int[][] son = new int[N][26]; // 儿子的位置 = son[父亲的位置][儿子的名字];
@@ -600,7 +600,7 @@ int BFS(Node start, Node target) {
         return true;
     }
 ```
-### 23.并查集
+## 23.并查集
 应用：将两个集合合并、询问两个元素是否在一个集合中
 ```java
 class UnionFind {
@@ -633,7 +633,7 @@ class UnionFind {
     }
 }
 ```
-### 24.求最大子数组之和（Kadane算法）
+## 24.求最大子数组之和（Kadane算法）
 ```java
 public int maxSubArray(int[] nums) {
     int pre = 0, maxAns = nums[0];
@@ -644,7 +644,7 @@ public int maxSubArray(int[] nums) {
     return maxAns;
 }
 ```
-### 25.邻接表存图
+## 25.邻接表存图
 ```java
     // 图中共有n个节点
     List<Integer>[] graph = new LinkedList[n];
@@ -657,7 +657,7 @@ public int maxSubArray(int[] nums) {
         graph[from].add(to);
     }
 ```
-### 26.邻接矩阵存图
+## 26.邻接矩阵存图
 ```java
     int[][] graph = new int[n][n];
     for (int[] edge : edges) {
@@ -666,7 +666,7 @@ public int maxSubArray(int[] nums) {
         graph[from][to] = 1; 
     }
 ```
-### 判断有向无环图
+## 27.判断有向无环图
 1. 拓扑排序
 ```java
     // 构建入度数组
@@ -738,7 +738,7 @@ public int maxSubArray(int[] nums) {
         // 选择
         visited[s] = true;
         onPath[s] = true;
-        
+
         // 遍历
         for (int i : graph[s]){
             traverse(graph, i);
