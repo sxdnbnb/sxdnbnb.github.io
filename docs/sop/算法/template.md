@@ -533,10 +533,10 @@ void dfs(Node root) {
 // 计算从起点 start 到终点 target 的最近距离
 int BFS(Node start, Node target) {
     Queue<Node> q; // 核心数据结构
-    Set<Node> visited; // 避免走回头路
+    Set<Node> visited; // 避免走回头路，遍历树不需要
     
     q.offer(start); // 将起点加入队列
-    visited.add(start);
+    visited.add(start); 
 
     while (q not empty) {
         int sz = q.size();
