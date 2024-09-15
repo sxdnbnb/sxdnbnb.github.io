@@ -540,7 +540,7 @@ int BFS(Node start, Node target) {
 
     while (q not empty) {
         int sz = q.size();
-        /* 将当前队列中的所有节点向四周扩散 */
+        /* 将当前队列中的所有节点向四周扩散，逐层遍历*/
         for (int i = 0; i < sz; i++) {
             Node cur = q.poll();
             /* 划重点：这里判断是否到达终点 */
@@ -554,6 +554,7 @@ int BFS(Node start, Node target) {
                 }
             }
         }
+        step++;
     }
     // 如果走到这里，说明在图中没有找到目标节点
 }
