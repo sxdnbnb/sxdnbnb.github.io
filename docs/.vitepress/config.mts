@@ -103,5 +103,14 @@ export default defineConfig({
         link: 'https://github.com/sxdnbnb'
       }
     ],
+    sidebar: [
+      {
+        text: 'Guide',
+        items: [
+          { text: 'Introduction', link: '/introduction' },
+          { text: 'Getting Started', link: '/getting-started' },
+        ]
+      }
+    ]
   }
 })
