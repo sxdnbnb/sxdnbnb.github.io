@@ -11,8 +11,12 @@ tag:
 2. [搜片](https://soupian.one)
 3. [聚合影视](https://www.juheyingshi.com)
 4. [茶杯虎](https://725998.com)
-5. [电影先生](https://xindizhi.github.io/dyxs/)
+5. [电影先生](https://dianyi.ng/)
 6. [影视森林](https://549.fr/)
+7. [kimivod](https://kimivod.com/)
+8. [影剧搜](https://link3.cc/bababa888)
+9. [姿态影院](https://www.zt86.com/)
+10. [爱看影视](https://yingqu.net/)
    
 ### 影视网站
 1. [大师兄影视](https://www.jxsgssn.com)
