@@ -1,6 +1,6 @@
 ---
 description: Java的必会基础知识
-title: Java基础
+title: Java基础知识
 # readingTime: false
 tag:
  - Java

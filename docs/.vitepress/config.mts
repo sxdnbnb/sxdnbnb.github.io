@@ -85,6 +85,7 @@ export default defineConfig({
     //     'https://github.com/ATQQ/sugar-blog/tree/master/packages/blogpress/:path',
     //   text: '去 GitHub 上编辑内容'
     // },
+      
     nav: [
       { text: '首页', link: '/' },
       { text: 'Java基础', link: 'https://sxdnbnb.github.io/?tag=Java'},
