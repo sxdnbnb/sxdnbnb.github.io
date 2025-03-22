@@ -51,21 +51,6 @@ export default defineConfig({
         src: 'https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=0&f=12&display=0,0,1,1,0,0,0,1'
       }
     ],
-    // busuanzi计数统计
-    [
-      'script',
-      { async: 'true', src: '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js' }
-    ],
-    // v6.51计数统计
-    [
-      'script',
-      {
-        'id': 'LA-DATA-WIDGET',
-        'crossorigin': 'anonymous',
-        'charset': 'UTF-8',
-        'src': 'https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=0&f=12&display=0,0,1,1,0,0,0,1'
-      }
-    ]
   ],
   themeConfig: {
     // 展示 2,3 级标题在目录中
