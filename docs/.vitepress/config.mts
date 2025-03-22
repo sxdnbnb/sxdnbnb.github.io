@@ -42,15 +42,7 @@ export default defineConfig({
           'content': 'no-referrer'
       }
     ],
-    [
-      'script',
-      {
-        id: 'LA-DATA-WIDGET',
-        crossorigin: 'anonymous',
-        charset: 'UTF-8',
-        src: 'https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=0&f=12&display=0,0,1,1,0,0,0,1'
-      }
-    ],
+    
   ],
   themeConfig: {
     // 展示 2,3 级标题在目录中
