@@ -29,6 +29,11 @@ const blogTheme = getThemeConfig({
   footer: {
     // message 字段支持配置为HTML内容，配置多条可以配置为数组
     // message: '下面 的内容和图标都是可以修改的噢（当然本条内容也是可以隐藏的）',
+    message: `
+    <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" 
+      src="https://v6-widget.51.la/v6/3Ld7ejLCcvsjh0QI/quote.js?theme=,#FFFFFF,#FFFFFF,#7A7777,#FFFFFF,#1690FF,10&f=12&display=0,0,0,0,0,0,1,1">
+    </script>
+    `,
     copyright: {
       message: 'MIT License | 暮冬浅夏',
       link: 'https://github.com/sxdnbnb',
