@@ -16,7 +16,7 @@ const tkConfig = defineTeekConfig({
   },
 
   docAnalysis: {
-    createTime: "2021-10-19",
+    createTime: "2025-04-01",
     statistics: {
       provider: "busuanzi",
     },
@@ -36,17 +36,17 @@ const tkConfig = defineTeekConfig({
     imgInterval: 8000,
     imgShuffle: true,  // 当多张大图时（imgSrc 为数组），设置切换时间，单位：毫秒   
     imgSrc: [
-      "/img/12.jpg", 
-      "/img/13.jpg", 
-      "/img/1.jpg", 
-      "/img/2.jpg", 
-      "/img/3.jpg", 
-      "/img/4.jpg", 
-      "/img/5.jpg", 
-      "/img/6.jpg", 
-      "/img/7.jpg", 
+      "/img/12.jpg",
+      "/img/13.jpg",
+      "/img/1.jpg",
+      "/img/2.jpg",
+      "/img/3.jpg",
+      "/img/4.jpg",
+      "/img/5.jpg",
+      "/img/6.jpg",
+      "/img/7.jpg",
       "/img/8.jpg",
-      "/img/9.jpg", 
+      "/img/9.jpg",
       "/img/10.jpg",
       "/img/11.jpg"
     ],
@@ -102,7 +102,7 @@ const tkConfig = defineTeekConfig({
       "不要被周围的声音干扰，坚持自己认定的道路",
       "成功不是终点，失败也不是终结",
       "时间会证明一切，耐心是最好的答案",
-      "活在当下，珍惜现在，期待未来",      
+      "活在当下，珍惜现在，期待未来",
     ], // 描述信息
     switchTime: 4000, // 描述信息切换间隔时间，单位：毫秒。descStyle 为 switch 时生效
     switchShuffle: false, // 描述信息是否随机切换，为 false 时按顺序切换。descStyle 为 switch 时生效
@@ -110,7 +110,7 @@ const tkConfig = defineTeekConfig({
     typesOutTime: 100, // 删除一个文字的时间，单位：毫秒。descStyle 为 types 时生效
     typesNextTime: 800, // 打字与删字的间隔时间，单位：毫秒。descStyle 为 types 时生效
     typesShuffle: false, // 描述信息是否随机打字，为 false 时按顺序打字，descStyle 为 types 时生效
-  },    
+  },
   // bodyBgImg: {
   //   imgSrc: ["/img/bg1.jpg", "/img/bg2.png"],
   //   bannerStyle: "full",
@@ -151,7 +151,7 @@ const tkConfig = defineTeekConfig({
       const longTime = 6 * 30 * 24 * 60 * 60 * 1000;
       if (frontmatter.date && Date.now() - new Date(frontmatter.date).getTime() > longTime) return tip;
     },
-  },  
+  },
   // 设置主题尺寸
   // themeSetting: {
   //   themeSize: "large",
@@ -165,7 +165,7 @@ const tkConfig = defineTeekConfig({
   friendLink: {
     list: [
       { avatar: "/img/teek-logo-large.png", name: "Young Kbt blog", desc: "Teeker作者", link: "https://notes.youngkbt.cn/" },
-      ],
+    ],
   },
 
 
@@ -271,7 +271,7 @@ const tkConfig = defineTeekConfig({
       // initItems: false, //这条命令注释后，才会让文档和目录的样式保持一致
       collapsed: true, //打开侧边栏自动收缩功能
     },
-  },  
+  },
 
 
   markdown: {
@@ -327,7 +327,7 @@ export default defineConfig({
       "script",
       {
         type: "text/javascript",
-        src: "https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js",
+        src: "https://myhkw.cn/player/js/jquery.min.js",
       },
     ], // 插入自定义脚本
     [
@@ -335,8 +335,8 @@ export default defineConfig({
       {
         type: "text/javascript",
         id: "myhk",
-        src: "https://myhkw.cn/api/player/174291586956",
-        key: "174291586956",
+        src: "https://myhkw.cn/api/player/174271691795",
+        key: "174271691795",
         m: "1",
         defer: "defer",  // 添加defer属性，确保脚本在DOM加载完成后执行
       },
@@ -377,17 +377,19 @@ export default defineConfig({
 
     nav: [
       { text: "🏡首页", link: "/" },
-      { text: "🗃️笔记",
+      {
+        text: "🗃️笔记",
         items: [
           { text: "Java基础", link: "/java" },
           { text: "Java项目", link: "/project" },
           { text: "开发工具", link: "/develop" },
-          { text: '数据库', link: '/database'},
-          { text: '408', link: '/408'},
-          { text: '算法', link: '/algorithm'},
+          { text: '数据库', link: '/database' },
+          { text: '408', link: '/408' },
+          { text: '算法', link: '/algorithm' },
         ],
       },
-      { text: "💖小屋", 
+      {
+        text: "💖小屋",
         items: [
           { text: "相册", link: "/photo" },
           { text: "随笔", link: "/essay" },
@@ -430,5 +432,5 @@ export default defineConfig({
     build: {
       chunkSizeWarningLimit: 35000, // 限制警告的块大小
     },
-  },  
+  },
 });
