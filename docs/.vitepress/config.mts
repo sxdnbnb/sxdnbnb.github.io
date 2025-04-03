@@ -316,13 +316,18 @@ export default defineConfig({
     ["link", { rel: "stylesheet", href: "//at.alicdn.com/t/font_2989306_w303erbip9.css" }], // 阿里在线矢量库
 
     //添加看板娘
-    ['script', { src: 'https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js' }],    
-    // 添加音乐
     [
       "script",
       {
-      type: "text/javascript",
-      src: "https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js",
+        src: "https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js",
+      },
+    ],
+    //免费的音乐播放器
+    [
+      "script",
+      {
+        type: "text/javascript",
+        src: "https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js",
       },
     ], // 插入自定义脚本
     [
@@ -330,12 +335,12 @@ export default defineConfig({
       {
         type: "text/javascript",
         id: "myhk",
-        src: "https://myhkw.cn/api/player/174271691795",
-        key: "174271691795",
+        src: "https://myhkw.cn/api/player/174291586956",
+        key: "174291586956",
         m: "1",
-        defer: "defer",  // 添加defer属性，确保脚本在DOM加载完成后执行
-      }
-    ]
+        defer: "defer",  // 添加defer属性，确保脚本在DOM加载完成后执行
+      },
+    ],
   ],
   markdown: {
     // 开启行号
