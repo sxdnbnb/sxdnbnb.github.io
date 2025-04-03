@@ -321,11 +321,19 @@ export default defineConfig({
     [
       "script",
       {
+      type: "text/javascript",
+      src: "https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js",
+      },
+    ], // 插入自定义脚本
+    [
+      "script",
+      {
         type: "text/javascript",
         id: "myhk",
         src: "https://myhkw.cn/api/player/174271691795",
         key: "174271691795",
-        m: "1"
+        m: "1",
+        defer: "defer",  // 添加defer属性，确保脚本在DOM加载完成后执行
       }
     ]
   ],
