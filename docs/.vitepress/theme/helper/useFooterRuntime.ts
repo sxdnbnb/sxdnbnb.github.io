@@ -1,7 +1,7 @@
 import { inBrowser } from "vitepress";
 
 export const useFooterRuntime = () => {
-  const startTime = new Date("2021-10-19 00:00:00"); // 替换为你的网站启动时间
+  const startTime = new Date("2025-04-01 00:00:00"); // 替换为你的网站启动时间
   let runtimeElement: HTMLElement | null = null;
   let intervalId: NodeJS.Timeout | null = null;
 

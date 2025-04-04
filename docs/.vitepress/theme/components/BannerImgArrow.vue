@@ -30,7 +30,7 @@ const isMobile = ref(false);
   <div v-if="theme.banner.bgStyle === 'fullImg' && !isMobile" :class="`${namespace}-arrow tk-wallpaper-outside`">
     <TkIcon
       :icon="arrowSvg"
-      size="40px"
+      size="50px"
       color="#ffffff"
       :class="`${namespace}-arrow__icon`"
       @click="handleClickArrow"
@@ -43,7 +43,7 @@ $namespace: banner;
 
 .#{$namespace}-arrow {
   position: absolute;
-  bottom: 95px;
+  bottom: 120px;
   left: 50%;
   transform: translateX(-50%);
 
