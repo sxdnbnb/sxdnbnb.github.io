@@ -64,7 +64,6 @@ const tkConfig = defineTeekConfig({
       "万般努力只为出人头地，低头弯腰只为爬的更高",
 
       // 动漫经典语录
-      "无论你在哪里，我一定会找到你 —— 星际牛仔",
       "重要的不是你长得漂亮与否，而是你的心灵是否美丽 —— 千与千寻",
       "我们仰望着同一片天空，却看着不同的地方 —— 秒速五厘米",
       "比自己的生命更重要的东西永远存在着 —— fate",
@@ -137,6 +136,7 @@ const tkConfig = defineTeekConfig({
     showUpdateDate: true, // 是否展示更新日期，是否展示更新时间，仅在文章页显示
     showCategory: true, // 是否展示分类
     showTag: true, // 是否展示标签
+    
     topTip: frontmatter => {
       const tip: Record<string, string> = {
         type: "warning",
@@ -147,8 +147,8 @@ const tkConfig = defineTeekConfig({
       // frontmatter.long 为 true，则添加提示
       if (frontmatter.long) return tip;
 
-      // frontmatter.date 大于半年，则添加提示
-      const longTime = 6 * 30 * 24 * 60 * 60 * 1000;
+      // frontmatter.date 大于一年，则添加提示
+      const longTime = 12 * 30 * 24 * 60 * 60 * 1000;
       if (frontmatter.date && Date.now() - new Date(frontmatter.date).getTime() > longTime) return tip;
     },
   },
