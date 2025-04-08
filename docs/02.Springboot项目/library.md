@@ -6,7 +6,7 @@ tags:
   - 项目
 permalink: /project/library
 coverImg:
-  - /img/ikun/k7.gif
+  - https://www.yotu.net/i/67f4fa40bc739.png
 categories:
   - Springboot项目
 ---

@@ -7,7 +7,7 @@ tags:
   - 开发工具
 permalink: /database/Redis
 coverImg:
-  - /img/ikun/k1.gif
+  - https://www.yotu.net/i/67f4f7de9bfb6.png
 categories:
   - 数据库
 ---

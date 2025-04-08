@@ -6,7 +6,7 @@ tags:
   - 工具
 permalink: /develop/Linux
 coverImg:
-  - /img/3.jpg
+  - https://www.yotu.net/i/67f4f78e177ba.png
 categories:
   - 开发工具
 ---

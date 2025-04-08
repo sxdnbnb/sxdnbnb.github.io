@@ -6,7 +6,7 @@ tags:
   - 工具
 permalink: /develop/Docker
 coverImg:
-  - /img/ikun/k12.gif
+  - https://www.yotu.net/i/67f4fa3f41a39.png
 categories:
   - 开发工具
 ---

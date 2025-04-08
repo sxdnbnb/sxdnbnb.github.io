@@ -6,7 +6,7 @@ tags:
   - Markdown
 permalink: /develop/Markdown
 coverImg:
-  - /img/4.jpg
+  - https://www.yotu.net/i/67f4f78e82dff.png
 categories:
   - 开发工具
 ---

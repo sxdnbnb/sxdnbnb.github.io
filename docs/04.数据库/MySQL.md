@@ -6,7 +6,7 @@ tags:
   - 数据库
 permalink: /database/MySQL
 coverImg:
-  - /img/11.jpg
+  - https://www.yotu.net/i/67f4f7de90338.png
 categories:
   - 数据库
 ---

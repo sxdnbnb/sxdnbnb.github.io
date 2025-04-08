@@ -6,7 +6,7 @@ tags:
   - 工具
 permalink: /project/MyBatis-Plus
 coverImg:
-  - /img/ikun/k9.gif
+  - https://www.yotu.net/i/67f4fa3e218f8.png
 categories:
   - 开发工具
 ---

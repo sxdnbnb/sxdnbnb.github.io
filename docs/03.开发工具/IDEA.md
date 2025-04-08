@@ -6,7 +6,7 @@ tags:
   - 工具
 permalink: /develop/IDEA
 coverImg:
-  - /img/2.jpg
+  - https://www.yotu.net/i/67f4f78dad91f.png
 categories:
   - 开发工具
 ---

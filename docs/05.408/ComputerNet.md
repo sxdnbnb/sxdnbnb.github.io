@@ -6,7 +6,7 @@ tags:
   - 408
 permalink: /408/computerNet
 coverImg:
-  - /img/ikun/k2.gif
+  - https://www.yotu.net/i/67f4f7e0acfe7.png
 categories:
   - 408
 ---

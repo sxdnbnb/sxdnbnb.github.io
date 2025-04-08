@@ -6,7 +6,7 @@ tags:
   - 工具
 permalink: /project/Lombok
 coverImg:
-  - /img/ikun/k8.gif
+  - https://www.yotu.net/i/67f4f78b2aaa0.png
 categories:
   - 开发工具
 ---

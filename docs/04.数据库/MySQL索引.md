@@ -6,7 +6,7 @@ tags:
   - 数据库
 permalink: /database/index
 coverImg:
-  - /img/13.jpg
+  - https://www.yotu.net/i/67f4f7dea492a.png
 categories:
   - 数据库
 ---

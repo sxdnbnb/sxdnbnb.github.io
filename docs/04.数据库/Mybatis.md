@@ -7,7 +7,7 @@ tags:
   - 开发工具
 permalink: /database/MyBatis
 coverImg:
-  - /img/10.jpg
+  - https://www.yotu.net/i/67f4f7de93301.png
 categories:
   - 数据库
 ---

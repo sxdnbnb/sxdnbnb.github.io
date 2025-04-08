@@ -6,7 +6,7 @@ tags:
   - Java
 permalink: /java/lambda
 coverImg:
-  - /img/ikun/k3.gif
+  - https://www.yotu.net/i/67f4f788c391d.png
 categories:
   - Java基础
 ---

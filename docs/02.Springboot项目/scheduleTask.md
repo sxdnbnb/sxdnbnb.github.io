@@ -6,7 +6,7 @@ tags:
   - 工具
 permalink: /project/schedule
 coverImg:
-  - /img/ikun/k10.gif
+  - https://www.yotu.net/i/67f4f78bd05d1.png
 categories:
   - 开发工具
 ---

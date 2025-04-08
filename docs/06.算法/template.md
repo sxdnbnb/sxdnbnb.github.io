@@ -6,7 +6,7 @@ tags:
   - 算法
 permalink: /algorithm/template
 coverImg:
-  - /img/ikun/k3.gif
+  - https://www.yotu.net/i/67f4f7e0e18fe.png
 categories:
   - 算法
 ---

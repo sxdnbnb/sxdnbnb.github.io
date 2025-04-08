@@ -6,7 +6,7 @@ tags:
   - 工具
 permalink: /develop/Maven
 coverImg:
-  - /img/5.jpg
+  - https://www.yotu.net/i/67f4f78eb26a5.png
 categories:
   - 开发工具
 ---

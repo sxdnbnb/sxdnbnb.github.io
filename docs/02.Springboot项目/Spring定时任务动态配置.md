@@ -6,7 +6,7 @@ tags:
   - 工具
 permalink: /project/Timer
 coverImg:
-  - /img/ikun/k11.gif
+  - https://www.yotu.net/i/67f51fdb3bc5f.png
 categories:
   - 开发工具
 ---

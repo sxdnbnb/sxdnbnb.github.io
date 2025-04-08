@@ -6,7 +6,7 @@ tags:
   - 项目
 permalink: /project/battery
 coverImg:
-  - /img/ikun/k6.jpg
+  - https://www.yotu.net/i/67f51fdb522aa.png
 categories:
   - Springboot项目
 ---

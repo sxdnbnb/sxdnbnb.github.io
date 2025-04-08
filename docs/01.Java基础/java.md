@@ -6,7 +6,7 @@ tags:
   - Java
 permalink: /java/base
 coverImg:
-  - /img/ikun/k2.gif
+  - https://www.yotu.net/i/67f4f78876346.png
 categories:
   - Java基础
 ---

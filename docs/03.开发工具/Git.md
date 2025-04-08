@@ -6,7 +6,7 @@ tags:
   - 工具
 permalink: /develop/Git
 coverImg:
-  - /img/1.jpg
+  - https://www.yotu.net/i/67f4f78d15c86.png
 categories:
   - 开发工具
 ---

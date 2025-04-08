@@ -4,7 +4,7 @@ description: 常用的Java集合的必会知识
 title: Java集合
 permalink: /java/collection
 coverImg:
-  - /img/ikun/k1.gif
+  - https://www.yotu.net/i/67f4f788c7720.png
 categories:
   - Java基础
 tags:

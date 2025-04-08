@@ -6,7 +6,7 @@ tags:
   - Java
 permalink: /java/multi-threaded
 coverImg:
-  - /img/ikun/k5.gif
+  - https://www.yotu.net/i/67f4f9f56f670.png
 categories:
   - Java基础
 ---

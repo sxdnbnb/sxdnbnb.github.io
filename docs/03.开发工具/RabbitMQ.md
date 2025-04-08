@@ -6,7 +6,7 @@ tags:
   - 工具
 permalink: /develop/RabbitMQ
 coverImg:
-  - /img/6.jpg
+  - https://www.yotu.net/i/67f4f78ed2d10.png
 categories:
   - 开发工具
 ---

@@ -6,7 +6,7 @@ tags:
   - Java
 permalink: /java/stream
 coverImg:
-  - /img/ikun/k4.gif
+  - https://www.yotu.net/i/67f4f788da205.png
 categories:
   - Java基础
 ---

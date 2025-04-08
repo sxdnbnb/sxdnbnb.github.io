@@ -6,7 +6,7 @@ tags:
   - 工具
 permalink: /develop/Shell
 coverImg:
-  - /img/7.jpg
+  - https://www.yotu.net/i/67f4f790225f6.png
 categories:
   - 开发工具
 ---

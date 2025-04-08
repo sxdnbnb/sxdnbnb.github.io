@@ -5,8 +5,8 @@ layout: home
 tk:
   name: '🐇冬冬的技术小窝'
   tkHome: true
-  bgColor:
-    -  #409EFF
+  # bgColor:
+  #   -  #409EFF
   features:
     - title: 开发
       description: Java后端开发知识

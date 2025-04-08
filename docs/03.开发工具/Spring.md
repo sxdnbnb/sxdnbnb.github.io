@@ -6,7 +6,7 @@ tags:
   - 工具
 permalink: /develop/Spring
 coverImg:
-  - /img/8.jpg
+  - https://www.yotu.net/i/67f4f7902310e.png
 categories:
   - 开发工具
 ---
