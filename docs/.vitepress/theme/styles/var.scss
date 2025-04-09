@@ -1,0 +1,8 @@
+/* 鼠标样式 */
+body {
+    cursor: url(/mouse/default.cur), auto;
+  }
+  
+  a,button,img, svg,input,textarea,select,option,label,span {
+    cursor: url(/mouse/pointer.cur), auto !important;
+  }
