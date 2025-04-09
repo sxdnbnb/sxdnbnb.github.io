@@ -1,0 +1,10 @@
+// 文章列表卡片hover阴影圆角效果
+.tk-post-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; // 过渡属性为transform和box-shadow
+  
+    &:hover {
+      box-shadow: 0 10px 16px -4px var(#5da8ff); // 首页卡片阴影效果
+      transform: translateY(-3px); // 首页卡片向上移动3px
+      border-radius: 8px; // 首页卡片圆角效果
+    }
+  }

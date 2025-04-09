@@ -3,3 +3,4 @@
 @use "./font.scss" as *; // 好看的中文字体
 @use "./blockquote-one.scss" as *; // 引用风格 增强
 @use "./var.scss" as *; // 引用 变量
+@use "./text-card-hover.scss" as *; // 文字在悬停时会出现下划线动画

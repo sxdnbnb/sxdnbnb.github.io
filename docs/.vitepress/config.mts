@@ -10,11 +10,11 @@ const tkConfig = defineTeekConfig({
   blogger: {
     // 博主信息，显示在首页侧边栏
     avatar: "/img/logo.png",
-    avatarStyle: "radius",
+    shape: "circle-rotate",
     name: "暮冬浅夏",
     slogan: "纵使命运天注定，我命由我不由天！",
   },
-
+  // 不蒜子统计
   docAnalysis: {
     createTime: "2025-04-01",
     statistics: {
@@ -27,6 +27,19 @@ const tkConfig = defineTeekConfig({
       { key: "totalPosts", label: "文章总数目" },
     ],
     // appendInfo: [{ key: "index", label: "序号", value: "One" }],
+  },
+  // 分享文章按钮
+  articleShare:{enabled: true},
+  // 赞赏在文章下方
+  appreciation: {
+    position: "doc-after",
+    options: {
+      icon: "weChatPay", // 赞赏图标，内置 weChatPay 和 alipay
+      expandTitle: "打赏支持", // 展开标题，支持 HTML
+      collapseTitle: "下次一定", // 折叠标题，支持 HTML
+      content: `<img src='/img/zhifu.png'>`, // 赞赏内容，支持 HTML
+      expand: false, // 是否默认展开，默认 false
+    },
   },
 
   banner: {
@@ -135,7 +148,6 @@ const tkConfig = defineTeekConfig({
     coverImgMode: "full", // 封面大图
   },
 
-
   // 文章
   article: {
     showIcon: true, // 作者、日期、分类、标签、字数、阅读时长、浏览量等文章信息的图标是否显示
@@ -147,7 +159,7 @@ const tkConfig = defineTeekConfig({
     showUpdateDate: true, // 是否展示更新日期，是否展示更新时间，仅在文章页显示
     showCategory: true, // 是否展示分类
     showTag: true, // 是否展示标签
-    
+
     topTip: frontmatter => {
       const tip: Record<string, string> = {
         type: "warning",
@@ -158,8 +170,8 @@ const tkConfig = defineTeekConfig({
       // frontmatter.long 为 true，则添加提示
       if (frontmatter.long) return tip;
 
-      // frontmatter.date 大于一年，则添加提示
-      const longTime = 12 * 30 * 24 * 60 * 60 * 1000;
+      // frontmatter.date 大于两年，则添加提示
+      const longTime = 24 * 30 * 24 * 60 * 60 * 1000;
       if (frontmatter.date && Date.now() - new Date(frontmatter.date).getTime() > longTime) return tip;
     },
   },
@@ -167,10 +179,6 @@ const tkConfig = defineTeekConfig({
   // themeSetting: {
   //   themeSize: "large",
   // },
-
-
-
-
 
   // 友链信息
   friendLink: {
