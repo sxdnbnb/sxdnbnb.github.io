@@ -2,6 +2,7 @@ import { defineConfig } from "vitepress";
 import { defineTeekConfig } from "vitepress-theme-teek/config";
 import timeline from "vitepress-markdown-timeline"; // 导入时间线插件
 import { groupIconMdPlugin, groupIconVitePlugin } from "vitepress-plugin-group-icons"; // 导入代码组图标插件
+import { TkMessage } from "vitepress-theme-teek";
 
 const description = ["技术文档", "生活感悟"].toString();
 
@@ -61,18 +62,18 @@ const tkConfig = defineTeekConfig({
       // "https://www.yotu.net/i/67f4f0f4efc8f.jpg",
       // "https://www.yotu.net/i/67f4f0f5a1d55.jpg",
       // "https://www.yotu.net/i/67f4f0f647073.jpg",
-      "/img/12.jpg",
-      "/img/13.jpg",
-      "/img/1.jpg",
-      "/img/2.jpg",
-      "/img/3.jpg",
-      "/img/4.jpg",
-      "/img/5.jpg",
-      "/img/7.jpg",
-      "/img/8.jpg",
-      "/img/9.jpg",
-      "/img/10.jpg",
-      "/img/11.jpg"
+      "/img/1.webp",
+      "/img/2.webp",
+      "/img/3.webp",
+      "/img/4.webp",
+      "/img/5.webp",
+      "/img/7.webp",
+      "/img/8.webp",
+      "/img/9.webp",
+      "/img/10.webp",
+      "/img/11.webp",
+      "/img/12.webp",
+      "/img/13.webp",
     ],
     descStyle: "types",
     maskBg: "rgba(0, 0, 0, 0.4)", // Banner 大图遮罩颜色，如果为数字，则是 rgba(0, 0, 0, ${maskBg})，如果为字符串，则作为背景色
@@ -81,11 +82,6 @@ const tkConfig = defineTeekConfig({
     descFontSize: "1.4rem", // 描述字体大小
     // descStyle: "types", // 描述信息风格：default 为纯文字渲染风格（如果 description 为数组，则取第一个），types 为文字打印风格，switch 为文字切换风格
     description: [
-      //lonely
-      "初闻不知曲中意，再听已是曲中人",
-
-      // 原有内容保留
-      "万般努力只为出人头地，低头弯腰只为爬的更高",
 
       // 动漫经典语录
       "重要的不是你长得漂亮与否，而是你的心灵是否美丽 —— 千与千寻",
@@ -94,11 +90,11 @@ const tkConfig = defineTeekConfig({
       "正因为生来什么都没有，因此我们能拥有一切 —— 游戏人生",
 
       // 爱情感悟
-      "喜欢一个人就是在对方的一切都合理化",
-      "爱，其实很简单，困难的是接受这份简单",
-      "最好的爱情是互相成就，而不是互相禁锢",
-      "缘分就是，遇见了可以让你笑的人",
-      "爱情不是占有，而是彼此成就",
+      // "喜欢一个人就是在对方的一切都合理化",
+      // "爱，其实很简单，困难的是接受这份简单",
+      // "最好的爱情是互相成就，而不是互相禁锢",
+      // "缘分就是，遇见了可以让你笑的人",
+      // "爱情不是占有，而是彼此成就",
 
       // 人生哲理
       "生命中最困难的时刻，恰是转机的开始",
@@ -175,15 +171,19 @@ const tkConfig = defineTeekConfig({
       if (frontmatter.date && Date.now() - new Date(frontmatter.date).getTime() > longTime) return tip;
     },
   },
+
   // 设置主题尺寸
-  // themeSetting: {
-  //   themeSize: "large",
-  // },
+  themeSetting: {
+    themeSize: "default",
+    backTopDone: TkMessage => {
+      TkMessage.success("返回顶部成功");
+    },
+  },
 
   // 友链信息
   friendLink: {
     list: [
-      { avatar: "/img/teek-logo-large.png", name: "Young Kbt blog", desc: "Teeker作者", link: "https://notes.youngkbt.cn/" },
+      { avatar: "/img/teek-logo-large.png", name: "Young Kbt blog", desc: "Teeker主题", link: "https://notes.youngkbt.cn/" },
     ],
   },
 
@@ -278,7 +278,7 @@ const tkConfig = defineTeekConfig({
     },
   },
 
-
+  // 公告栏
   notice: {
     enabled: true,
     position: "center",
