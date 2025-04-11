@@ -230,9 +230,7 @@ const tkConfig = defineTeekConfig({
                   <span>| 小破站已运行了 <span id="footer-runtime"></span></span>
                   <span>|</span>
                   <div>
-                    <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" 
-                      src="https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=#1690FF,#333333,#141415,#1690FF,#F4EFEF,#1690FF,14&f=14&display=0,0,0,1,0,1,0,1">
-                    </script>
+                    <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=#000000,#333333,#000000,#1690FF,#F4EFEF,#1690FF,14&f=14&display=0,0,0,1,0,1,0,1"></script>
                   </div>
                 </div>
                 `,
