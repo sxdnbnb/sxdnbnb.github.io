@@ -4,6 +4,7 @@ import Teek, { artalkSymbol, giscusSymbol, walineSymbol } from "vitepress-theme-
 import "vitepress-theme-teek/index.css";
 import NoticeContent from "./components/NoticeContent.vue";
 import BannerImgArrow from "./components/BannerImgArrow.vue";
+import LADataScript from "./components/LADataScript.vue";
 import "vitepress-theme-teek/vp-plus/code-block-mobile.scss"; // 移动端代码块样式加 padding
 import "vitepress-theme-teek/vp-plus/sidebar.scss"; // 侧边栏字体样式
 import "vitepress-theme-teek/vp-plus/nav.scss"; // 导航栏样式
@@ -77,7 +78,7 @@ export default {
         h(Teek.Layout, null, {
           "teek-notice-content": () => h(NoticeContent),
           "teek-home-banner-feature-after": () => h(BannerImgArrow),
-
+          "teek-layout-bottom": () => h(LADataScript) //
           // "teek-home-before": () => h("div", null, "teek-home-before"),
           // "teek-home-after": () => h("div", null, "teek-home-after"),
           // "teek-home-banner-before": () => h("div", null, "teek-home-banner-before"),

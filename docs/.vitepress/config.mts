@@ -357,7 +357,7 @@ export default defineConfig({
         type: "text/javascript",
         src: "https://myhkw.cn/player/js/jquery.min.js",
       },
-    ], // 插入自定义脚本
+    ], 
     [
       "script",
       {
@@ -369,6 +369,20 @@ export default defineConfig({
         defer: "defer",  // 添加defer属性，确保脚本在DOM加载完成后执行
       },
     ],
+    // 添加51统计
+    [
+      'script',
+      {
+        charset: 'UTF-8',
+        id: 'LA_COLLECT',
+        src: '//sdk.51.la/js-sdk-pro.min.js'
+      }
+    ],
+    [
+      'script',
+      {},
+      'LA.init({id:"3IdmiCNCA52rjASE",ck:"3IdmiCNCA52rjASE"})'
+    ]
   ],
   markdown: {
     // 开启行号
