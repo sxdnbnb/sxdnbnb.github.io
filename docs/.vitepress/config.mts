@@ -214,10 +214,10 @@ const tkConfig = defineTeekConfig({
       createYear: 2024,
       suffix: "暮冬浅夏",
     },
-    icpRecord: {
-      name: "桂ICP备20240156994号",
-      link: "http://beian.miit.gov.cn/",
-    },
+    // icpRecord: {
+    //   name: "桂ICP备20240156994号",
+    //   link: "http://beian.miit.gov.cn/",
+    // },
 
     // 网络安全备案信息配置
     // securityRecord: {
@@ -226,7 +226,8 @@ const tkConfig = defineTeekConfig({
     // },    
 
 
-    customHtml: `<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=#1690FF,#333333,#999999,#333333,#FFFFFF,#1690FF,14&f=14&display=0,0,0,1,0,1,1,1"></script>`,
+    customHtml: `<p>小破站已运行了 <span id="footer-runtime"></span></p>
+    <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=#1690FF,#333333,#999999,#333333,#FFFFFF,#1690FF,14&f=14&display=0,0,0,1,0,1,0,1"></script>`,
     
   },
 
