@@ -227,10 +227,11 @@ const tkConfig = defineTeekConfig({
 
 
     customHtml: `<div style="display: flex; align-items: center; gap: 8px;">
-                  <p style="margin: 0;">小破站已运行了 <span id="footer-runtime"></span></p>
+                  <span>| 小破站已运行了 <span id="footer-runtime"></span></span>
+                  <span>|</span>
                   <div>
-                    <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8"
-                      src="https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=#1690FF,#333333,#999999,#333333,#FFFFFF,#1690FF,14&f=14&display=0,0,0,1,0,1,0,1">
+                    <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" 
+                      src="https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=#1690FF,#333333,#141415,#1690FF,#F4EFEF,#1690FF,14&f=14&display=0,0,0,1,0,1,0,1">
                     </script>
                   </div>
                 </div>
