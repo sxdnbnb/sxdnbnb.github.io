@@ -192,7 +192,8 @@ const tkConfig = defineTeekConfig({
   // 友链信息
   friendLink: {
     list: [
-      { avatar: "/img/teek-logo-large.png", name: "Young Kbt blog", desc: "Teeker主题", link: "https://notes.youngkbt.cn/" },
+      { avatar: "/img/teek-logo-large.png", name: "vitepress-theme-teek", desc: "Teek官网", link: "https://vp.teek.top/" },
+      { avatar: "/img/one.webp", name: "One ", desc: "明心静性，爱自己", link: "https://onedayxyy.cn/" },
     ],
   },
 
@@ -201,7 +202,7 @@ const tkConfig = defineTeekConfig({
 
   footerInfo: {
     // topMessage: ["初闻不知曲中意，再听已是曲中人"],
-    bottomMessage: ["初闻不知曲中意，再听已是曲中人"],
+    // bottomMessage: ["初闻不知曲中意，再听已是曲中人"],
 
     // 主题版权配置
     theme: {
