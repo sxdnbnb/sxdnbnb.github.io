@@ -199,7 +199,7 @@ const tkConfig = defineTeekConfig({
 
   footerInfo: {
     // topMessage: ["初闻不知曲中意，再听已是曲中人"],
-    // bottomMessage: ['<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=#1690FF,#333333,#999999,#1690FF,#FFFFFF,#1690FF,14&f=14&display=0,0,1,1,1,1,1,1"></script>'],
+    bottomMessage: ['<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=#1690FF,#333333,#999999,#1690FF,#FFFFFF,#1690FF,14&f=14&display=0,0,1,1,1,1,1,1"></script>'],
 
     // 主题版权配置
     theme: {
