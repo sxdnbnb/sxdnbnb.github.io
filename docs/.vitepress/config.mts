@@ -220,10 +220,10 @@ const tkConfig = defineTeekConfig({
     },
 
     // 网络安全备案信息配置
-    // securityRecord: {
-    //   name: "甘公网安备62102702000211号",
-    //   link: "https://beian.mps.gov.cn/",
-    // },    
+    securityRecord: {
+      name: "甘公网安备62102702000211号",
+      link: "https://beian.mps.gov.cn/",
+    },    
 
 
     customHtml: `

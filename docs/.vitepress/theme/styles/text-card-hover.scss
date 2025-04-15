@@ -3,8 +3,29 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease; // 过渡属性为transform和box-shadow
   
     &:hover {
-      box-shadow: 0 10px 16px -4px var(#5da8ff); // 首页卡片阴影效果
+      // 彩色多层阴影
+      box-shadow:
+      0 0 8px #ff6ec4,
+      0 0 10px #7873f5,
+      0 0 12px #4ade80,
+      0 0 14px #22d3ee;
       transform: translateY(-3px); // 首页卡片向上移动3px
       border-radius: 8px; // 首页卡片圆角效果
     }
   }
+  
+// 修复 twikoo 样式影响头像为圆形
+.tk-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover; // 保证图片填满圆形区域，不变形
+}
+
+// 如果在 .tk-my__avatar 中使用，需要另设尺寸
+.tk-my__avatar .tk-avatar {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  object-fit: cover;
+}
