@@ -20,6 +20,7 @@ const tkConfig = defineTeekConfig({
     createTime: "2025-04-01",
     statistics: {
       provider: "busuanzi",
+      siteView: false,
     },
     wordCount: true,
     readingTime: true,
@@ -199,7 +200,7 @@ const tkConfig = defineTeekConfig({
 
   footerInfo: {
     // topMessage: ["初闻不知曲中意，再听已是曲中人"],
-    // bottomMessage: ["初闻不知曲中意，再听已是曲中人"],
+    bottomMessage: ['<p>小破站已运行了 <span id="footer-runtime"></span></p>'],
 
     // 主题版权配置
     theme: {
@@ -226,13 +227,8 @@ const tkConfig = defineTeekConfig({
     // },    
 
 
-    customHtml: `<div style="display: flex; align-items: center; gap: 8px;">
-                  <span>| 小破站已运行了 <span id="footer-runtime"></span></span>
-                  <span>|</span>
-                </div>
-                <div>
-                  <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=#000000,#333333,#000000,#1690FF,#F4EFEF,#1690FF,14&f=14&display=0,0,0,1,0,1,0,1"></script>
-                </div>
+    customHtml: `
+                <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=#000000,#333333,#000000,#1690FF,#F4EFEF,#1690FF,14&f=14&display=0,0,0,1,0,1,0,1"></script>
                 `,
 
   },
