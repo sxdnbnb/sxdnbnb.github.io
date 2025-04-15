@@ -199,7 +199,7 @@ const tkConfig = defineTeekConfig({
 
   footerInfo: {
     // topMessage: ["初闻不知曲中意，再听已是曲中人"],
-    // bottomMessage: ['<p>小破站已运行了 <span id="footer-runtime"></span></p>'],
+    // bottomMessage: ['<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=#1690FF,#333333,#999999,#1690FF,#FFFFFF,#1690FF,14&f=14&display=0,0,1,1,1,1,1,1"></script>'],
 
     // 主题版权配置
     theme: {
@@ -227,7 +227,7 @@ const tkConfig = defineTeekConfig({
 
 
     customHtml: `
-                <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/3IdmiCNCA52rjASE/quote.js?theme=#000000,#333333,#000000,#1690FF,#F4EFEF,#1690FF,14&f=14&display=0,0,0,1,0,1,0,1"></script>
+                <p>小破站已运行了 <span id="footer-runtime"></span></p>
                 `,
 
   },
