@@ -4,9 +4,9 @@ const namespace = "notice";
 
 <template>
   <div :class="namespace">
-    <p>微信 👇</p>
-    <img src="/img/weixin.png" alt="QR Code" />
-    <p class="">欢迎大家私信交流</p>
+    <p>如果觉得网站加载慢，可以切换站点</p>
+    <img src="/img/zhandian.jpg" alt="QR Code" />
+    <p class="">点击右上角的站点标志切换</p>
   </div>
 </template>
 
