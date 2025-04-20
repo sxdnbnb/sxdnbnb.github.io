@@ -11,7 +11,6 @@ categories:
   - 开发工具
 ---
 
-# Shell 笔记
 
 ## 变量
 

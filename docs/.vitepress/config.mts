@@ -200,7 +200,7 @@ const tkConfig = defineTeekConfig({
   friendLink: {
     list: [
       { avatar: "/img/teek-logo-large.png", name: "vitepress-theme-teek", desc: "Teek官网", link: "https://vp.teek.top/" },
-      { avatar: "/img/one.webp", name: "One ", desc: "明心静性，爱自己", link: "https://onedayxyy.cn/" },
+      // { avatar: "/img/one.webp", name: "One ", desc: "明心静性，爱自己", link: "https://onedayxyy.cn/" },
     ],
   },
 
@@ -440,7 +440,7 @@ export default defineConfig({
           { text: "Java项目", link: "/project" },
           { text: "开发工具", link: "/develop" },
           { text: '数据库', link: '/database' },
-          { text: '408', link: '/408' },
+          { text: '面试题', link: '/interview' },
           { text: '算法', link: '/algorithm' },
         ],
       },
@@ -460,7 +460,7 @@ export default defineConfig({
           { text: "归档", link: "/@pages/archivesPage.md" }
         ],
       },
-      { text: "资源😍", link: "https://sxdwdwd.github.io/" },
+      { text: "资源😍", link: "https://sun66.zone.id/" },
     ],
 
     socialLinks: [

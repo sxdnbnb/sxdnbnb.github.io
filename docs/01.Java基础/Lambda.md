@@ -13,7 +13,7 @@ categories:
 
 ## 常用的Lambda表达式应用场景
 
-![Alt text](/lambda/image.png)
+![Alt text](/picture/lambda/image.png)
 
 自Java 8引入Lambda表达式以来，Java编程变得更加简洁和高效，不仅减少了代码量，还提升了代码的可读性和可维护性。
 

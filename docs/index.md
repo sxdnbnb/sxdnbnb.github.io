@@ -18,7 +18,7 @@ tk:
       imgUrl: /img/ui.png
     - title: 资源站
       description: 超级全面的资源导航站
-      link: https://sxdwdwd.github.io/
+      link: https://sun66.zone.id/
       imgUrl: /img/other.png
   # description:
   #   - 故事由我书写，旅程由你见证，传奇由她聆听 —— 来自 Young Kbt

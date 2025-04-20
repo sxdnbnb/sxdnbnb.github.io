@@ -11,8 +11,6 @@ categories:
   - Springboot项目
 ---
 
-# 汽车电池预警系统
-
 ## [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sxdnbnb/BatteryWarn)
 
 ## 背景
@@ -22,7 +20,7 @@ BMS 系统是智能化管理及维护各个电池单元，防止电池出现过�
 ## 需求
 
 ### 整体业务图
-![Alt text](/batteryWarn/image2.png)
+![Alt text](/picture/batteryWarn/image2.png)
 
 ### 功能模块说明
 
@@ -32,14 +30,14 @@ BMS 系统是智能化管理及维护各个电池单元，防止电池出现过�
     > vid: Vehicle Identification 车辆识别码，每辆车唯一，16 位随机字符串
     > 电池类型：三元电池、铁锂电池
     >
-    >![Alt text](/batteryWarn/image3.png)
+    >![Alt text](/picture/batteryWarn/image3.png)
 
 2. **规则**（包括：序号，规则编号，名称，预警规则，电池类型）
     > 预警规则：包含预警规则描述以及预警等级（0 级最高响应）
     >
     > 电池类型：不同类型电池对应规则不同
     > 信号：Mx（最高电压）,Mi（最小电压）、Ix（最高电流）,Ii（最小电流）
-    ># ![Alt text](/batteryWarn/image.png)
+    ># ![Alt text](/picture/batteryWarn/image.png)
 
 
 ### 预警接口
@@ -50,7 +48,7 @@ Server 需要提供以下接口。
   接口名：/api/warn
   接口方法：POST
   Body：格式为数组，数组内的每个元素包含以下字段。
-  ![Alt text](/batteryWarn/image4.png)                  |
+  ![Alt text](/picture/batteryWarn/image4.png)                  |
 
 Body 示例：
 
@@ -75,7 +73,7 @@ Body 示例：
 
 接口返回信息：
 
-![Alt text](/batteryWarn/image5.png)
+![Alt text](/picture/batteryWarn/image5.png)
 
 ```json
 {
@@ -127,7 +125,7 @@ java -jar MiCar-0.0.1-SNAPSHOT.jar
 
 3. 浏览器输入网址 `http://localhost:8081/index`进入前端界面
 
-![](/batteryWarn/KOHzbF1Lwoqz1yx5wAicgtg5nbg.png)
+![](/picture/batteryWarn/KOHzbF1Lwoqz1yx5wAicgtg5nbg.png)
 
 
 ## 二、开发流程
@@ -199,7 +197,7 @@ VALUES
 
 ### 项目结构
 
-![](/batteryWarn/Nwwzb8i29ogQamxk2GccUBC1nSh.png)
+![](/picture/batteryWarn/Nwwzb8i29ogQamxk2GccUBC1nSh.png)
 
 ### 主要的实体类和 mapper 接口
 
@@ -472,53 +470,53 @@ Body 字段：
 
 ### 传入规则编号和电压信息
 
-![](/batteryWarn/FGGgbjXnZo9B35xTNSkc9ErInZb.png)
+![](/picture/batteryWarn/FGGgbjXnZo9B35xTNSkc9ErInZb.png)
 
 ### 传入规则编号和电流信息
 
-![](/batteryWarn/MnXZbZW4eoePrpxscDfcfYBGn7f.png)
+![](/picture/batteryWarn/MnXZbZW4eoePrpxscDfcfYBGn7f.png)
 
 ### 没有指定规则编号
 
-![](/batteryWarn/S7eUbmcGpo2X77x1HLScPIEGnsd.png)
+![](/picture/batteryWarn/S7eUbmcGpo2X77x1HLScPIEGnsd.png)
 
 #### 没有指定规则编号，只传入了 Mx 和 Mi
 
-![](/batteryWarn/DYdDbbpRMoHZbRxk8QXcmYY0nLf.png)
+![](/picture/batteryWarn/DYdDbbpRMoHZbRxk8QXcmYY0nLf.png)
 
 #### 没有指定规则编号，只传入了 Ix 和 Ii
 
-![](/batteryWarn/NztCbOiNiokw6cxFMvYcbhGUnee.png)
+![](/picture/batteryWarn/NztCbOiNiokw6cxFMvYcbhGUnee.png)
 
 ### 规则编号有误
 
-![](/batteryWarn/GFdOblIZtoPPDRxR8u2c6Z90nrf.png)
+![](/picture/batteryWarn/GFdOblIZtoPPDRxR8u2c6Z90nrf.png)
 
 ### 没有传入车架编号
 
-![](/batteryWarn/SaBybZtGioIHIkxrLavcNwxxnfe.png)
+![](/picture/batteryWarn/SaBybZtGioIHIkxrLavcNwxxnfe.png)
 
 ### 车架编号有误
 
-![](/batteryWarn/Zp4hbeybLoL2JKxJrxxcBtAInag.png)
+![](/picture/batteryWarn/Zp4hbeybLoL2JKxJrxxcBtAInag.png)
 
 ### 没有传入信号量
 
-![](/batteryWarn/LWM0bIZWQoe8lMxJJUmcXpNqnLg.png)
+![](/picture/batteryWarn/LWM0bIZWQoe8lMxJJUmcXpNqnLg.png)
 
 ### 信号量缺失某一字段
 
-![](/batteryWarn/HpNnbPUw7oS2t5xHMfGch3FEnPf.png)
+![](/picture/batteryWarn/HpNnbPUw7oS2t5xHMfGch3FEnPf.png)
 
 ### 信号量数据不合法
 
-![](/batteryWarn/BdsKbXKhyoseE7xsnZgcA7xXnGh.png)
+![](/picture/batteryWarn/BdsKbXKhyoseE7xsnZgcA7xXnGh.png)
 
-![](/batteryWarn/Zp32buvmqovwSGx6lT7cqv0wnPg.png)
+![](/picture/batteryWarn/Zp32buvmqovwSGx6lT7cqv0wnPg.png)
 
 ### 不报警的情况
 
-![](/batteryWarn/PqdTb5Pl5olme1xS4CDc0Ddqn8f.png)
+![](/picture/batteryWarn/PqdTb5Pl5olme1xS4CDc0Ddqn8f.png)
 
 ## 加入前端
 
@@ -657,29 +655,29 @@ public class WebController {
 
 #### 页面
 
-![](/batteryWarn/CCc5bGJ8FoX9jjxxKsjcYgspnfd.png)
+![](/picture/batteryWarn/CCc5bGJ8FoX9jjxxKsjcYgspnfd.png)
 
 #### 指定规则编号
 
-![](/batteryWarn/Mo3mbBMd4o0T0kxHbC6ctCB4nsb.png)
+![](/picture/batteryWarn/Mo3mbBMd4o0T0kxHbC6ctCB4nsb.png)
 
 #### 不指定规则编号
 
-![](/batteryWarn/KVyGb67XNoAN1px0dZ3czDnunAb.png)
+![](/picture/batteryWarn/KVyGb67XNoAN1px0dZ3czDnunAb.png)
 
-![](/batteryWarn/N0gfbAyxios3CRxGzekcHfAknlg.png)
+![](/picture/batteryWarn/N0gfbAyxios3CRxGzekcHfAknlg.png)
 
 #### 一些错误的输入
 
-![](/batteryWarn/TInlbDtYPoJGw1xVDtWciaxNnof.png)
+![](/picture/batteryWarn/TInlbDtYPoJGw1xVDtWciaxNnof.png)
 
-![](/batteryWarn/J3mibvzv7oDlj7xxsQvcPysun3d.png)
+![](/picture/batteryWarn/J3mibvzv7oDlj7xxsQvcPysun3d.png)
 
-![](/batteryWarn/GB1UbUin8oeMCUxmkW1cWO14n0g.png)
+![](/picture/batteryWarn/GB1UbUin8oeMCUxmkW1cWO14n0g.png)
 
-![](/batteryWarn/Oac6bZ5NGoPHv3xhUDwcFtvgnnh.png)
+![](/picture/batteryWarn/Oac6bZ5NGoPHv3xhUDwcFtvgnnh.png)
 
-![](/batteryWarn/TJ4yb6s7ooHNzDx8SdwcuCu4nSg.png)
+![](/picture/batteryWarn/TJ4yb6s7ooHNzDx8SdwcuCu4nSg.png)
 
 ## 加入 Redis 缓存，减小数据库压力
 

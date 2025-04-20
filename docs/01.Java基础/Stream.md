@@ -11,9 +11,7 @@ categories:
   - Java基础
 ---
 
-# Stream流式处理
-
-![Alt text](/stream/image.png)
+![Alt text](/picture/stream/image.png)
 
 在开发过程中，经常需要对`数组`、`集合`进行操作的时候，通常会通过`循环`的方式进行逐个处理，或者使用`Stream`的方式进行处理。
 

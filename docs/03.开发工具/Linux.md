@@ -11,7 +11,6 @@ categories:
   - 开发工具
 ---
 
-# Linux 笔记
 
 **常见目录说明：**
 
@@ -162,7 +161,7 @@ yum下载命令: `yum -y install 包名`
   `wq` 保存文件并退出
   `wq!` 强制保存文件并退出（强制写入）（场景：对于只读文件，wq无法操作，wq！可以） 
  
- ![alt text](/linux/image1.png)
+ ![alt text](/picture/linux/image1.png)
 
 ## **文件压缩**
 
@@ -220,7 +219,7 @@ Linux 中的打包文件一般是以 `.tar` 结尾的，压缩的命令一般是
 
 第一列的内容的信息解释如下：
 
-![](/linux/MgxfbMcoLo5ukdxr2YXcwCiTnaf.png)
+![](/picture/linux/MgxfbMcoLo5ukdxr2YXcwCiTnaf.png)
 
 **Linux 中权限分为以下几种：**
 

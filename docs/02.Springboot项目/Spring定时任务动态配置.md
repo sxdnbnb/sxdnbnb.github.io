@@ -11,7 +11,6 @@ categories:
   - 开发工具
 ---
 
-# 动态定时任务
 ## **定时调度解决方案和对比**
 
 现成的定时调度的解决方案有很多，总结下来有三大类：  
@@ -43,12 +42,12 @@ categories:
 
 大体结构如下 ↓  
 
-![alt text](/Spring动态定时任务/image.png)
+![alt text](/picture/Spring动态定时任务/image.png)
 
 1.  首先新建一个数据库表用于存放定时任务的配置
     
 
-![alt text](/Spring动态定时任务/image-1.png)
+![alt text](/picture/Spring动态定时任务/image-1.png)
 
 ```sql
 INSERT INTO db.TM_SCHEDULED_TASK_CONFIG
@@ -334,7 +333,7 @@ public abstract class AbstractScheduledTask<T extends ScheduledTaskExtParam> ext
 2.然后根据业务需要添加需要的cron表达式或利用fixRate等参数  
 3.最后在启动类上添加 @EnableScheduling 即可。  
 
-![alt text](/Spring动态定时任务/image-2.png)
+![alt text](/picture/Spring动态定时任务/image-2.png)
 
 > 图上绿色部分为Spring的类，浅黄色的为Java 原生的类
 

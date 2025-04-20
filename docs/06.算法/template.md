@@ -11,7 +11,6 @@ categories:
   - 算法
 ---
 
-# 算法模板
 ## 输入和输出
 ```java
 import java.util.*;
@@ -403,8 +402,8 @@ void backtrack(路径, 选择列表)
 ```
 
 ## 18.排列/组合/子集问题
-![alt text](/template/image.png)
-![alt text](/template/image-1.png)
+![alt text](/picture/template/image.png)
+![alt text](/picture/template/image-1.png)
 1. 元素无重不可复选，即 nums 中的元素都是唯一的，每个元素最多只能被使用一次，backtrack 核心代码如下：
 ```java
 // 组合/子集问题回溯算法框架

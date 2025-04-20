@@ -11,14 +11,12 @@ categories:
   - 开发工具
 ---
 
-# IDEA
-
 ## 自动导包
 
 1. 点击菜单 File -> Preferences / Settings -> Editor -> General -> Auto Import。
 2. 勾选上下图中的两个选项，点击应用。
 
-![](/IDEA/VKzlbzTKTolHgRxy5oscB62VnNh.png)
+![](/picture/IDEA/VKzlbzTKTolHgRxy5oscB62VnNh.png)
 
 1. IDEA 会帮助你自动导入包（唯一确定时才会生效），以及删除没有被用到的导入包。
 2. 快捷键：删除没有被用到的导入包 Ctrl + Alt + O。
@@ -27,9 +25,9 @@ categories:
 
 步骤：File–>Sttings–>Editor–>Code Style （以 Java 和 XML 为例，设置都是相同的）
 
-![](/IDEA/D4zrbsoIUo9TsjxwgM0cONIbnDb.png)
+![](/picture/IDEA/D4zrbsoIUo9TsjxwgM0cONIbnDb.png)
 
-![](/IDEA/HOq6b26W8odu63xQLMacVMX7nwh.png)
+![](/picture/IDEA/HOq6b26W8odu63xQLMacVMX7nwh.png)
 
 ## 常用插件
 

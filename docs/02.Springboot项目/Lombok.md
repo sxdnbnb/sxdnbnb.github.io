@@ -11,7 +11,6 @@ categories:
   - 开发工具
 ---
 
-# Lombok
 ## Lombok 常用注解
 >Lombok是一个编译时注释预处理器，有助于在编译时注入一些代码。Lombok提供了一组在开发时处理的注释，以将代码注入到Java应用程序中，注入的代码在开发环境中立即可用。
 ### @Data 
@@ -55,4 +54,4 @@ categories:
     `Student stu = s.setName("jack")`
   - prefix 属性\
     该属性是一个字符串数组，当该数组有值时，表示忽略字段中对应的前缀，生成对应的 getter 和 setter 方法。
-    ![Alt text](/library/image-3.png)
+    ![Alt text](/picture/library/image-3.png)

@@ -11,7 +11,6 @@ categories:
   - 开发工具
 ---
 
-# MyBatis-Plus
 ## MyBatis-Plus实体类注解
 - @TableName（"表名"）
 - @TableId（表名主键）\
@@ -46,7 +45,7 @@ public interface BookMapper extends BaseMapper<Book> {
 
 }
 ```
-![Alt text](/library/image-12.png)
+![Alt text](/picture/library/image-12.png)
 ```java
 【添加数据：（增）】
     int insert(T entity);              // 插入一条记录
@@ -93,7 +92,7 @@ public interface BookMapper extends BaseMapper<Book> {
 public interface IBookService extends IService<Book> {
 }
 ```
-![Alt text](/library/image-13.png)
+![Alt text](/picture/library/image-13.png)
 ```java
 【添加数据：（增）】
     default boolean save(T entity); // 调用 BaseMapper 的 insert 方法，用于添加一条数据。

@@ -11,8 +11,7 @@ categories:
   - Springboot项目
 ---
 
-# 图书管理系统Demo
-## [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sxdnbnb/libraryDemo)
+## [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sxdnbnb/picture/libraryDemo)
 ## 项目目录结构
 ```Bash
 ├─java
@@ -71,12 +70,12 @@ INSERT INTO books (title, author, price, category) VALUES
 ('霍比特人', 'J.R.R. 托尔金', 10.99, '奇幻'),
 ('动物农场', '乔治·奥威尔', 8.99, '小说');
 ```
-![Alt text](/library/image-4.png)
+![Alt text](/picture/library/image-4.png)
 ## 项目创建
 1. 创建Springboot项目
-![Alt text](/library/image.png)
+![Alt text](/picture/library/image.png)
 2. 添加Maven依赖
-![Alt text](/library/image-1.png)
+![Alt text](/picture/library/image-1.png)
 
 ```xml
 <!--pom.xml文件内容 -->
@@ -159,7 +158,7 @@ INSERT INTO books (title, author, price, category) VALUES
 
 ```
 3. 删除多余的文件，完善目录结构
-![Alt text](/library/image-2.png)
+![Alt text](/picture/library/image-2.png)
 4. 编写Springboot的配置文件application.yaml
 ```yaml
 server:
@@ -407,13 +406,13 @@ public class BookController {
 }
 ```
 12. Postman进行接口测试
-![Alt text](/library/image-5.png)
-![Alt text](/library/image-6.png)
-![Alt text](/library/image-7.png)
-![Alt text](/library/image-8.png)
-![Alt text](/library/image-9.png)
-![Alt text](/library/image-10.png)
-![Alt text](/library/image-11.png)
+![Alt text](/picture/library/image-5.png)
+![Alt text](/picture/library/image-6.png)
+![Alt text](/picture/library/image-7.png)
+![Alt text](/picture/library/image-8.png)
+![Alt text](/picture/library/image-9.png)
+![Alt text](/picture/library/image-10.png)
+![Alt text](/picture/library/image-11.png)
 
 ## 引入redis做缓存
 1. maven添加依赖
@@ -527,10 +526,10 @@ public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements IB
 5. Postman进行接口测试
 
 查询时，redis中成功写入缓存，再查询时直接从缓存中得到结果。
-![Alt text](/library/image-14.png)
-![Alt text](/library/image-15.png)
+![Alt text](/picture/library/image-14.png)
+![Alt text](/picture/library/image-15.png)
 
 更新时，数据库被更改，redis中的缓存被删除。
-![Alt text](/library/image-16.png)
-![Alt text](/library/image-17.png)
+![Alt text](/picture/library/image-16.png)
+![Alt text](/picture/library/image-17.png)
 

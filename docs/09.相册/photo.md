@@ -1,5 +1,5 @@
 ---
-title: 相册
+title: 摄影
 date: 2025-02-17 20:53:24
 description: 平时拍到的好看的照片
 permalink: /photo/live

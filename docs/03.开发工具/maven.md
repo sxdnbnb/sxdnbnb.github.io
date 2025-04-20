@@ -11,7 +11,6 @@ categories:
   - 开发工具
 ---
 
-# Maven 笔记
 
 ## **解决依赖冲突**
 
@@ -35,7 +34,7 @@ categories:
 
 就是为了对所有的构建过程进行抽象和统一，包含了项目的清理；初始化、编译、测试、打包、集成测试、验证；部署和站点生成等构建步骤。
 
-![](/maven/YoU5brR4QopnNQxJMAocaS5Pncb.png)
+![](/picture/maven/YoU5brR4QopnNQxJMAocaS5Pncb.png)
 
 Maven 定义了 3 个生命周期 `META-INF/plexus/components.xml`：
 

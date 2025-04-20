@@ -11,7 +11,6 @@ categories:
   - 开发工具
 ---
 
-# 定时任务
 ## 定时任务的3种实现方法
 ### Timer
 Timer 是 JDK 自带的定时任务执行类，无论任何项目都可以直接使用 Timer 来实现定时任务，所以 Timer 的优点就是使用方便，它的实现代码如下：
@@ -102,8 +101,8 @@ public class TaskUtils {
 >定时任务是自动触发的无需手动干预，也就是说 Spring Boot 启动后会自动加载并执行定时任务。
 #### Cron 表达式
 Spring Task 的实现需要使用 cron 表达式来声明执行的频率和规则，cron 表达式是由 6 位或者 7 位组成的（最后一位可以省略），每位之间以空格分隔，每位从左到右代表的含义如下：
-![Alt text](/schedule/image.png)
+![Alt text](/picture/schedule/image.png)
 其中 * 和 ? 号都表示匹配所有的时间。
-![Alt text](/schedule/image-1.png)
+![Alt text](/picture/schedule/image-1.png)
 cron 表达式在线生成地址：https://cron.qqe2.com/
 

@@ -54,7 +54,7 @@ categories:
       </insert>
     </mapper>
   ```
-  ![alt text](/mybatis/image.png)
+  ![alt text](/picture/mybatis/image.png)
 # MyBatis中mapper.xml的语法
 ## 一、前言
 MyBatis是"半自动"的ORM框架，即SQL语句需要开发者自定义，MyBatis的关注点在POJO与SQL之间的映射关系。那么SQL语句在哪里配置自定义呢？就在Mapper.xml中配置。当然了该配置文件可以自定义文件名。文件的样式如下：
