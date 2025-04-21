@@ -28,6 +28,8 @@ import confetti from "./components/Confetti.vue"; //导入五彩纸屑组件
 import "vitepress-markdown-timeline/dist/theme/index.css"; // 引入时间线样式
 import "virtual:group-icons.css"; //代码组图标样式
 
+import NotFound from "./components/NotFound.vue"; // 导入404组件
+
 // 评论组件
 import { init } from "@waline/client";
 import "@waline/client/style";
@@ -40,12 +42,6 @@ export default {
   enhanceApp({ app }) {
     // 注册组件
     app.component("confetti", confetti); //五彩纸屑
-  },
-  markdown: {
-    image: {
-      // 默认禁用；设置为 true 可为所有图片启用懒加载。
-      lazyLoading: true
-    }
   },
   Layout: defineComponent({
     name: "LayoutProvider",
@@ -83,6 +79,8 @@ export default {
         h(Teek.Layout, null, {
           "teek-notice-content": () => h(NoticeContent),
           "teek-home-banner-feature-after": () => h(BannerImgArrow),
+          // 自定义404页面内容
+          "not-found": () => h(NotFound), 
           // "teek-home-before": () => h("div", null, "teek-home-before"),
           // "teek-home-after": () => h("div", null, "teek-home-after"),
           // "teek-home-banner-before": () => h("div", null, "teek-home-banner-before"),
