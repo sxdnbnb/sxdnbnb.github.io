@@ -436,7 +436,6 @@ export default defineConfig({
       {
         text: "💖小屋",
         items: [
-          { text: "相册", link: "/photo" },
           { text: "随笔", link: "/essay" },
           { text: "感悟", link: "/Perception" },
         ],
@@ -449,7 +448,8 @@ export default defineConfig({
           { text: "归档", link: "/@pages/archivesPage.md" }
         ],
       },
-      { text: "资源😍", link: "https://sun66.zone.id/" },
+      { text: "🌄相册", link: "https://wxwx.i234.me/pichome/" },
+      { text: "😍资源", link: "https://sun66.zone.id/" },
     ],
 
     socialLinks: [

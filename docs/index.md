@@ -14,7 +14,7 @@ tk:
       imgUrl: /img/web.png
     - title: 相册
       description: 平时拍的好看的照片
-      link: /photo
+      link: https://wxwx.i234.me/pichome/
       imgUrl: /img/ui.png
     - title: 资源站
       description: 超级全面的资源导航站
