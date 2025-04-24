@@ -430,7 +430,7 @@ export default defineConfig({
           { text: "开发工具", link: "/develop" },
           { text: '数据库', link: '/database' },
           { text: '面试题', link: '/interview' },
-          { text: '算法', link: '/algorithm' },
+          { text: '算法模板', link: '/algorithm' },
         ],
       },
       {
