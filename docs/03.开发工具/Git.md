@@ -5,6 +5,8 @@ title: Git
 tags:
   - 工具
 permalink: /develop/Git
+top: true
+sticky: 3
 coverImg:
   - https://www.yotu.net/i/67f4f78d15c86.png
 categories:
