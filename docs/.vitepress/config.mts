@@ -223,7 +223,7 @@ const tkConfig = defineTeekConfig({
 
 
     customHtml: `
-                <p>小破站已运行了 <span id="footer-runtime"></span></p>
+                <p>💞在一起的第 <span id="footer-runtime"></span></p>
                 `,
 
   },
@@ -449,7 +449,7 @@ export default defineConfig({
         ],
       },
       { text: "🌄相册", link: "https://wxwx.i234.me/pichome/" },
-      { text: "😍资源", link: "https://sun66.zone.id/" },
+      { text: "😍资源", link: "https://sun666.zone.id/" },
     ],
 
     socialLinks: [
