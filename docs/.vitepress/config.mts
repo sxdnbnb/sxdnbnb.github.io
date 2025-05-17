@@ -6,6 +6,127 @@ import { TkMessage } from "vitepress-theme-teek";
 
 const description = ["技术文档", "生活感悟"].toString();
 
+// 随机获取 coverImg
+const coverImgList = [
+  // 狗
+  "https://www.yotu.net/i/67f4f78876346.png",
+  "https://www.yotu.net/i/67f4f788c391d.png",
+  "https://www.yotu.net/i/67f4f788c7720.png",
+  "https://www.yotu.net/i/67f4f788da205.png",
+  "https://www.yotu.net/i/67f4f789ca3f5.png",
+  "https://www.yotu.net/i/67f4f78a3231e.png",
+  "https://www.yotu.net/i/67f4f78a71848.png",
+  "https://www.yotu.net/i/67f4f78b2aaa0.png",
+  "https://www.yotu.net/i/67f4f78bad671.png",
+  "https://www.yotu.net/i/67f4f78bd05d1.png",
+  "https://www.yotu.net/i/67f4f78c61194.png",
+  "https://www.yotu.net/i/67f4f78c63997.png",
+  "https://www.yotu.net/i/67f4f78d15c86.png",
+  "https://www.yotu.net/i/67f4f78dad91f.png",
+  "https://www.yotu.net/i/67f4f78e177ba.png",
+  "https://www.yotu.net/i/67f4f78e82dff.png",
+  "https://www.yotu.net/i/67f4f78eb26a5.png",
+  "https://www.yotu.net/i/67f4f78ed2d10.png",
+  "https://www.yotu.net/i/67f4f790225f6.png",
+  "https://www.yotu.net/i/67f4f7902310e.png",
+  // 小熊猫
+  "https://www.yotu.net/i/67f4f7de90338.png",
+  "https://www.yotu.net/i/67f4f7dea3b55.png",
+  "https://www.yotu.net/i/67f4f7dea492a.png",
+  "https://www.yotu.net/i/67f4f7de9bfb6.png",
+  "https://www.yotu.net/i/67f4f7e0acfe7.png",
+  "https://www.yotu.net/i/67f4f7de93301.png",
+  // 风景
+  "https://www.yotu.net/i/67f51fdb522aa.png",
+  "https://www.yotu.net/i/67f51fdb3bc5f.png",
+  "https://www.yotu.net/i/67f51fdb546e5.png",
+  "https://www.yotu.net/i/67f51fdb5025d.png",
+  "https://www.yotu.net/i/67f51fdb4fc5a.png",
+  "https://www.yotu.net/i/67f51fde2ecf5.png",
+  "https://www.yotu.net/i/67f51fdfbee78.png",
+  // 公鸡
+  "https://www.yotu.net/i/67f4f7e0e18fe.png",
+  "https://www.yotu.net/i/67f4f7e12a339.png",
+  "https://www.yotu.net/i/67f4f7e154a98.png",
+  "https://www.yotu.net/i/67f4f7e1a313e.png",
+  "https://www.yotu.net/i/67f4f7e2c9362.png",
+  "https://www.yotu.net/i/67f4f7e3552cd.png",
+  "https://www.yotu.net/i/67f4f7e327117.png",
+  "https://www.yotu.net/i/67f4f7e390baa.png",
+  "https://www.yotu.net/i/67f4f7e3e0539.png",
+  "https://www.yotu.net/i/67f4f7e4cf52a.png",
+  "https://www.yotu.net/i/67f4f7e548edc.png",
+  "https://www.yotu.net/i/67f4f7e586a4c.png",
+  "https://www.yotu.net/i/67f4f7e5d53fa.png",
+  "https://www.yotu.net/i/67f4f7e62373e.png",
+  // 鼠
+  "https://www.yotu.net/i/67f4f9f19bba0.png",
+  "https://www.yotu.net/i/67f4f9f1b656d.png",
+  "https://www.yotu.net/i/67f4f9f1cc9e4.png",
+  "https://www.yotu.net/i/67f4f9f3755d1.png",
+  "https://www.yotu.net/i/67f4f9f3cbd2d.png",
+  "https://www.yotu.net/i/67f4f9f3ee60c.png",
+  "https://www.yotu.net/i/67f4f9f43762d.png",
+  "https://www.yotu.net/i/67f4f9f48357c.png",
+  "https://www.yotu.net/i/67f4f9f56f670.png",
+  "https://www.yotu.net/i/67f4f9f5cbeef.png",
+  "https://www.yotu.net/i/67f4f9f5dc419.png",
+  "https://www.yotu.net/i/67f4f9f665039.png",
+  "https://www.yotu.net/i/67f4f9f698758.png",
+  "https://www.yotu.net/i/67f4f9f7a982f.png",
+  "https://www.yotu.net/i/67f4f9f7de68f.png",
+  "https://www.yotu.net/i/67f4f9f84633a.png",
+  "https://www.yotu.net/i/67f4f9f847253.png",
+  "https://www.yotu.net/i/67f4f9f895fca.png",
+  "https://www.yotu.net/i/67f4f9f9b9a6d.png",
+  // 雷电
+  "https://www.yotu.net/i/67f4f9f9d9e38.png",
+  "https://www.yotu.net/i/67f4f9fa4a97e.png",
+  "https://www.yotu.net/i/67f4f9fa8a021.png",
+  "https://www.yotu.net/i/67f4fa3b051ec.png",
+  "https://www.yotu.net/i/67f4fa3ae7fe7.png",
+  "https://www.yotu.net/i/67f4fa3ae9ce0.png",
+  "https://www.yotu.net/i/67f4fa3cea25f.png",
+  "https://www.yotu.net/i/67f4fa3d44d10.png",
+  "https://www.yotu.net/i/67f4fa3d19e61.png",
+  "https://www.yotu.net/i/67f4fa3d55e83.png",
+  "https://www.yotu.net/i/67f4fa3e218f8.png",
+  "https://www.yotu.net/i/67f4fa3eea743.png",
+  "https://www.yotu.net/i/67f4fa3f2670b.png",
+  "https://www.yotu.net/i/67f4fa3f41a39.png",
+  "https://www.yotu.net/i/67f4f79086dd3.png",
+  // 小鸡
+  "https://www.yotu.net/i/67f4fa3f7d3f7.png",
+  "https://www.yotu.net/i/67f4fa4025fab.png",
+  "https://www.yotu.net/i/67f4fa40bc739.png",
+  "https://www.yotu.net/i/67f4fa412fed4.png",
+  "https://www.yotu.net/i/67f4fa41576ec.png",
+  "https://www.yotu.net/i/67f4fa41a0484.png",
+  "https://www.yotu.net/i/67f4fa4237b28.png",
+  "https://www.yotu.net/i/67f4fa4295e31.png",
+  "https://www.yotu.net/i/67f4fa4336801.png",
+  "https://www.yotu.net/i/67f4fa4371abe.png",
+  "https://www.yotu.net/i/67f4fa43af6e1.png",
+  "https://www.yotu.net/i/67f4fa8cd0d74.jpg",
+  "https://www.yotu.net/i/67f4fa8d22996.png",
+  "https://www.yotu.net/i/67f4fa8d2d38d.png",
+  "https://www.yotu.net/i/67f50e95844c0.jpg",
+  // 街景
+  "https://www.yotu.net/i/6804ea49a53f7.jpg",
+  "https://www.yotu.net/i/6804ea49b0d18.jpg",
+  "https://www.yotu.net/i/6804ea49acb45.jpg",
+  "https://www.yotu.net/i/6804ea4aa4fd9.jpg",
+  "https://www.yotu.net/i/6804ea4b09a4b.jpg",
+  "https://www.yotu.net/i/6804ea4b88326.jpg",
+  "https://www.yotu.net/i/6804ea4bf3525.jpg",
+  "https://www.yotu.net/i/6804ea49a276e.jpg",
+  "https://www.yotu.net/i/6804ea4991d9e.jpg",
+  "https://www.yotu.net/i/6804ea4bc5095.jpg",
+  "https://www.yotu.net/i/6804ea4c72f90.jpg",
+  "https://www.yotu.net/i/6804ea4cd8f2c.jpg",
+];
+
+
 const tkConfig = defineTeekConfig({
   author: { name: "sxdnbnb", link: "https://github.com/sxdnbnb" },
   blogger: {
@@ -219,7 +340,7 @@ const tkConfig = defineTeekConfig({
     securityRecord: {
       name: "甘公网安备62102702000211号",
       link: "https://beian.mps.gov.cn/",
-    },    
+    },
 
 
     customHtml: `
@@ -264,31 +385,31 @@ const tkConfig = defineTeekConfig({
     },
   ],
 
+  // 添加评论
+  // comment: {
+  // provider: "giscus",
+  // provider: "twikoo",
+  // options: {
+  // twikoo 配置，官网：https://twikoo.js.org/
+  // envId: "https://sxdnbnb.github.io/",
+  // link: "https://cdn.jsdelivr.net/npm/twikoo@1.6.41/dist/twikoo.min.js",
 
-  comment: {
-    // provider: "giscus",
-    provider: "twikoo",
-    options: {
-      // twikoo 配置，官网：https://twikoo.js.org/
-      envId: "https://sxdnbnb.github.io/",
-      link: "https://cdn.jsdelivr.net/npm/twikoo@1.6.41/dist/twikoo.min.js",
+  // waline 配置，官网：https://waline.js.org/
+  // serverURL: "https://tk.waline.youngkbt.cn/",
+  // jsLink: "https://unpkg.com/@waline/client@v3/dist/waline.js",
+  // cssLink: "https://unpkg.com/@waline/client@v3/dist/waline.css",
 
-      // waline 配置，官网：https://waline.js.org/
-      // serverURL: "https://tk.waline.youngkbt.cn/",
-      // jsLink: "https://unpkg.com/@waline/client@v3/dist/waline.js",
-      // cssLink: "https://unpkg.com/@waline/client@v3/dist/waline.css",
+  // giscus 配置，官网：https://giscus.app/zh-CN
+  // repo: "Kele-Bingtang/vitepress-theme-kt",
+  // repoId: "R_kgDONpVfBA",
+  // category: "Announcements",
+  // categoryId: "DIC_kwDONpVfBM4Cm3v9",
 
-      // giscus 配置，官网：https://giscus.app/zh-CN
-      // repo: "Kele-Bingtang/vitepress-theme-kt",
-      // repoId: "R_kgDONpVfBA",
-      // category: "Announcements",
-      // categoryId: "DIC_kwDONpVfBM4Cm3v9",
-
-      // artalk 配置，官网：https://artalk.js.org/
-      // server: "",
-      // site: "",
-    },
-  },
+  // artalk 配置，官网：https://artalk.js.org/
+  // server: "",
+  // site: "",
+  // },
+  // },
 
   // 公告栏
   notice: {
@@ -298,10 +419,26 @@ const tkConfig = defineTeekConfig({
 
   vitePlugins: {
     autoFrontmatter: true, //添加自动格式formatter插件
+    permalinkOption: {
+      notFoundDelayLoad: 1000, //404 页面延迟加载
+    },
+
     sidebarOption: {
       // initItems: false, //这条命令注释后，才会让文档和目录的样式保持一致
       collapsed: true, //打开侧边栏自动收缩功能
     },
+
+    autoFrontmatterOption: {
+      transform: frontmatter => {
+        // 如果文件本身存在了 coverImg，则不生成
+        if (frontmatter.coverImg) return;
+
+        const coverImg = coverImgList[Math.floor(Math.random() * coverImgList.length)];
+        const transformResult = { ...frontmatter, coverImg };
+
+        return Object.keys(transformResult).length ? transformResult : undefined;
+      },
+    }
   },
 
 
