@@ -5,6 +5,7 @@ title: Lombok
 tags:
   - 工具
 permalink: /project/Lombok
+sticky: 8
 coverImg:
   - https://www.yotu.net/i/67f4f78b2aaa0.png
 categories:

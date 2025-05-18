@@ -5,6 +5,7 @@ title: Stream流的用法
 tags:
   - Java
 permalink: /java/stream
+sticky: 7
 coverImg:
   - https://www.yotu.net/i/67f4f788da205.png
 categories:
