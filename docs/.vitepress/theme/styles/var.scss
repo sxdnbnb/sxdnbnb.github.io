@@ -6,3 +6,37 @@ body {
   a,button,img, svg,input,textarea,select,option,label,span {
     cursor: url(/mouse/pointer.cur), auto !important;
   }
+
+
+/* H2标题颜色：青绿 → 蓝紫 → 橘红 */
+.VPDoc h2 {
+  background: linear-gradient(
+    to right,
+    rgba(54, 183, 127, 1) 0%,
+    rgba(148, 187, 233, 1) 25%,
+    rgba(81, 88, 187, 1) 50%,
+    rgba(31, 101, 161, 1) 75%,
+    rgba(171, 25, 25, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* H3标题颜色：亮绿 → 蓝粉 → 樱桃红 */
+.VPDoc h3 {
+  background: linear-gradient(
+    to right,
+    rgba(184, 215, 21, 1) 0%,
+    rgba(148, 187, 233, 1) 25%,
+    rgba(21, 215, 182, 1) 50%,
+    rgba(129, 189, 240, 1) 75%,
+    rgba(240, 129, 129, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
