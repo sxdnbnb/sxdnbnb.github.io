@@ -10,7 +10,13 @@ coverImg:
 categories:
   - 开发工具
 ---
+Maven是一个项目管理工具，可以对Java项目进行构建、依赖管理。
+`settings.xml`：maven的全局配置文件
+`pom.xml`：项目配置文件
 
+## project
+project是pom文件的根元素，其中`groupId、artifactId、version`三个元素用来定义一个项目的坐标。
+`parent`元素可以指定父pom
 
 ## **解决依赖冲突**
 
@@ -32,7 +38,7 @@ categories:
 
 ## Maven 的生命周期
 
-就是为了对所有的构建过程进行抽象和统一，包含了项目的清理；初始化、编译、测试、打包、集成测试、验证；部署和站点生成等构建步骤。
+就是为了对所有的构建过程进行抽象和统一，包含了项目的清理；初始化（validate）、编译（compile）、测试（test）、打包（package）、集成测试、验证（verify）；部署（install）和站点生成（deploy）等构建步骤。
 
 ![](/picture/Maven/image.png)
 
@@ -107,12 +113,12 @@ mvn -v
 ```bash
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion> # 指定当前PMO模型的版本，
 
-  <groupId>org.example</groupId>
-  <artifactId>pro02</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+  <groupId>org.example</groupId> # 项目组的标识
+  <artifactId>pro02</artifactId> # 项目的标识，通常是工程的名称
+  <version>1.0-SNAPSHOT</version> # 项目的版本号
+  <packaging>pom</packaging> # 项目产生的构建类型，即项目通过maven打包的输出文件的后缀名，包括jar、war、ear、pom等。
 
   <name>pro02</name>
   <url>http://maven.apache.org</url>
@@ -129,7 +135,7 @@ mvn -v
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
-      <scope>test</scope>
+      <scope>test</scope> # 默认范围是 compile 用于编译
     </dependency>
   </dependencies>
 </project>
