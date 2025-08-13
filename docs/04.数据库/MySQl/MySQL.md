@@ -157,24 +157,27 @@ ALTER TABLE table_name ADD PRIMARY KEY (column_name);
 ALTER TABLE table_name ADD CONSTRAINT fk_name FOREIGN KEY (column_name) REFERENCES parent_table (parent_column_name);
 ```
 
-### 用户和权限管理
+### 用户和权限管理以及登录与退出
 
 ①、创建用户:
 
 ```sql
-CREATE USER 'username'@'host' IDENTIFIED BY 'password';
+-- 没有任何权限，可以同时创建多个用户，用户名用逗号分割
+CREATE USER 'username'@'hostname' IDENTIFIED BY 'password';
+-- hostname为localhost：只能本地登录
+-- hostname为 %：任何一台电脑都能登录
 ```
 
 ②、授予权限:
 
 ```sql
-GRANT ALL PRIVILEGES ON database_name.table_name TO 'username'@'host';
+GRANT ALL PRIVILEGES ON database_name.table_name TO 'username'@'hostname';
 ```
 
 ③、撤销权限:
 
 ```sql
-REVOKE ALL PRIVILEGES ON database_name.table_name FROM 'username'@'host';
+REVOKE ALL PRIVILEGES ON database_name.table_name FROM 'username'@'hostname';
 ```
 
 ④、删除用户:
@@ -182,6 +185,19 @@ REVOKE ALL PRIVILEGES ON database_name.table_name FROM 'username'@'host';
 ```sql
 DROP USER 'username'@'host';
 ```
+
+⑤、用户登录与退出
+```sql
+-- hostname|hostIP:服务器的主机名或IP地址
+-- port:端口号 默认3306
+mysql -h `hostname|hostIP` -p `port` -u `username` -p `提示输入密码` `dbname` -e `SQL语句`
+```
+例如
+```sql
+mysql -h 127.0.0.1 -u root -p 666
+```
+退出:`EXIT`,`QUIT`,`\q`
+
 
 ### 事务控制
 
