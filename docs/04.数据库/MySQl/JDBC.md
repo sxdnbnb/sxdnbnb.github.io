@@ -1,4 +1,5 @@
 ---
+date: 2025-08-13 16:31:47
 description: JDBC连接MySQL数据库
 title: JDBC连接
 tags:
@@ -7,7 +8,9 @@ permalink: /database/JDBC
 categories:
   - 数据库
   - MySQl
+coverImg: https://www.yotu.net/i/67f4f78b2aaa0.png
 ---
+
 ## Maven Java 项目连接 MySQL 数据库
 ---
 
