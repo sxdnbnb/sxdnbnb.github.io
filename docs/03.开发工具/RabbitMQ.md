@@ -1,15 +1,15 @@
 ---
-date: 2025-04-18 11:43:20
+date: 2025-04-18 19:43:20
 description: RabbitMQ的基础知识
 title: RabbitMQ
 tags:
   - 工具
 permalink: /develop/RabbitMQ
-coverImg:
-  - https://www.yotu.net/i/67f4f78ed2d10.png
 categories:
   - 开发工具
+coverImg: /ikun/ikun00000010.png
 ---
+
 
 
 ## 为什么要使用消息队列呢？

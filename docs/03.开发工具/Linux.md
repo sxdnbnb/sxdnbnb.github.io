@@ -1,5 +1,5 @@
 ---
-date: 2024-08-09 20:53:24
+date: 2024-08-10 04:53:24
 description: Linxu的常用命令
 title: Linux
 top: true
@@ -7,11 +7,11 @@ sticky: 4
 tags:
   - 工具
 permalink: /develop/Linux
-coverImg:
-  - https://www.yotu.net/i/67f4f78e177ba.png
 categories:
   - 开发工具
+coverImg: /ikun/ikun00000014.png
 ---
+
 
 
 **常见目录说明：**

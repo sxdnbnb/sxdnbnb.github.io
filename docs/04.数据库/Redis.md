@@ -1,16 +1,16 @@
 ---
-date: 2025-04-18 11:42:54
+date: 2025-04-18 19:42:54
 description: Redis的基础知识
 title: Redis
 tags:
   - 数据库
   - 开发工具
 permalink: /database/Redis
-coverImg:
-  - https://www.yotu.net/i/67f4f7de9bfb6.png
 categories:
   - 数据库
+coverImg: /ikun/ikun00000047.png
 ---
+
 
 ## Redis 可以用来干什么？
 

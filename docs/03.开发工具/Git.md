@@ -1,5 +1,5 @@
 ---
-date: 2024-08-28 04:53:24
+date: 2024-08-28 12:53:24
 description: Git的常用操作命令
 title: Git
 tags:
@@ -9,8 +9,9 @@ top: true
 sticky: 3
 categories:
   - 开发工具
-coverImg: https://www.yotu.net/i/67f4f7e0acfe7.png
+coverImg: /ikun/ikun00000025.png
 ---
+
 
 
 ## 常用命令

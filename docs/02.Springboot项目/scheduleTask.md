@@ -1,15 +1,15 @@
 ---
-date: 2024-08-15 20:52:35
+date: 2024-08-16 04:52:35
 description: 定时任务的3种实现方法
 title: 定时任务
 tags:
   - 工具
 permalink: /project/schedule
-coverImg:
-  - https://www.yotu.net/i/67f4f78bd05d1.png
 categories:
   - 开发工具
+coverImg: /ikun/ikun00000071.png
 ---
+
 
 ## 定时任务的3种实现方法
 ### Timer

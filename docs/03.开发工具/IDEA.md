@@ -1,15 +1,15 @@
 ---
-date: 2024-07-28 20:53:24
+date: 2024-07-29 04:53:24
 description: IDEA常用的设置和插件
 title: IDEA
 tags:
   - 工具
 permalink: /develop/IDEA
-coverImg:
-  - https://www.yotu.net/i/67f4f78dad91f.png
 categories:
   - 开发工具
+coverImg: /ikun/ikun00000030.png
 ---
+
 
 ## 自动导包
 

@@ -1,15 +1,15 @@
 ---
-date: 2025-04-18 11:39:56
+date: 2025-04-18 19:39:56
 description: Java多线程的必会知识
 title: Java多线程
 tags:
   - Java
 permalink: /java/multi-threaded
-coverImg:
-  - https://www.yotu.net/i/67f4f9f56f670.png
 categories:
   - Java基础
+coverImg: /ikun/ikun00000027.png
 ---
+
 
 ## 进程
 

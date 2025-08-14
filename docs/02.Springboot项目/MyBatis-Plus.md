@@ -1,15 +1,15 @@
 ---
-date: 2024-08-15 21:21:38
+date: 2024-08-16 05:21:38
 description: MyBatis-Plus实体类注解
 title: MyBatis-Plus
 tags:
   - 工具
 permalink: /project/MyBatis-Plus
-coverImg:
-  - https://www.yotu.net/i/67f4fa3e218f8.png
 categories:
   - 开发工具
+coverImg: /ikun/ikun00000093.png
 ---
+
 
 ## MyBatis-Plus实体类注解
 - @TableName（"表名"）

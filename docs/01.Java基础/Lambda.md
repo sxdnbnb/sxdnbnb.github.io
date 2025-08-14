@@ -1,15 +1,15 @@
 ---
-date: 2024-06-25 20:51:37
+date: 2024-06-26 04:51:37
 description: Lambda表达式的使用技巧
 title: 常用的Lambda表达式应用场景
 tags:
   - Java
 permalink: /java/lambda
-coverImg:
-  - https://www.yotu.net/i/67f4f788c391d.png
 categories:
   - Java基础
+coverImg: /ikun/ikun00000095.png
 ---
+
 
 ## 常用的Lambda表达式应用场景
 

@@ -1,15 +1,15 @@
 ---
-date: 2024-04-27 20:53:24
+date: 2024-04-28 04:53:24
 description: 必会的计算机网络问题
 title: 计算机网络
 tags:
   - 计算机网络
 permalink: /develop/computerNet
-coverImg:
-  - https://www.yotu.net/i/67f4f7e0acfe7.png
 categories:
   - 开发工具
+coverImg: /ikun/ikun00000008.png
 ---
+
 
 
 ![](/picture/computerNet/TzDvbUeNNoaWDHxkaIocmDBSnXe.png)

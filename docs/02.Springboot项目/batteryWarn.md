@@ -1,15 +1,15 @@
 ---
-date: 2024-07-24 20:52:35
+date: 2024-07-25 04:52:35
 description: 基于Springboot实现的汽车电池预警系统，包括数据库设计和前端交互。
 title: 汽车电池预警系统
 tags:
   - 项目
 permalink: /project/battery
-coverImg:
-  - https://www.yotu.net/i/67f51fdb522aa.png
 categories:
   - Springboot项目
+coverImg: /ikun/ikun00000068.png
 ---
+
 
 ## [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sxdnbnb/BatteryWarn)
 

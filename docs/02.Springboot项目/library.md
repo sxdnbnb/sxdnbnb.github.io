@@ -1,15 +1,15 @@
 ---
-date: 2024-07-14 20:52:35
+date: 2024-07-15 04:52:35
 description: 基于Springboot实现的图书管理系统，总结了Lombok 常用注解、MyBatis-Plus实体类注解、Mybatis-Plus CRUD 操作。
 title: 图书管理系统Demo
 tags:
   - 项目
 permalink: /project/library
-coverImg:
-  - https://www.yotu.net/i/67f4fa40bc739.png
 categories:
   - Springboot项目
+coverImg: /ikun/ikun00000007.png
 ---
+
 
 ## [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sxdnbnb/picture/libraryDemo)
 ## 项目目录结构

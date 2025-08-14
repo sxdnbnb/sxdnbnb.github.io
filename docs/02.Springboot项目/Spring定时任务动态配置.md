@@ -1,15 +1,15 @@
 ---
-date: 2024-07-17 20:52:35
+date: 2024-07-18 04:52:35
 description: Spring实现可动态修改的调度任务
 title: 动态定时任务
 tags:
   - 工具
 permalink: /project/Timer
-coverImg:
-  - https://www.yotu.net/i/67f51fdb3bc5f.png
 categories:
   - 开发工具
+coverImg: /ikun/4.jpg
 ---
+
 
 ## **定时调度解决方案和对比**
 

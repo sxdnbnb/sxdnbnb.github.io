@@ -1,15 +1,15 @@
 ---
-date: 2024-06-05 20:53:24
+date: 2024-06-06 04:53:24
 description: Maven的常用操作
 title: Maven
 tags:
   - 工具
 permalink: /develop/Maven
-coverImg:
-  - https://www.yotu.net/i/67f4f78eb26a5.png
 categories:
   - 开发工具
+coverImg: /ikun/ikun00000078.png
 ---
+
 Maven是一个项目管理工具，可以对Java项目进行构建、依赖管理。
 `settings.xml`：maven的全局配置文件
 `pom.xml`：项目配置文件

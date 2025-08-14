@@ -1,16 +1,16 @@
 ---
-date: 2024-06-25 20:51:37
+date: 2024-06-26 04:51:37
 description: Stream流的操作和常用API
 title: Stream流的用法
 tags:
   - Java
 permalink: /java/stream
 sticky: 7
-coverImg:
-  - https://www.yotu.net/i/67f4f788da205.png
 categories:
   - Java基础
+coverImg: /ikun/ikun00000074.png
 ---
+
 
 ![Alt text](/picture/stream/image.png)
 

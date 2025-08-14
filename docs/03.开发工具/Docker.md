@@ -1,16 +1,16 @@
 ---
-date: 2024-06-24 20:53:24
+date: 2024-06-25 04:53:24
 description: Docker的常用操作命令
 title: Docker
 top: true
 tags:
   - 工具
 permalink: /develop/Docker
-coverImg:
-  - https://www.yotu.net/i/67f4fa3f41a39.png
 categories:
   - 开发工具
+coverImg: /ikun/ikun00000096.png
 ---
+
 
 ## 常用命令
 

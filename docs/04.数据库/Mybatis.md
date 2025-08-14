@@ -1,16 +1,16 @@
 ---
-date: 2024-08-07 20:53:24
+date: 2024-08-08 04:53:24
 description: MyBatis中mapper.xml的语法
 title: MyBatis
 tags:
   - 数据库
   - 开发工具
 permalink: /database/MyBatis
-coverImg:
-  - https://www.yotu.net/i/67f4f7de93301.png
 categories:
   - 数据库
+coverImg: /ikun/ikun00000035.png
 ---
+
 
 # 搭建MyBatis
 1. 引入依赖

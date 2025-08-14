@@ -1,15 +1,15 @@
 ---
-date: 2024-06-05 20:53:24
+date: 2024-06-06 04:53:24
 description: Shell的语法
 title: Shell
 tags:
   - 工具
 permalink: /develop/Shell
-coverImg:
-  - https://www.yotu.net/i/67f4f790225f6.png
 categories:
   - 开发工具
+coverImg: /ikun/ikun00000042.png
 ---
+
 
 
 ## 执行

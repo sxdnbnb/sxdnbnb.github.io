@@ -1,15 +1,15 @@
 ---
-date: 2025-04-18 11:41:28
+date: 2025-04-18 19:41:28
 description: Spring的基础知识
 title: Spring
 tags:
   - 工具
 permalink: /develop/Spring
-coverImg:
-  - https://www.yotu.net/i/67f4f7902310e.png
 categories:
   - 开发工具
+coverImg: /ikun/ikun00000087.png
 ---
+
 
 
 ## 基础

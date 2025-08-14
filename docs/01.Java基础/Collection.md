@@ -1,15 +1,15 @@
 ---
-date: 2025-04-18 11:45:18
+date: 2025-04-18 19:45:18
 description: 常用的Java集合的必会知识
 title: Java集合
 permalink: /java/collection
-coverImg:
-  - https://www.yotu.net/i/67f4f788c7720.png
 categories:
   - Java基础
 tags:
   - Java
+coverImg: /ikun/ikun00000097.png
 ---
+
 
 ## 常用的集合类有哪些？
 
