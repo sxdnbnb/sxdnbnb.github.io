@@ -82,8 +82,11 @@ AOP相关：
 * `@Pointcut("execution(...)")`：定义切入点别名，一般注解在一个private标识方法上，即没有实际作用的方法，后边相同的切点可以使用`"pointCut()"`作为切入点，如`@Before("pointCut()")`
 > [!NOTE]
 > 开发中往往采用自定义注解实现AOP，通过注解来确定哪个方法需要增强，更自由。
-> 步骤1：自定义注解A
-> 步骤2：编写增强类，类上加注解`@Aspect`,方法上加`@Pointcut("@annotation(com.at.A)")`,后边用到的加`@Around(value="pointCut()")`
+> 
+> 步骤1：自定义注解
+> 
+> 步骤2：编写增强类，类上加注解`@Aspect`,类中方法加`@Pointcut("@annotation(com.at.A)")`,后边用到的加`@Around(value="pointCut()")`
+> 
 >  步骤3：在增强方法上加自定义的注解，使用切面
 
 * `@Transactional`：开启事务
