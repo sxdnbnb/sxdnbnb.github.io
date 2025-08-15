@@ -50,31 +50,45 @@ Spring 对 JavaEE 开发中非常难用的一些 API（JDBC、JavaMail、远程�
 
 ![](/picture/Spring/image-3.png)
 
-* `@Component`：标识一个类为 Spring 组件，使其能够被 Spring 容器自动扫描和管理。
+容器相关：
+
+* `@Component`：标识一个类为 Spring 组件，使其能够被 Spring 容器自动扫描和管理（作用于类）。
+
+* `@Bean`：注解在方法上，声明当前方法的返回值为一个 Bean。
+
+  （返回的 Bean 对应的类中可以定义 init()方法和 destroy()方法，然后在`@Bean(initMethod=”init”,destroyMethod=”destroy”)`定义，在构造之后执行 init，在销毁之前执行 destroy。）
+
+* `@Controller`：标识一个Spring MVC控制层。
 
 * `@Service`：标识一个业务逻辑组件（服务层）。比如 `@Service("userService")`，这里的 userService 就是 Bean 的名称。
 
 * `@Repository`：标识一个数据访问组件（持久层）。
 
-* @Autowired：Spring 提供的工具（**优先按类型匹配**）
+* `@Autowired`：Spring 提供的自动装配的工具（**优先按类型匹配**）
+* `@Qualifier(value="")`：显示指定名称进行装配
 
-* @Resource: JDK内置的（**优先按名称匹配**）
+* `@Resource`: JDK内置的自动装配的工具（**优先按名称匹配**）
 
-* @Configuration：声明当前类是一个配置类（相当于一个 Spring 配置的 xml 文件）
+* `@Configuration`：声明当前类是一个配置类（相当于一个 Spring 配置的 xml 文件）
 
-* @Value：可用在字段，构造器参数跟方法参数，指定一个默认值，支持 `#{} 跟 ${}` 两个方式。
-
+* `@Value`：可用在字段，构造器参数跟方法参数，指定一个默认值，支持 `#{} 跟 ${}` 两个方式，`#{}`读取注入bean的属性，`${}`读取配置文件。
 （一般将 SpringbBoot 中的 application.properties 配置的属性值赋值给变量）
 
-* @Bean：注解在方法上，声明当前方法的返回值为一个 Bean。
+AOP相关：
 
-  （返回的 Bean 对应的类中可以定义 init()方法和 destroy()方法，然后在`@Bean(initMethod=”init”,destroyMethod=”destroy”)`定义，在构造之后执行 init，在销毁之前执行 destroy。）
+* `@Scope`：定义我们采用什么模式去创建 Bean（方法上，得有@Bean） 其设置类型包括：Singleton 、Prototype、Request 、 Session、GlobalSession
+* `@Aspect`：指定增强类
+* `@Before()` `@After()` `@Around()` `@AfterReturning()`：括号里填入**切入点表达式**，语法结构：`execution([权限修饰符][返回类型][类全路径名][方法名称]([参数列表]))`，例：`execution(* com.at.dao.BookDao.* (..))`
+* `@Pointcut("execution(...)")`：定义切入点别名，一般注解在一个private标识方法上，即没有实际作用的方法，后边相同的切点可以使用`"pointCut()"`作为切入点，如`@Before("pointCut()")`
+> [!NOTE]
+> 开发中往往采用自定义注解实现AOP，通过注解来确定哪个方法需要增强，更自由。
+> 步骤1：自定义注解A
+> 步骤2：编写增强类，类上加注解`@Aspect`,方法上加`@Pointcut("@annotation(com.at.A)")`,后边用到的加`@Around(value="pointCut()")`
+>  步骤3：在增强方法上加自定义的注解，使用切面
 
-* @Scope:定义我们采用什么模式去创建 Bean（方法上，得有@Bean） 其设置类型包括：Singleton 、Prototype、Request 、 Session、GlobalSession
+* `@Transactional`：开启事务
 
 ### Spring 中应用了哪些设计模式呢？
-
-Spring 框架中广泛使用了不同类型的设计模式，下面我们来看看到底有哪些设计模式?
 
 1. 工厂模式 : Spring 容器本质是一个大工厂，使用工厂模式通过 BeanFactory、ApplicationContext 创建 bean 对象。
 
