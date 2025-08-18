@@ -238,8 +238,6 @@ BeanFactory 是 Spring 的基本容器，用于创建和管理 Bean 实例，而
 
 5. **返回类型**：BeanFactory 返回的是 Bean 实例本身，而 FactoryBean 返回的是由 FactoryBean 创建的 Bean 实例。因此，当使用 FactoryBean 时，需要通过调用 getObject() 方法来获取创建的 Bean 实例。
 
-6.
-
 ### Spring Bean 生命周期
 
 Spring 中 Bean 的生命周期大致分为四个阶段：实例化（Instantiation）、属性赋值（Populate）、初始化（Initialization）、销毁（Destruction）。
@@ -506,7 +504,7 @@ Spring MVC的工作流程
 
 Spring Boot 本质上是 Spring 框架的延伸和扩展，它的诞生是为了简化 Spring 框架初始搭建以及开发的过程，使用它可以不再依赖 Spring 应用程序中的 XML 配置，为更快、更高效的开发 Spring 提供更加有力的支持。 Spring Boot 也提供了很多特性，包括简化配置、内嵌服务器、自动装配、起步依赖等。开发人员可以通过使用 Spring Boot Starter 来快速集成常用的第三方库和框架，比如 Spring Data、Spring Security、MyBatis、Redis 等
 
-## Spring Boot 启动原理了解吗？
+## Spring Boot 启动原理
 
 Spring Boot 应用通常有一个带有 main 方法的主类，这个类上标注了 `@SpringBootApplication` 注解，它是整个应用启动的入口。这个注解组合了` @SpringBootConfiguration、@EnableAutoConfiguration 和 @ComponentScan`，这些注解共同支持配置和类路径扫描。
 
