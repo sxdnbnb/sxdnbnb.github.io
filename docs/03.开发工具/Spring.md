@@ -86,23 +86,169 @@ Spring 对 JavaEE 开发中非常难用的一些 API（JDBC、JavaMail、远程�
 （一般将 SpringbBoot 中的 application.properties 配置的属性值赋值给变量）
 
 AOP相关：
+```xml
+<!-- AOP 必须的依赖 -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-aop</artifactId>
+</dependency>
+```
 
 * `@Scope`：定义我们采用什么模式去创建 Bean（方法上，得有@Bean） 其设置类型包括：Singleton 、Prototype、Request 、 Session、GlobalSession
 * `@Aspect`：指定增强类
-* `@Before()` `@After()` `@Around()` `@AfterReturning()`：括号里填入**切入点表达式**，语法结构：`execution([权限修饰符][返回类型][类全路径名][方法名称]([参数列表]))`，例：`execution(* com.at.dao.BookDao.* (..))`
-* `@Pointcut("execution(...)")`：定义切入点别名，一般注解在一个private标识方法上，即没有实际作用的方法，后边相同的切点可以使用`"pointCut()"`作为切入点，如`@Before("pointCut()")`
-> [!NOTE]
-> 开发中往往采用自定义注解实现AOP，通过注解来确定哪个方法需要增强，更自由。
-> 
-> 步骤1：自定义注解
-> 
-> 步骤2：编写增强类，类上加注解`@Aspect`,类中方法加`@Pointcut("@annotation(com.at.A)")`,后边用到的加`@Around(value="pointCut()")`
-> 
->  步骤3：在增强方法上加自定义的注解，使用切面
+* `@Before()` `@After()` `@Around()` `@AfterReturning()`：括号里填入`切入点表达式`，指定在哪个类的哪个方法作为切点。\
+语法结构：`execution([权限修饰符][返回类型][类全路径名][方法名称]([参数列表]))`\
+例如：`execution(* com.at.dao.BookDao.* (..))`表示`BookDao`类中的所有方法。
+* `@Pointcut("execution(...)")`：定义切入点别名，一般注解在一个private`标识方法`上，即没有实际作用的方法，比如是`pointCut()`方法，后边相同的切点可以使用`"标识方法"`作为切入点，如`@Before("pointCut()")`
 
 * `@Transactional`：开启事务
 
-### Spring 中应用了哪些设计模式呢？
+> [!NOTE]
+> 开发中往往采用自定义注解实现AOP，通过注解来确定哪个方法需要增强，更自由。
+> 
+> 步骤1：自定义注解`SysLog`
+> 
+> 步骤2：编写增强类，类上加注解`@Aspect`,类中方法`logPointCut()`加`@Pointcut("@annotation(com.example.anno.SysLog)")`,后边用到的加`@Around("logPointCut()")`
+> 
+>  步骤3：在增强方法上加自定义的注解`@SysLog`，使用切面
+
+### 自定义注解实现AOP
+
+注解类：
+```java
+@Target(ElementType.METHOD)       // 作用在方法上
+@Retention(RetentionPolicy.RUNTIME) // 运行时可用
+@Documented
+public @interface SysLog {
+    String value() default "";   // 可以写一些描述信息，默认空
+}
+```
+
+增强类（切面类）：
+```java
+@Aspect
+@Component
+public class LogAspect {
+
+    @Pointcut("@annotation(com.example.anno.SysLog)")
+    public void logPointCut() {}
+
+    /**
+     * 前置增强：打印方法名和请求参数
+     */
+    @Before("logPointCut()")
+    public void before(JoinPoint joinPoint) {
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        String methodName = signature.getDeclaringTypeName() + "." + signature.getName();
+        Object[] args = joinPoint.getArgs();
+        System.out.println("【前置】调用方法: " + methodName + "，参数: " + Arrays.toString(args));
+    }
+
+    /**
+     * 后置增强：打印返回值
+     */
+    @AfterReturning(pointcut = "logPointCut()", returning = "result")
+    public void afterReturning(Object result) {
+        System.out.println("【后置】方法返回值: " + result);
+    }
+
+    /**
+     * 环绕增强：打印执行时间并返回值
+     */
+    @Around("logPointCut()")
+    public Object around(ProceedingJoinPoint pjp) throws Throwable {
+        long start = System.currentTimeMillis();
+        Object result = pjp.proceed(); // 执行目标方法
+        long time = System.currentTimeMillis() - start;
+        System.out.println("【环绕】方法执行耗时: " + time + " ms");
+        return result;
+    }
+}
+
+```
+
+需要增强的方法：
+```java
+@Service
+public class UserServiceImpl implements UserService {
+
+    @SysLog
+    @Override
+    public User selectUserByName(String name) {
+         ...
+        return user;
+    }
+}
+```
+
+单元测试：
+```java
+@SpringBootTest
+class ApplicationTests {
+
+    @Autowired
+    private UserService userService;
+
+    @Test
+    public void testSave() {
+        User user = userService.selectUserByName("sunshine");
+        System.out.println("【单元测试】方法最终返回: " + user);
+    }
+
+}
+```
+
+#### JoinPoint类
+| 方法                                   | 返回类型             | 作用                             | 常见用途             |
+| ------------------------------------ | ---------------- | ------------------------------ | ---------------- |
+| `Object[] getArgs()`                 | `Object[]`       | 获取目标方法的参数列表                    | 打印/记录请求参数        |
+| `Signature getSignature()`           | `Signature`      | 获取目标方法的签名信息（方法名、返回类型等）         | 获取方法名、方法对象       |
+| `Object getTarget()`                 | `Object`         | 获取被代理的目标对象（原始业务对象）             | 确认目标类，便于日志或调试    |
+| `Object getThis()`                   | `Object`         | 获取当前 AOP 代理对象                  | 查看 Spring 生成的代理类 |
+| `SourceLocation getSourceLocation()` | `SourceLocation` | 获取连接点的源码位置                     | 调试、错误定位          |
+| `String getKind()`                   | `String`         | 获取连接点的类型（如 `method-execution`） | 判断切点类型           |
+| `StaticPart getStaticPart()`         | `StaticPart`     | 获取连接点的静态部分（不含运行时状态）            | 分析连接点的元数据        |
+
+📌 最常用的：
+
+`getArgs()` → 获取方法参数
+
+`getSignature()`（常转为 `MethodSignature`）→ 获取方法名、返回类型（`getDeclaringTypeName()`，`getName()`）
+
+`getTarget()` → 获取目标类
+
+#### ProceedingJoinPoint类
+- `ProceedingJoinPoint` 是 `JoinPoint` 的子接口；
+- 只在环绕通知 `@Around` 中使用；
+- 比 `JoinPoint` 多了一个核心方法 `proceed()`，允许控制目标方法是否、何时执行。
+
+📌 常用写法：
+```java
+@Around("logPointCut()")
+public Object around(ProceedingJoinPoint pjp) throws Throwable {
+    long start = System.currentTimeMillis();
+
+    // 获取方法名
+    String methodName = pjp.getSignature().getName();
+    System.out.println("【环绕】开始执行方法: " + methodName);
+
+    // 获取并打印参数
+    Object[] args = pjp.getArgs();
+    System.out.println("参数: " + Arrays.toString(args));
+
+    // 执行目标方法
+    Object result = pjp.proceed();
+
+    long time = System.currentTimeMillis() - start;
+    System.out.println("【环绕】方法执行耗时: " + time + " ms");
+    System.out.println("返回值: " + result);
+
+    return result;
+}
+
+```
+
+### Spring 中应用的设计模式
 
 1. 工厂模式 : Spring 容器本质是一个大工厂，使用工厂模式通过 BeanFactory、ApplicationContext 创建 bean 对象。
 
@@ -117,7 +263,6 @@ AOP相关：
 6. 适配器模式 :Spring AOP 的增强或通知 (Advice) 使用到了适配器模式、Spring MVC 中也是用到了适配器模式适配 Controller。
 
 7. 策略模式：Spring 中有一个 Resource 接口，它的不同实现类，会根据不同的策略去访问资源。
-
 
 
 ### `@Transactional`失效
@@ -390,21 +535,7 @@ AOP 一般有 5 种环绕方式：
 
 ![](/picture/Spring/IprKbqVf0oeGGaxxIpmch1u1ngb.png)
 
-### 用到AOP
-
-1. 在我的项目中，我使用 AOP 来实现统一的日志管理。具体实现方式是通过定义切面以及在切面中定义前置、后置、环绕等通知来记录需要的日志信息。
-
-首先，我创建一个切面类，注解为@Aspect，并在类上添加 @Component 让Spring容器管理该类。
-
-定义切点 @Pointcut("execution(\* com.example.controller..\*(..))")
-
-然后，我定义一个前置通知，使用@Before注解。在此通知中，我获取了请求的相关信息，如请求URL、请求参数等，并写入日志。
-
-接着，我定义一个后置通知，使用@AfterReturning注解。在此通知中，我记录方法的返回值，并将其写入日志。
-
-通过上述方式，我可以非常方便地在所有Controller层的方法执行前后切入自己的代码，从而实现日志的统一管理。这样既保证了代码的可维护性，又减少了重复代码，使得代码更加简洁。此外，借助Spring框架的力量，可以方便地定制日志信息，例如按照不同的级别（info、debug、warn、error）、不同的类或者方法等记录日志
-
-具体： 把切点和通知合在一起就是切面了，一个切面指定了在何时何地执行何种方法
+### AOP应用
 
 * 像 `@Transactional` 注解，就是一个典型的 AOP 应用，它就是通过 AOP 来实现事务管理的。我们只需要在方法上添加 `@Transactional` 注解，Spring 就会在方法执行前后添加事务管理的逻辑。
 
@@ -412,19 +543,18 @@ AOP 一般有 5 种环绕方式：
 
 * 使用 AOP 实现统一的异常处理逻辑，在捕获到异常时，记录异常信息到日志，返回错误消息。
 
-CGLIB 动态代理实现：
 
-它通过继承方式实现代理，不需要接口，被广泛应用于 Spring AOP 中，用于提供方法拦截操作。
+### AOP原理
 
-CGLib 实现步骤
+基于CGLIB动态代理实现，CGLIB动态代理通过继承方式实现代理，不需要接口，被广泛应用于 Spring AOP 中，用于提供方法拦截操作。
 
-1. 创建一个实现接口 MethodInterceptor 的代理类，重写 intercept 方法；
+#### CGLIB 实现步骤
 
-2. 创建获取被代理类的方法 getInstance(Object target);
+1. 创建一个实现接口 `MethodInterceptor` 的代理类，重写 `intercept` 方法；
+
+2. 创建获取被代理类的方法 `getInstance(Object target);`
 
 3. 获取代理类，通过代理调用方法。
-
-
 
 ### AOP失效的场景
 
