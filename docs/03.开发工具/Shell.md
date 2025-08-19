@@ -5,9 +5,11 @@ title: Shell
 tags:
   - 工具
 permalink: /develop/Shell
+top: true
+sticky: 7
 categories:
   - 开发工具
-coverImg: /ikun/ikun00000042.png
+coverImg: /ikun/9.jpg
 ---
 
 

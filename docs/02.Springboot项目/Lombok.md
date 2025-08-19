@@ -5,10 +5,10 @@ title: Lombok
 tags:
   - 工具
 permalink: /project/Lombok
-sticky: 8
+sticky: 15
 categories:
   - 开发工具
-coverImg: /ikun/ikun00000092.png
+coverImg: /ikun/ikun00000008.png
 ---
 
 

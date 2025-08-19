@@ -1,5 +1,5 @@
 ---
-date: 2024-08-16 04:52:35
+date: 2024-08-16 12:52:35
 description: 定时任务的3种实现方法
 title: 定时任务
 tags:
@@ -7,8 +7,9 @@ tags:
 permalink: /project/schedule
 categories:
   - 开发工具
-coverImg: /ikun/ikun00000071.png
+coverImg: /ikun/ikun00000016.png
 ---
+
 
 
 ## 定时任务的3种实现方法

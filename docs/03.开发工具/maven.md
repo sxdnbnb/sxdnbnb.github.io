@@ -5,6 +5,8 @@ title: Maven
 tags:
   - 工具
 permalink: /develop/Maven
+top: true
+sticky: 9
 categories:
   - 开发工具
 coverImg: /ikun/ikun00000078.png

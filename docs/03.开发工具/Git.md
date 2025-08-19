@@ -6,7 +6,7 @@ tags:
   - 工具
 permalink: /develop/Git
 top: true
-sticky: 3
+sticky: 5
 categories:
   - 开发工具
 coverImg: /ikun/ikun00000025.png

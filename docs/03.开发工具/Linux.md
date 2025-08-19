@@ -3,7 +3,7 @@ date: 2024-08-10 04:53:24
 description: Linxu的常用命令
 title: Linux
 top: true
-sticky: 4
+sticky: 6
 tags:
   - 工具
 permalink: /develop/Linux

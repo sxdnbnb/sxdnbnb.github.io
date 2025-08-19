@@ -3,12 +3,13 @@ date: 2024-06-25 04:53:24
 description: Docker的常用操作命令
 title: Docker
 top: true
+sticky: 12
 tags:
   - 工具
 permalink: /develop/Docker
 categories:
   - 开发工具
-coverImg: /ikun/ikun00000096.png
+coverImg: /ikun/ikun00000007.png
 ---
 
 
