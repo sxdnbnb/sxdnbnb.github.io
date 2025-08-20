@@ -1,6 +1,6 @@
 ---
 date: 2024-07-15 04:52:35
-description: 基于Springboot实现的图书管理系统，总结了Lombok 常用注解、MyBatis-Plus实体类注解、Mybatis-Plus CRUD 操作。
+description: 基于Springboot和Mybatis-Plus实现的图书管理系统
 title: 图书管理系统Demo
 tags:
   - 项目
@@ -10,6 +10,7 @@ categories:
 coverImg: /ikun/ikun00000007.png
 ---
 
+一个基于`Springboot`和`Mybatis-Plus`实现的图书管理系统
 
 ## [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sxdnbnb/picture/libraryDemo)
 ## 项目目录结构
@@ -137,23 +138,6 @@ INSERT INTO books (title, author, price, category) VALUES
             <version>3.0.3</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
 
 ```
