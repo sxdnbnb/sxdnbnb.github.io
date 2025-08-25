@@ -52,6 +52,19 @@ Spring 对 JavaEE 开发中非常难用的一些 API（JDBC、JavaMail、远程�
 
 ![](/picture/Spring/image-3.png)
 
+Web相关:
+* `@RestController` = `@Controller` +` @ResponseBody`
+   * `@Controller`： 标记为一个`SpringMvc`的`Controller`（控制器）对象。
+   * `@ResponseBody`: 将返回对象转换成`JSON`格式。
+
+* `@RequestMapping`，`@PostMapping`： 映射地址
+
+* `@PathVariable`：`?`后去参数（用这个，Spring MVC 原生支持，自动与 `@DeleteMapping("/{id}")`、`@GetMapping("/{id}") `等映射规则配合）
+
+* `@PathParam`：路径中取参数（属于JAX-RS，使用它需要额外配置）
+
+* `@PostConstruct`：标记在方法上，该方法在构造函数执行完成后执行，在方法上加该注解会在项目启动的时候执行该方法，也可以理解为在spring容器初始化的时候执行该方法。
+
 容器相关：
 
 * `@Component`：标识一个类为 Spring 组件，使其能够被 Spring 容器自动扫描和管理（作用于类）。
@@ -636,7 +649,7 @@ Spring MVC的工作流程
 
 Spring Boot 本质上是 Spring 框架的延伸和扩展，它的诞生是为了简化 Spring 框架初始搭建以及开发的过程，使用它可以不再依赖 Spring 应用程序中的 XML 配置，为更快、更高效的开发 Spring 提供更加有力的支持。 Spring Boot 也提供了很多特性，包括简化配置、内嵌服务器、自动装配、起步依赖等。开发人员可以通过使用 Spring Boot Starter 来快速集成常用的第三方库和框架，比如 Spring Data、Spring Security、MyBatis、Redis 等
 
-## Spring Boot 启动原理
+### Spring Boot 启动原理
 
 Spring Boot 应用通常有一个带有 main 方法的主类，这个类上标注了 `@SpringBootApplication` 注解，它是整个应用启动的入口。这个注解组合了` @SpringBootConfiguration、@EnableAutoConfiguration 和 @ComponentScan`，这些注解共同支持配置和类路径扫描。
 
@@ -650,9 +663,7 @@ Spring Boot 应用通常有一个带有 main 方法的主类，这个类上标�
 
 * 启动内嵌的 Web 服务器
 
-##
-
-## SpringBoot 自动配置
+### SpringBoot 自动配置
 
 Spring Boot 的自动装配（Auto-configuration）是 Spring Boot 框架的核心特性之一。 Spring Boot 的自动装配通过约定大于配置的原则，根据项目的依赖和配置信息，自动进行配置，使得开发人员无需进行大量的手动配置。
 
@@ -668,7 +679,7 @@ Spring Boot 的自动装配（Auto-configuration）是 Spring Boot 框架的核�
 
 
 
-## 了解@SpringBootApplication 注解吗？
+### @SpringBootApplication 注解
 
 `@SpringBootApplication`是 Spring Boot 的核心注解，经常用于主类上，作为项目启动入口的标识。它是一个组合注解：
 
@@ -678,7 +689,37 @@ Spring Boot 的自动装配（Auto-configuration）是 Spring Boot 框架的核�
 
 * `@ComponentScan`：扫描当前包及其子包下被`@Component`、`@Service`、`@Controller`、`@Repository` 注解标记的类，并注册为 Spring Bean。
 
-## 过滤器和拦截器
+### 整合MyBatis
+```yaml
+spring:
+  application:
+    name: work # 应用名称
+mybatis:
+  mapper-locations: classpath:mapper/*.xml # Mapper XML 文件路径
+  type-aliases-package: com.example.work3.entity # 实体类所在包
+  configuration:
+    map-underscore-to-camel-case: true # 开启下划线转驼峰
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印 SQL 到控制台
+```
+### 配置数据库连接池
+```yaml
+spring:
+  application:
+    name: work # 应用名称
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource #数据库连接池 Hikari
+    hikari:
+        minimum-idle: 15 #控制连接池中的空闲连接的最小数量
+        maximum-pool-size: 15 #最大的连接数量
+        idle-timeout: 6000 # 用户连接的超时
+        connection-timeout: 3000 #建立连接超时时间
+    driver-class-name: com.mysql.cj.jdbc.Driver # MySQL 驱动
+    url: jdbc:mysql://localhost:3306/ebank?useSSL=false&serverTimezone=UTC # 数据库连接 URL
+    username: root # 数据库用户名
+    password: 123456 # 数据库密码
+```
+
+### 过滤器和拦截器
 
 1. 区别
 
