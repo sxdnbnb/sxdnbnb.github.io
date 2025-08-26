@@ -6,8 +6,6 @@ tags:
   - 工具
 permalink: /project/Lombok
 sticky: 15
-categories:
-  - 开发工具
 coverImg: /ikun/ikun00000008.png
 ---
 

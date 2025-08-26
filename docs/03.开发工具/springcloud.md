@@ -44,7 +44,7 @@ coverImg: /ikun/ikun00000075.png
         # 服务名称
         service-name: ${spring.application.name}
         # 实例ID（确保唯一性）
-        instance-id: ${spring.application.name}-${server.port}
+        instance-id: ${spring.application.name}-${spring.cloud.client.ip-address}-${server.port}
         # 健康检查配置
         health-check-path: /actuator/health
         health-check-interval: 15s

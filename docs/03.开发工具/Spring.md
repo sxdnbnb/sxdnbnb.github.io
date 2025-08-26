@@ -69,7 +69,7 @@ Web相关:
 
 * `@Component`：标识一个类为 Spring 组件，使其能够被 Spring 容器自动扫描和管理（作用于类）。
 
-* `@Bean`：注解在方法上，声明当前方法的返回值为一个 Bean。
+* `@Bean`：注解在方法上，声明当前方法的返回值为一个 Bean。往往和`@Configuration`一起用
 
   （返回的 Bean 对应的类中可以定义 init()方法和 destroy()方法，然后在`@Bean(initMethod=”init”,destroyMethod=”destroy”)`定义，在构造之后执行 init，在销毁之前执行 destroy。）
 
