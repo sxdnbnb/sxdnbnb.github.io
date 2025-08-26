@@ -1,10 +1,16 @@
 ---
+date: 2025-08-26 17:13:02
 description: Hutool工具类
 title: Hutool
 tags:
   - 工具
 permalink: /project/hutool
+coverImg: /ikun/ikun00000037.png
+categories:
+  - 开发工具
+  - 轮子
 ---
+
 
 ## **1. 核心工具类（`cn.hutool.core`）**
 

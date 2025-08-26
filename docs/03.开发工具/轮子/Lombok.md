@@ -1,5 +1,5 @@
 ---
-date: 2024-08-16 05:21:38
+date: 2024-08-16 13:21:38
 description: Lombok 常用注解
 title: Lombok
 tags:
@@ -7,7 +7,11 @@ tags:
 permalink: /project/Lombok
 sticky: 15
 coverImg: /ikun/ikun00000008.png
+categories:
+  - 开发工具
+  - 轮子
 ---
+
 
 
 ## Lombok 常用注解
