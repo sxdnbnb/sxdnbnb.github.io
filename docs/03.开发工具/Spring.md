@@ -4,7 +4,7 @@ description: Spring的基础知识
 title: Spring
 tags:
   - 工具
-permalink: /develop/Spring
+permalink: /develop/spring
 top: true
 sticky: 11
 categories:

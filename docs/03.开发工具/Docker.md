@@ -6,7 +6,7 @@ top: true
 sticky: 12
 tags:
   - 工具
-permalink: /develop/Docker
+permalink: /develop/docker
 categories:
   - 开发工具
 coverImg: /ikun/ikun00000007.png

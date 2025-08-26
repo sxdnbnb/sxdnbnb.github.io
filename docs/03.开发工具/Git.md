@@ -4,7 +4,7 @@ description: Git的常用操作命令
 title: Git
 tags:
   - 工具
-permalink: /develop/Git
+permalink: /develop/git
 top: true
 sticky: 5
 categories:

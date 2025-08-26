@@ -4,7 +4,7 @@ description: Shell的语法
 title: Shell
 tags:
   - 工具
-permalink: /develop/Shell
+permalink: /develop/shell
 top: true
 sticky: 7
 categories:

@@ -6,7 +6,7 @@ top: true
 sticky: 6
 tags:
   - 工具
-permalink: /develop/Linux
+permalink: /develop/linux
 categories:
   - 开发工具
 coverImg: /ikun/ikun00000014.png

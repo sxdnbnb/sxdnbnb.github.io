@@ -4,7 +4,7 @@ description: Maven的常用操作
 title: Maven
 tags:
   - 工具
-permalink: /develop/Maven
+permalink: /develop/maven
 top: true
 sticky: 9
 categories:
@@ -119,7 +119,7 @@ mvn -v
 
   <groupId>org.example</groupId> # 项目组的标识
   <artifactId>pro02</artifactId> # 项目的标识，通常是工程的名称
-  <version>1.0-SNAPSHOT</version> # 项目的版本号
+  <version>1.0-SNAPSHOT</version> # 项目的版本号（父工程指定了当前包的版本，就可以省略）
   <packaging>pom</packaging> # 项目产生的构建类型，即项目通过maven打包的输出文件的后缀名，包括jar、war、ear、pom等。
 
   <name>pro02</name>
