@@ -121,9 +121,54 @@ AOP相关：
 > 
 > 步骤1：自定义注解`SysLog`
 > 
-> 步骤2：编写增强类，类上加注解`@Aspect`,类中方法`logPointCut()`加`@Pointcut("@annotation(com.example.anno.SysLog)")`,后边用到的加`@Around("logPointCut()")`
+> 步骤2：编写切面类，类上加注解`@Aspect`，类中空方法`logPointCut()`加`@Pointcut("@annotation(com.example.anno.SysLog)")`，表示加了注解的地方是切点，后边的通知用`@Around("logPointCut()")`即可。
 > 
->  步骤3：在增强方法上加自定义的注解`@SysLog`，使用切面
+>  步骤3：在要增强的方法上加自定义的注解`@SysLog`，使用切面类
+
+
+
+会报错：
+```java
+@Configuration
+public class RouteConfig {
+  @Autowired
+  private final UserFilter userFilter;   
+}
+```
+> [!NOTE]
+> `final` 字段在 Java 中必须在 `构造器中初始化`\
+> Spring 不能通过字段注入（反射赋值）给 `final` 字段，因为它在对象创建时就必须被赋值，否则编译不通过。\
+> 所以直接用 `@Autowired` 字段注入 `final`修饰的对象是无效的。
+
+正确做法：构造器注入
+
+Spring 推荐 **构造器注入**，既可以保证 `final` 安全，又符合 Spring 的最佳实践：
+
+```java
+@Configuration
+public class RouteConfig {
+
+    private final UserFilter userFilter;
+
+    // 构造器注入（Spring 会自动注入 UserFilter Bean）
+    public RouteConfig(UserFilter userFilter) {
+        this.userFilter = userFilter;
+    }
+}
+```
+
+或者使用`lombok`
+```java
+@Configuration
+@RequiredArgsConstructor
+public class RouteConfig {
+    private final UserFilter userFilter;
+}
+```
+
+> `@RequiredArgsConstructor`会自动为类中所有 `final` 或带 `@NonNull`的字段生成`构造器`。
+
+
 
 ### 自定义注解实现AOP
 
