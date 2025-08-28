@@ -170,6 +170,30 @@ public Result queryManagersByDepartments(@RequestBody ManagerRequestDTO dto) {
 
 ### 1.创建一个gateway服务完成网关的转发
 
+结构：
+```bash
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── example/
+│   │   │           └── gateway/
+│   │   │               ├── GatewayApplication.java
+│   │   │               ├── config/
+│   │   │               │   └── RouteConfig.java
+│   │   │               ├── filter/
+│   │   │               │   ├── UserFilter.java
+│   │   │               │   └── UserGatewayFilterFactory.java
+│   │   │               └── service/
+│   │   │                   └── SecurityService.java
+│   │   └── resources
+│   │      
+│   └── test/
+│     
+└── pom.xml
+
+```
+
 #### 1.引入依赖
 ```xml
 <dependency>
@@ -181,6 +205,30 @@ public Result queryManagersByDepartments(@RequestBody ManagerRequestDTO dto) {
 > `gateway` 中不能引入`starter-web`， 若二者同时引入会产生冲突
 
 #### 2.配置yaml 或者 自定义转发规则
+
+user服务
+```yaml
+server:
+  port: 8082 # 应用服务端口号
+  servlet:
+    context-path: /${spring.application.name}
+
+spring:
+  application:
+    name: user-service # 应用名称
+```
+
+card服务
+```yaml
+server:
+  port: 8081 # 应用服务端口号
+  servlet:
+    context-path: /${spring.application.name}
+
+spring:
+  application:
+    name: card-service # 应用名称
+```
 
 ```yaml
 # 服务器配置
@@ -204,16 +252,16 @@ spring:
       routes:
         # 卡片服务路由
         - id: card_route # 路由ID
-          uri: lb://card # 使用负载均衡指向card服务
+          uri: lb://card-service # 使用负载均衡指向card-service服务
           order: 0 # 路由优先级为0（数字越小优先级越高）
           predicates:
-            - Path=/card/** # 路径匹配规则：所有/card开头的请求
+            - Path=/card-service/** # 路径匹配规则：所有/card-service开头的请求
           
         # 用户服务路由
         - id: user_route # 路由ID
-          uri: lb://user # 使用负载均衡指向user服务
+          uri: lb://user-service # 使用负载均衡指向user-service服务
           predicates:
-            - Path=/user/** # 路径匹配规则：所有/user开头的请求
+            - Path=/user-service/** # 路径匹配规则：所有/user-service开头的请求
   
     # Consul服务发现配置
     consul:
@@ -233,18 +281,18 @@ spring:
  */
 @Configuration
 public class RouteConfig {
-    private static final String CARD = "lb://card";
-    private static final String USER = "lb://user";
+    private static final String CARD = "lb://card-service";
+    private static final String USER = "lb://user-service";
 
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
                 // 配置卡服务路由
-                .route("card", r -> r.order(0).path("/card/**")
+                .route("card_route", r -> r.order(0).path("/card-service/**")
                         .uri(CARD)
                 )
                 // 配置用户服务路由
-                .route("user", r -> r.order(0).path("/user/**")
+                .route("user_route", r -> r.order(0).path("/user-service/**")
                         .uri(USER)
                 ).build();
     }
@@ -254,11 +302,11 @@ public class RouteConfig {
 #### 4.代码解读
 1. 常量定义
 ```java
-private static final String CARD = "lb://card";
-private static final String USER = "lb://user";
+private static final String CARD = "lb://card-service";
+private static final String USER = "lb://user-service";
 ```
 - `lb://` 是Load Balancer的协议前缀，表示使用负载均衡
-- `card` 和 `user` 是在服务注册中心（如Consul）中`注册的服务名`
+- `card-service` 和 `user-service` 是在服务注册中心（如Consul）中`注册的服务名`
 - 这样配置后，Gateway会自动从服务注册中心发现这些服务的实例
 
 2. 路由配置方法
@@ -274,36 +322,42 @@ public RouteLocator customRouteLocator(RouteLocatorBuilder builder)
 
 3.1 Card服务路由
 ```java
-.route("card", r -> r.order(0).path("/card/**").uri(CARD))
+.route("card_route", r -> r.order(0).path("/card-service/**").uri(CARD))
 ```
 - `"card"`：路由的唯一标识符
 - `order(0)`：路由优先级，数字越小优先级越高
-- `path("/card/**")`：匹配所有以`/card/`开头的请求路径
+- `path("/card-service/**")`：匹配所有以`/card-service/`开头的请求路径
 - `uri(CARD)`：将匹配的请求转发到card服务
 
 3.2 User服务路由
 ```java
-.route("user", r -> r.order(0).path("/user/**").uri(USER))
+.route("user_route", r -> r.order(0).path("/user-service/**").uri(USER))
 ```
-- 同样的配置模式，匹配`/user/**`的请求转发到user服务
+- 同样的配置模式，匹配`/user-service/**`的请求转发到user-service服务
 
 4. 工作原理
 
 当请求到达Gateway时：
 
-4.1 如果请求路径是`/card/anything`，会被转发到card服务
+4.1 如果请求路径是`/card-service/anything`，会被转发到card-service服务
 
-4.2 如果请求路径是`/user/anything`，会被转发到user服务
+4.2 如果请求路径是`/user-service/anything`，会被转发到user-service服务
 
 4.3 Gateway会自动进行负载均衡，在多个服务实例间分发请求
 
 4.4 实际效果
-- 客户端请求：`http://gateway:8080/card/list`
-- Gateway转发到：`http://card-service-instance/card/list`
-- 客户端请求：`http://gateway:8080/user/profile`  
-- Gateway转发到：`http://user-service-instance/user/profile`
+- 客户端请求：`http://gateway:8080/card-service/list`
+- Gateway转发到：`http://card-service-instance/card-service/list`
+- 客户端请求：`http://gateway:8080/user-service/profile`  
+- Gateway转发到：`http://user-service-instance/user-service/profile`
 
 这种配置方式实现了统一的API网关入口，客户端只需要知道Gateway的地址，就能访问所有后端微服务。
+
+#### 5.测试
+```bash
+http://localhost:8083/user-service/user/OP002
+
+```
 
 
 
@@ -361,9 +415,9 @@ public class UserFilter implements GatewayFilter, Ordered {
 ```java
 @Configuration
 public class RouteConfig {
-    private static final String CARD = "lb://card";
+    private static final String CARD = "lb://card-service";
 
-    private static final String USER = "lb://user";
+    private static final String USER = "lb://user-service";
     
     @Autowired
     private UserFilter userFilter;
@@ -371,10 +425,10 @@ public class RouteConfig {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route("card", r -> r.order(0).path("/card/**")
+                .route("card_route", r -> r.order(0).path("/card-service/**")
                         .filters(f -> f.filter(userFilter))
                         .uri(CARD)
-                ).route("user", r -> r.order(0).path("/user/**")
+                ).route("user_route", r -> r.order(0).path("/user-service/**")
                         .uri(USER)
                 ).build();
     }
@@ -427,9 +481,9 @@ spring:
     gateway:
       routes:
         - id: user_route
-          uri: lb://user
+          uri: lb://user-service
           predicates:
-            - Path=/user/**
+            - Path=/user-service/**
           filters:
             - User  # 这里会匹配 UserGatewayFilterFactory
 ```
@@ -472,9 +526,9 @@ public class UserGlobalFilter implements GlobalFilter, Ordered {
 
 >[!NOTE]
 > 当order的数值相同时候：
-1. 全局过滤器最后执行
-2. 优先出发默认过滤器，然后才是自定义过滤器
-3. order相同时，默认过滤器->自定义过略器->全局过滤器
+> 1. 全局过滤器最后执行
+> 2. 优先出发默认过滤器，然后才是自定义过滤器
+> 3. order相同时，默认过滤器->自定义过略器->全局过滤器
 
 ### 4.网关层修改body体
 
@@ -486,7 +540,6 @@ public class UserGlobalFilter implements GlobalFilter, Ordered {
 @Service
 @Slf4j
 public class SecurityService {
-
 
     private final SymmetricCrypto sm4 = SmUtil.sm4(Const.EN_KEY.getBytes());
 
@@ -526,9 +579,9 @@ public class SecurityService {
 @Configuration
 @RequiredArgsConstructor
 public class RouteConfig {
-    private static final String CARD = "lb://card";
+    private static final String CARD = "lb://card-service";
 
-    private static final String USER = "lb://user";
+    private static final String USER = "lb://user-service";
 
     private final UserFilter userFilter;
 
@@ -537,10 +590,10 @@ public class RouteConfig {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route("card", r -> r.order(0).path("/card/**")
+                .route("card_route", r -> r.order(0).path("/card-service/**")
                         .filters(f -> f.filter(userFilter))
                         .uri(CARD)
-                ).route("user", r -> r.order(0).path("/user/**")
+                ).route("user_route", r -> r.order(0).path("/user-service/**")
                         .filters(f -> f.modifyResponseBody(String.class, String.class,
                                 ((exchange, s) -> securityService.modifyResponse(exchange, s))))
                         .uri(USER)
@@ -590,6 +643,8 @@ public class RouteConfig {
 
 ### **5. 常用方法示例**
 
+可以用`UserFilter implements GatewayFilter, Ordered {}`
+
 * **修改请求头：**
 
 ```java
@@ -623,3 +678,48 @@ exchange.getResponse().getHeaders().set("decrpt", "1");
 securityService.modifyResponse(exchange, responseBody)
     .map(encrypted -> bufferFactory.wrap(encrypted.getBytes()));
 ```
+
+### 修改请求体
+只能用`RouteConfig`，不能用`UserFilter implements GatewayFilter, Ordered {}`
+```java
+/**
+ * 自定义路由定位器，配置修改请求体的路由规则
+ * 
+ * @param builder 路由构建器，用于定义路由规则
+ * @return RouteLocator 路由定位器实例
+ */
+public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+    return builder.routes()
+        // 定义一个名为"modify_body_route"的路由规则
+        .route("modify_body_route", r -> r.path("/user-service/**")
+                // 添加过滤器，修改请求体内容
+                .filters(f -> f.modifyRequestBody(
+                        String.class, // 原始请求体类型
+                        String.class, // 修改后的请求体类型
+                        MediaType.APPLICATION_JSON_VALUE, // 媒体类型
+                        (exchange, body) -> modifyRequestBodyService.modifyJsonBody(exchange, body) // 请求体修改逻辑
+                ))
+                // 路由目标地址，使用服务发现中的user-service服务
+                .uri(USER))
+        .build();
+}
+
+```
+
+
+### **两种方式的核心区别**
+
+1. **ModifyRequestBodyGatewayFilterFactory**
+
+   * 适合对 **请求体内容（body）** 进行修改，例如 JSON 入参。
+   * 由于请求体是流式的（Reactive），必须使用 `ModifyRequestBody` 这样的工厂类来安全地读取和修改 body。
+   * Reactive 流式数据在网关中只能安全地通过 `ModifyRequestBody` 过滤器读取并重新写入。
+
+2. **自定义 GatewayFilter（如 UserFilter）**
+
+   * 适合对 **请求头、请求路径、查询参数** 进行修改。
+   * 直接在 `filter` 方法中通过 `exchange.getRequest().mutate()` 修改即可。
+   * **不适合直接修改请求体**，因为 body 读取后不能再次读取，容易导致下游无法获取数据。
+
+
+
