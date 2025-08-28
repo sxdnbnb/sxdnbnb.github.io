@@ -168,7 +168,7 @@ public Result queryManagersByDepartments(@RequestBody ManagerRequestDTO dto) {
 > `Nginx`先将客户端的请求负载均衡到`SpringGateway`，然后`SpringGateway`再通过服务发现，将请求负载均衡到各个业务微服务上。
 
 
-### 创建一个gateway服务完成网关的转发
+### 1.创建一个gateway服务完成网关的转发
 
 #### 1.引入依赖
 ```xml
@@ -214,9 +214,7 @@ spring:
           uri: lb://user # 使用负载均衡指向user服务
           predicates:
             - Path=/user/** # 路径匹配规则：所有/user开头的请求
-          filters:
-            - User # 使用自定义的User网关过滤器（UserGatewayFilter只需要写User）
-    
+  
     # Consul服务发现配置
     consul:
       discovery:
@@ -227,7 +225,8 @@ spring:
 
 ```
 
-或者自定义转发规则（更灵活）
+#### 3.自定义转发规则（更灵活）
+
 ```java
 /**
  * 路由配置类，用于定义Spring Cloud Gateway的路由规则
@@ -252,14 +251,14 @@ public class RouteConfig {
 }
 
 ```
-
+#### 4.代码解读
 1. 常量定义
 ```java
 private static final String CARD = "lb://card";
 private static final String USER = "lb://user";
 ```
 - `lb://` 是Load Balancer的协议前缀，表示使用负载均衡
-- `card` 和 `user` 是在服务注册中心（如Consul）中注册的服务名
+- `card` 和 `user` 是在服务注册中心（如Consul）中`注册的服务名`
 - 这样配置后，Gateway会自动从服务注册中心发现这些服务的实例
 
 2. 路由配置方法
@@ -289,12 +288,16 @@ public RouteLocator customRouteLocator(RouteLocatorBuilder builder)
 - 同样的配置模式，匹配`/user/**`的请求转发到user服务
 
 4. 工作原理
-当请求到达Gateway时：
-1. 如果请求路径是`/card/anything`，会被转发到card服务
-2. 如果请求路径是`/user/anything`，会被转发到user服务
-3. Gateway会自动进行负载均衡，在多个服务实例间分发请求
 
-5. 实际效果
+当请求到达Gateway时：
+
+4.1 如果请求路径是`/card/anything`，会被转发到card服务
+
+4.2 如果请求路径是`/user/anything`，会被转发到user服务
+
+4.3 Gateway会自动进行负载均衡，在多个服务实例间分发请求
+
+4.4 实际效果
 - 客户端请求：`http://gateway:8080/card/list`
 - Gateway转发到：`http://card-service-instance/card/list`
 - 客户端请求：`http://gateway:8080/user/profile`  
@@ -304,7 +307,7 @@ public RouteLocator customRouteLocator(RouteLocatorBuilder builder)
 
 
 
-### 网关层自定义过滤器
+### 2.网关层自定义过滤器
 >需求：创建自定义过滤器给`指定的路由`添加Header信息
 
 1. 实现`GatewayFilter接口`和`Ordered接口`，编写过滤器处理逻辑
@@ -356,18 +359,26 @@ public class UserFilter implements GatewayFilter, Ordered {
 
 2. 路由转发应用`userFilter`
 ```java
-@Autowired
-private UserFilter userFilter;
+@Configuration
+public class RouteConfig {
+    private static final String CARD = "lb://card";
 
-@Bean
-public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
-    return builder.routes()
-            .route("card", r -> r.order(0).path("/card/**")
-                    .filters(f -> f.filter(userFilter))
-                    .uri(CARD)
-            ).route("user", r -> r.order(0).path("/user/**")
-                    .uri(USER)
-            ).build();
+    private static final String USER = "lb://user";
+    
+    @Autowired
+    private UserFilter userFilter;
+
+    @Bean
+    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+        return builder.routes()
+                .route("card", r -> r.order(0).path("/card/**")
+                        .filters(f -> f.filter(userFilter))
+                        .uri(CARD)
+                ).route("user", r -> r.order(0).path("/user/**")
+                        .uri(USER)
+                ).build();
+    }
+
 }
 ```
 
@@ -423,7 +434,7 @@ spring:
             - User  # 这里会匹配 UserGatewayFilterFactory
 ```
 
-### 网关层全局过滤器
+### 3.网关层全局过滤器
 > 需求：创建`自定义全局过滤器`给指定的路由添加Header信息
 
 1. 实现`GlobalFilte接口`和`Ordered接口`，编写过滤器处理逻辑
@@ -465,7 +476,7 @@ public class UserGlobalFilter implements GlobalFilter, Ordered {
 2. 优先出发默认过滤器，然后才是自定义过滤器
 3. order相同时，默认过滤器->自定义过略器->全局过滤器
 
-### 网关层修改body体
+### 4.网关层修改body体
 
 > 需求：为了保证互联网层数据传输的安全性，需要在网关层对微服务层响应的数据进行加密操作，同样前端请求的数据也是密文，网关在收到请求后需要将数据进行解密，验证数据的合法性，通过后，将对应的请求转发到对应的微服务进行请求处理。
 
@@ -510,7 +521,7 @@ public class SecurityService {
 }
 ```
 
-2. 路由添加filter
+2. 路由添加处理逻辑
 ```java
 @Configuration
 @RequiredArgsConstructor
@@ -536,4 +547,79 @@ public class RouteConfig {
                 ).build();
     }
 }
+```
+
+## 总结常用的类和方法
+在 Spring Cloud Gateway 中实现转发与拦截功能时，涉及的常用类和方法主要分为以下几类：
+
+
+### **1. Filter 相关类**
+
+| 类                                 | 说明                                    | 关键方法                                                                      |
+| --------------------------------- | ------------------------------------- | ------------------------------------------------------------------------- |
+| `GatewayFilter`                   | 自定义局部过滤器（作用于特定路由）。                    | `Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain)` |
+| `GlobalFilter`                    | 全局过滤器（作用于所有路由）。                       | 同上                                                                        |
+| `AbstractGatewayFilterFactory<T>` | 定义工厂类，支持在 `application.yml` 中配置路由过滤器。 | `GatewayFilter apply(T config)`                                           |
+| `Ordered`                         | 定义过滤器执行顺序。                            | `int getOrder()`                                                          |
+
+
+### **2. Web 交互类**
+
+| 类                    | 说明                                          | 关键方法                                        |
+| -------------------- | ------------------------------------------- | ------------------------------------------- |
+| `ServerWebExchange`  | 封装 HTTP 请求和响应的上下文。                          | `getRequest()`, `getResponse()`, `mutate()` |
+| `ServerHttpRequest`  | 表示 HTTP 请求，可通过 `mutate()` 修改 header 或 path。 | `mutate().headers()`, `getURI()`            |
+| `ServerHttpResponse` | 表示 HTTP 响应，可设置状态码、header、body。              | `getHeaders().set()`, `writeWith()`         |
+
+### **3. Reactor 响应式编程类**
+
+| 类         | 说明                        | 常用方法                                       |
+| --------- | ------------------------- | ------------------------------------------ |
+| `Mono<T>` | 0 或 1 个元素的异步流（用于返回值）。     | `Mono.just()`, `Mono.defer()`, `flatMap()` |
+| `Flux<T>` | 0-N 个元素的异步流（主要用于请求体和响应体）。 | `Flux.from()`, `map()`, `flatMap()`        |
+
+
+### **4. 其他常用类**
+
+| 类                                          | 说明                     |
+| ------------------------------------------ | ---------------------- |
+| `RouteLocator` / `RouteLocatorBuilder`     | 用于配置路由规则。              |
+| `@Component`, `@Configuration`, `@Service` | 组件注册注解，用于管理 Bean 生命周期。 |
+| `SmUtil`, `SymmetricCrypto`                | Hutool 提供的国密加密解密工具。    |
+
+
+### **5. 常用方法示例**
+
+* **修改请求头：**
+
+```java
+ServerHttpRequest request = exchange.getRequest().mutate()
+    .headers(h -> h.set("sessionId", "123456"))
+    .build();
+exchange.mutate().request(request).build();
+```
+
+* **读取请求体并解密：**
+
+```java
+exchange.getRequest().getBody()
+    .map(dataBuffer -> {
+        byte[] bytes = new byte[dataBuffer.readableByteCount()];
+        dataBuffer.read(bytes);
+        return new String(bytes, StandardCharsets.UTF_8);
+    })
+    .flatMap(body -> securityService.modifyRequest(exchange, body));
+```
+
+* **设置响应头：**
+
+```java
+exchange.getResponse().getHeaders().set("decrpt", "1");
+```
+
+* **加密响应数据：**
+
+```java
+securityService.modifyResponse(exchange, responseBody)
+    .map(encrypted -> bufferFactory.wrap(encrypted.getBytes()));
 ```
