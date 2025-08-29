@@ -19,49 +19,11 @@ Set接口的实现类主要有：HashSet、TreeSet、LinkedHashSet等
 
 List接口的实现类主要有：ArrayList、LinkedList、Stack以及Vector等
 
-## ArrayList的初始容量是多少？
-
-初始容量是0，在第一次添加元素的时候，才会设置容量为10。
-
-## ArrayList的扩容机制
-
-1. 创建新数组，容量是原来的1.5倍。
-
-2. 把旧数组元素拷贝到新数组中
-
-3. 使用新数组覆盖旧数组对象
-
-## 并发修改ArrayList元素会有什么问题
-
-会快速失败，抛出`ConcurrentModificationException`异常。
-
-## 如何快速安全的删除ArrayList中的元素
-
-使用`remove(int index)` 、 `removeIf()` 或者 `removeAll()` 方法。 我们知道ArrayList并不是线程安全的，原因是它的 `add()` 、`remove()` 方法、`扩容`操作都没有加锁，多个线程并发操作ArrayList的时候，会出现数据不一致的情况。 想要线程安全，其中一种方式是初始化ArrayList的时候使用 `Collections.synchronizedCollection()` 修饰。这样ArrayList所有操作都变成同步操作，性能较差。还有一种性能较好，又能保证线程安全的方式是使用 `CopyOnWriteArrayList`
-
-## ArrayList和LinkedList的区别
-
-1. 它们的底层实现不同：ArrayList 是基于动态数组的数据结构，而 LinkedList 是基于链表的数据结构。
-
-2. 随机访问性能不同：ArrayList 优于 LinkedList，因为 ArrayList 可以根据下标以 O(1) 时间复杂度对元素进行随机访问。而 LinkedList 的访问时间复杂度为 O(n)，因为它需要遍历整个链表才能找到指定的元素。
-
-3. 插入和删除性能不同：LinkedList 优于 ArrayList，因为 LinkedList 的插入和删除操作时间复杂度为 O(1)，而 ArrayList 的时间复杂度为 O(n)。
-
-## ArrayList和Vector的区别
-
-1. 线程安全性：Vector 是线程安全的，而 ArrayList 不是。所以在多线程环境下，应该使用 Vector。
-
-2. 性能：由于 Vector 是线程安全的，所以它的性能通常比 ArrayList 差。在单线程环境下，ArrayList 比 Vector 快。
-
-3. 初始容量增长方式：当容量不足时，ArrayList 默认会增加 50% 的容量，而 Vector 会将容量翻倍。这意味着在添加元素时，ArrayList 需要更频繁地进行扩容操作，而 Vector 则更适合于存储大量数据。
-
-
-
-## List，Set，Map三者的区别？
+### List，Set，Map三者的区别？
 
 ![](/picture/collection/G78sbsEucowjqZxdUSrczstRnLg.png)
 
-## 哪些集合类是线程安全的？
+### 哪些集合类是线程安全的？
 
 * Vector：就比Arraylist多了个 synchronized （线程安全），因为效率较低，现在已经不太建议使用。
 
@@ -71,7 +33,7 @@ List接口的实现类主要有：ArrayList、LinkedList、Stack以及Vector等
 
 
 
-## 遍历一个 List 有哪些不同的方式？每种方法的实现原理是什么？Java 中 List遍历的最佳实践是什么？
+### 遍历一个 List 有哪些不同的方式？每种方法的实现原理是什么？Java 中 List遍历的最佳实践是什么？
 
 遍历方式有以下几种：
 
@@ -81,9 +43,49 @@ List接口的实现类主要有：ArrayList、LinkedList、Stack以及Vector等
 
 3. foreach 循环遍历。foreach 内部也是采用了 Iterator 的方式实现，使用时不需要显式声明Iterator 或计数器。优点是代码简洁，不易出错；缺点是只能做简单的遍历，不能在遍历过程中操作数据集合，例如删除、替换。
 
-# HashMap（初始容量是 16）
+## List
 
-## HashMap和HashSet区别？
+### ArrayList的初始容量是多少？
+
+初始容量是0，在第一次添加元素的时候，才会设置容量为10。
+
+### ArrayList的扩容机制
+
+1. 创建新数组，容量是原来的1.5倍。
+
+2. 把旧数组元素拷贝到新数组中
+
+3. 使用新数组覆盖旧数组对象
+
+### 并发修改ArrayList元素会有什么问题
+
+会快速失败，抛出`ConcurrentModificationException`异常。
+
+### 如何快速安全的删除ArrayList中的元素
+
+使用`remove(int index)` 、 `removeIf()` 或者 `removeAll()` 方法。 我们知道ArrayList并不是线程安全的，原因是它的 `add()` 、`remove()` 方法、`扩容`操作都没有加锁，多个线程并发操作ArrayList的时候，会出现数据不一致的情况。 想要线程安全，其中一种方式是初始化ArrayList的时候使用 `Collections.synchronizedCollection()` 修饰。这样ArrayList所有操作都变成同步操作，性能较差。还有一种性能较好，又能保证线程安全的方式是使用 `CopyOnWriteArrayList`
+
+### ArrayList和LinkedList的区别
+
+1. 它们的底层实现不同：ArrayList 是基于动态数组的数据结构，而 LinkedList 是基于链表的数据结构。
+
+2. 随机访问性能不同：ArrayList 优于 LinkedList，因为 ArrayList 可以根据下标以 O(1) 时间复杂度对元素进行随机访问。而 LinkedList 的访问时间复杂度为 O(n)，因为它需要遍历整个链表才能找到指定的元素。
+
+3. 插入和删除性能不同：LinkedList 优于 ArrayList，因为 LinkedList 的插入和删除操作时间复杂度为 O(1)，而 ArrayList 的时间复杂度为 O(n)。
+
+### ArrayList和Vector的区别
+
+1. 线程安全性：Vector 是线程安全的，而 ArrayList 不是。所以在多线程环境下，应该使用 Vector。
+
+2. 性能：由于 Vector 是线程安全的，所以它的性能通常比 ArrayList 差。在单线程环境下，ArrayList 比 Vector 快。
+
+3. 初始容量增长方式：当容量不足时，ArrayList 默认会增加 50% 的容量，而 Vector 会将容量翻倍。这意味着在添加元素时，ArrayList 需要更频繁地进行扩容操作，而 Vector 则更适合于存储大量数据。
+
+
+
+## HashMap（初始容量是 16）
+
+### HashMap和HashSet区别？
 
 1. HashSet 实现了 Set 接口，只存储对象；HashMap 实现了 Map 接口，用于存储键值对。
 
@@ -91,7 +93,7 @@ List接口的实现类主要有：ArrayList、LinkedList、Stack以及Vector等
 
 3. HashSet 不允许集合中有重复的值（如果有重复的值，会插入失败），而 HashMap 键不能重复，值可以重复（如果键重复会覆盖原来的值）。
 
-## HashMap的底层实现原理？
+### HashMap的底层实现原理？
 
 JDK 8 中 HashMap 的数据结构是`数组`+`链表`+`红黑树`。
 
@@ -111,7 +113,7 @@ HashMap 的核心是一个动态数组（`Node[] table`），用于存储键值�
 
 当从 HashMap 中获取元素时，也会使用哈希函数计算键的位置，然后根据位置在数组、链表或者红黑树中查找元素。
 
-## 红黑树
+### 红黑树
 
 红黑树是一种自平衡的二叉查找树：
 
@@ -129,7 +131,7 @@ HashMap 的核心是一个动态数组（`Node[] table`），用于存储键值�
 
 
 
-## 解决哈希冲突
+### 解决哈希冲突
 
 在 Java 中，解决哈希冲突的常用方法有以下三种：链地址法、开放地址法和再哈希法。
 
@@ -139,13 +141,13 @@ HashMap 的核心是一个动态数组（`Node[] table`），用于存储键值�
 
 3. **再哈希法（Rehashing）**：当发生哈希冲突时，使用另一个哈希函数计算出一个新的哈希值，然后将元素插入到对应的桶中。这种方法的优点是简单易懂，适用于元素数量较少的情况。缺点是需要额外的哈希函数，且当哈希函数不够随机时，容易产生聚集现象。
 
-## 扩容在什么时候呢？
+### 扩容在什么时候呢？
 
 HashMap 的初始容量是 16，随着元素的不断添加，HashMap 的容量（也就是数组大小）可能不足，于是就需要进行扩容，HashMap 会在存储的键值对数量超过阈值（即容量 \* 加载因子）时进行扩容，默认的加载因子是 0.75，这意味着当 HashMap 填满了大约 75%的容量时，就会进行扩容，默认的初始容量是 16，那就是大于16x0.75=12时，就会触发第一次扩容操作。
 
 
 
-## 扩容机制了解吗？
+### 扩容机制
 
 扩容时，HashMap 会创建一个新的数组，其容量是原数组容量的两倍。
 
@@ -157,7 +159,7 @@ HashMap 的初始容量是 16，随着元素的不断添加，HashMap 的容量�
 
 
 
-## 那你说说扩容的时候每个节点都要进行位运算吗
+### 扩容的时候每个节点都要进行位运算吗
 
 在 JDK 8 的新 hash 算法：`hash & (newCapacity - 1)`，数组扩容后的索引位置，要么就是原来的索引位置，要么就是“原索引+原来的容量”，遵循一定的规律。
 
@@ -173,7 +175,7 @@ HashMap 的初始容量是 16，随着元素的不断添加，HashMap 的容量�
 
 
 
-## 为什么HashMap的长度是2的整数次幂？
+### 为什么HashMap的长度是2的整数次幂？
 
 ”**取余(%)操作中如果除数是 2 的幂次则等价于与其除数减一的与(&)操作**（也就是说 `hash%length==hash&(length-1)` 的前提是 length 是 2 的 n 次方）。” 并且，**采用二进制位操作 & 相对于 % 能够提高运算效率**。
 
@@ -195,7 +197,7 @@ length 为偶数时，length-1 为奇数，奇数的二进制最后一位是 1�
 
 
 
-## HashMap是线程安全的吗？为什么？
+### HashMap是线程安全的吗？为什么？
 
 HashMap 之所以不是线程安全的，主要有以下几个问题：
 
@@ -207,13 +209,13 @@ HashMap 之所以不是线程安全的，主要有以下几个问题：
 
 
 
-## HashMap 和 Hashtable 的区别
+### HashMap 和 Hashtable 的区别
 
 ![](/picture/collection/image.png)
 
 
 
-## ConcurrentHashMap与Hashtable的异同？
+### ConcurrentHashMap与Hashtable的异同？
 
 ConcurrentHashMap和Hashtable 都是线程安全的，但是ConcurrentHashMap 提供了更高的并发性和性能。
 
@@ -229,7 +231,7 @@ CAS 操作是一种乐观锁，它不会阻塞线程，而是在更新时检查�
 
 
 
-## ConcurrentHashMap的底层实现原理？
+### ConcurrentHashMap的底层实现原理？
 
 采用 `Node + CAS + synchronized` 来保证并发安全
 
@@ -249,7 +251,7 @@ get 查询
 
 get 很简单，和 HashMap 基本相同，通过 key 计算位置，table 该位置 key 相同就返回，如果是红黑树按照红黑树获取，否则就遍历链表获取。
 
-## &#x20;`ConcurrentHashMap`的key 和 value 不能为 null
+### &#x20;`ConcurrentHashMap`的key 和 value 不能为 null
 
 HashMap 是允许 key 和 value 值都为 null 的。因为HashMap 的设计是给单线程使用的，而单线程下的二义性问题是能被证明真伪的，所以也就不存在二义性问题了（能被证明的问题就不是二义性问题）。
 
